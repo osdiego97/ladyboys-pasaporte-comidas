@@ -36,15 +36,15 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
 
   e.respondWith(
-    caches.match(req).then(function (hit) {
-      if (hit) return hit;
-      return fetch(req).then(function (res) {
-        if (res && res.status === 200) {
-          var copia = res.clone();
-          caches.open(SHELL).then(function (c) { c.put(req, copia).catch(function () {}); });
-        }
-        return res;
-      }).catch(function () {
+    fetch(req).then(function (res) {
+      if (res && res.status === 200) {
+        var copia = res.clone();
+        caches.open(SHELL).then(function (c) { c.put(req, copia).catch(function () {}); });
+      }
+      return res;
+    }).catch(function () {
+      return caches.match(req).then(function (hit) {
+        if (hit) return hit;
         if (req.mode === 'navigate') return caches.match('./index.html');
         return Response.error();
       });
