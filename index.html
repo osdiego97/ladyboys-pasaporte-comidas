@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#12594A">
-<title>Pasaporte Gastronómico · Vietnam y Tailandia 2026</title>
+<title>Pasaporte Gastronómico Ladyboys · Vietnam y Tailandia 2026</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -212,6 +212,18 @@ textarea:focus{outline:2px solid var(--jade);outline-offset:-1px}
 .pro-inline{color:var(--jade);font-size:.8rem;display:block}
 .ojo-inline{color:#8A6514;font-size:.8rem;display:block}
 
+/* ---------- Fotos ---------- */
+.foto-galeria{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;-webkit-overflow-scrolling:touch}
+.foto-thumb{position:relative;flex:0 0 auto;width:72px;height:72px;border-radius:10px;overflow:hidden}
+.foto-thumb img{width:100%;height:100%;object-fit:cover;cursor:pointer;display:block}
+.foto-borrar{position:absolute;top:2px;right:2px;width:22px;height:22px;border-radius:50%;
+  background:rgba(0,0,0,.6);color:#fff;border:0;font-size:14px;line-height:22px;cursor:pointer;padding:0;text-align:center}
+.foto-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);
+  display:flex;align-items:center;justify-content:center}
+.foto-overlay img{max-width:95vw;max-height:90vh;border-radius:8px}
+.foto-overlay-cerrar{position:absolute;top:12px;right:14px;background:none;border:0;
+  color:#fff;font-size:2rem;cursor:pointer;padding:8px;line-height:1}
+
 /* ---------- Alternativas plegables ---------- */
 .alts-toggle{background:none;border:0;padding:5px 0;font:inherit;font-size:.82rem;
   font-weight:600;color:var(--jade);cursor:pointer;text-decoration:underline}
@@ -222,6 +234,23 @@ textarea:focus{outline:2px solid var(--jade);outline-offset:-1px}
 .sweet{border-top:1px dashed var(--line);padding:11px 0 4px;margin-top:4px}
 .sweet .slot{color:var(--turmeric)}
 .sweet .meal-name{font-size:1rem}
+
+/* ---------- Progreso por país ---------- */
+.progress-detail{display:flex;gap:14px;margin-top:8px}
+.progress-col{flex:1;min-width:0}
+.progress-col .label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:3px}
+.progress-col .label b{color:var(--ink);font-weight:700}
+.track-sm{height:6px;background:#E3DECD;border-radius:99px;overflow:hidden}
+.track-sm .fill{height:100%;width:0;background:var(--turmeric);transition:width .3s ease;border-radius:99px}
+
+/* ---------- Pokédex: plato probado ---------- */
+.dish.collected{border-left:4px solid var(--jade);background:linear-gradient(90deg,var(--jade-soft) 0%,var(--card) 30%)}
+.dish.collected .dish-body{display:none}
+.dish.collected.open .dish-body,
+.dish.collected.noting .dish-body{display:block}
+.dish.collected .dish-head{cursor:pointer}
+.badge-probado{display:inline-block;background:var(--jade);color:#fff;font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;vertical-align:middle;letter-spacing:.3px}
+.expand-arrow{flex:0 0 auto;font-size:.72rem;color:var(--muted);padding:0 2px}
 
 @media print{
   nav.tabs,.filters,.search,.footer-tools,.tick,.actions{display:none!important}
@@ -236,8 +265,8 @@ textarea:focus{outline:2px solid var(--jade);outline-offset:-1px}
 
 <header>
   <div class="inner">
-    <h1>Pasaporte gastronómico</h1>
-    <p>Vietnam y Tailandia · 30 oct – 16 nov 2026 · 4 personas</p>
+    <h1>Pasaporte gastronómico Ladyboys</h1>
+    <p>🇻🇳 Vietnam y Tailandia 🇹🇭 · 30 oct – 16 nov 2026</p>
   </div>
 </header>
 
@@ -247,11 +276,20 @@ textarea:focus{outline:2px solid var(--jade);outline-offset:-1px}
 </div></div>
 <div class="progress-wrap">
   <div class="progress-top">
-    <span>Comidas marcadas</span>
-    <b><span id="pcount">0</span> de <span id="ptotal">0</span></b>
+    <span>Platos descubiertos</span>
+    <b><span id="pcount">0</span> / <span id="ptotal">0</span></b>
   </div>
   <div class="track"><div class="fill" id="pfill"></div></div>
-  <div class="progress-top" style="margin-top:6px"><span>Dulces probados</span><b><span id="scount">0</span> de 18</b></div>
+  <div class="progress-detail">
+    <div class="progress-col">
+      <div class="label"><span>🇻🇳 Vietnam</span><b id="pcount-vn">0/0</b></div>
+      <div class="track-sm"><div class="fill" id="pfill-vn"></div></div>
+    </div>
+    <div class="progress-col">
+      <div class="label"><span>🇹🇭 Tailandia</span><b id="pcount-th">0/0</b></div>
+      <div class="track-sm"><div class="fill" id="pfill-th"></div></div>
+    </div>
+  </div>
 </div>
 
 <nav class="tabs">
@@ -282,6 +320,7 @@ textarea:focus{outline:2px solid var(--jade);outline-offset:-1px}
     <input class="search" id="dishsearch" type="search" placeholder="Buscar un plato…" oninput="renderDishes()">
     <div class="filters" id="dishfilters"></div>
     <div class="filters" id="dishtypes"></div>
+    <div class="filters" id="dishstatus"></div>
     <div id="disheslist"></div>
   </section>
 
@@ -295,6 +334,11 @@ textarea:focus{outline:2px solid var(--jade);outline-offset:-1px}
 
   <section class="panel hidden" id="panel-alergia"></section>
   <section class="panel hidden" id="panel-guia"></section>
+</div>
+
+<div id="foto-overlay" class="foto-overlay hidden" onclick="cerrarFotoOverlay()">
+  <button class="foto-overlay-cerrar" aria-label="Cerrar">×</button>
+  <img id="foto-overlay-img" src="" alt="Foto ampliada" onclick="event.stopPropagation()">
 </div>
 
 <script>
@@ -321,6 +365,155 @@ function set(id,patch){
   var cur=state[id]||{};
   for(var k in patch){ cur[k]=patch[k]; }
   state[id]=cur; saveState();
+}
+
+/* =========================================================
+   FOTOS — IndexedDB para almacenar fotos de los platos
+   ========================================================= */
+var DB_FOTOS='pasaporte-fotos-2026';
+var FOTOS={};
+var urlsActivas=[];
+
+function abrirDB(cb){
+  try{
+    var req=indexedDB.open(DB_FOTOS,1);
+    req.onupgradeneeded=function(e){
+      var db=e.target.result;
+      if(!db.objectStoreNames.contains('fotos')){
+        var store=db.createObjectStore('fotos',{keyPath:'id',autoIncrement:true});
+        store.createIndex('entry','entry');
+      }
+    };
+    req.onsuccess=function(e){ cb(e.target.result); };
+    req.onerror=function(){ cb(null); };
+  }catch(e){ cb(null); }
+}
+
+function cargarFotos(cb){
+  abrirDB(function(db){
+    if(!db){ cb(); return; }
+    try{
+      var tx=db.transaction('fotos','readonly');
+      var req=tx.objectStore('fotos').getAll();
+      req.onsuccess=function(){
+        FOTOS={};
+        req.result.forEach(function(r){
+          if(!FOTOS[r.entry]) FOTOS[r.entry]=[];
+          FOTOS[r.entry].push({id:r.id,blob:r.blob});
+        });
+        cb();
+      };
+      req.onerror=function(){ cb(); };
+    }catch(e){ cb(); }
+  });
+}
+
+function guardarFoto(entryId,blob,cb){
+  abrirDB(function(db){
+    if(!db){ cb(); return; }
+    var tx=db.transaction('fotos','readwrite');
+    var req=tx.objectStore('fotos').add({entry:entryId,blob:blob,ts:Date.now()});
+    req.onsuccess=function(){
+      if(!FOTOS[entryId]) FOTOS[entryId]=[];
+      FOTOS[entryId].push({id:req.result,blob:blob});
+      cb(req.result);
+    };
+    req.onerror=function(){ cb(); };
+  });
+}
+
+function borrarFoto(fotoId,entryId,cb){
+  abrirDB(function(db){
+    if(!db){ cb(); return; }
+    var tx=db.transaction('fotos','readwrite');
+    tx.objectStore('fotos').delete(fotoId);
+    tx.oncomplete=function(){
+      if(FOTOS[entryId]){
+        FOTOS[entryId]=FOTOS[entryId].filter(function(f){ return f.id!==fotoId; });
+        if(!FOTOS[entryId].length) delete FOTOS[entryId];
+      }
+      cb();
+    };
+    tx.onerror=function(){ cb(); };
+  });
+}
+
+function comprimirFoto(file,cb){
+  var img=new Image();
+  var url=URL.createObjectURL(file);
+  img.onload=function(){
+    URL.revokeObjectURL(url);
+    var MAX=1200,w=img.width,h=img.height;
+    if(w>MAX||h>MAX){ var r=Math.min(MAX/w,MAX/h); w=Math.round(w*r); h=Math.round(h*r); }
+    var c=document.createElement('canvas');
+    c.width=w; c.height=h;
+    c.getContext('2d').drawImage(img,0,0,w,h);
+    c.toBlob(function(blob){ cb(blob); },'image/jpeg',0.7);
+  };
+  img.onerror=function(){ URL.revokeObjectURL(url); };
+  img.src=url;
+}
+
+function abrirCamara(entryId){
+  var input=document.createElement('input');
+  input.type='file'; input.accept='image/*';
+  input.onchange=function(){
+    if(!input.files||!input.files[0]) return;
+    comprimirFoto(input.files[0],function(blob){
+      if(!blob) return;
+      guardarFoto(entryId,blob,function(){ mostrarFotos(entryId); });
+    });
+  };
+  input.click();
+}
+
+function revocarUrls(){
+  urlsActivas.forEach(function(u){ URL.revokeObjectURL(u); });
+  urlsActivas=[];
+}
+
+function mostrarFotos(entryId){
+  var container=document.getElementById('fotos-'+entryId);
+  if(!container) return;
+  var fotos=FOTOS[entryId]||[];
+  if(!fotos.length){ container.innerHTML=''; return; }
+  container.innerHTML=fotos.map(function(f){
+    var url=URL.createObjectURL(f.blob);
+    urlsActivas.push(url);
+    return '<div class="foto-thumb">'+
+      '<img src="'+url+'" onclick="verFoto(\''+entryId+'\','+f.id+')" alt="Foto">'+
+      '<button class="foto-borrar" onclick="event.stopPropagation();confirmarBorrarFoto('+f.id+',\''+entryId+'\')" aria-label="Borrar foto">\u00D7</button>'+
+    '</div>';
+  }).join('');
+}
+
+function mostrarTodasLasFotos(){
+  revocarUrls();
+  Object.keys(FOTOS).forEach(function(entryId){ mostrarFotos(entryId); });
+}
+
+function verFoto(entryId,fotoId){
+  var fotos=FOTOS[entryId]||[];
+  var foto=null;
+  for(var i=0;i<fotos.length;i++){ if(fotos[i].id===fotoId){ foto=fotos[i]; break; } }
+  if(!foto) return;
+  var overlay=document.getElementById('foto-overlay');
+  var img=document.getElementById('foto-overlay-img');
+  img.src=URL.createObjectURL(foto.blob);
+  overlay.classList.remove('hidden');
+}
+
+function cerrarFotoOverlay(){
+  var overlay=document.getElementById('foto-overlay');
+  var img=document.getElementById('foto-overlay-img');
+  overlay.classList.add('hidden');
+  if(img.src) URL.revokeObjectURL(img.src);
+  img.src='';
+}
+
+function confirmarBorrarFoto(fotoId,entryId){
+  if(!confirm('¿Borrar esta foto?')) return;
+  borrarFoto(fotoId,entryId,function(){ mostrarFotos(entryId); });
 }
 
 /* =========================================================
@@ -992,6 +1185,11 @@ function mealMapUrl(m){
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function normalizar(s){ return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
 
+var ZONA_PAIS={'Hanói':'🇻🇳','Ninh Binh':'🇻🇳','Ha Long':'🇻🇳',
+  'Chiang Mai':'🇹🇭','Krabi':'🇹🇭','Phi Phi':'🇹🇭','Bangkok':'🇹🇭'};
+function bandera(z){ return ZONA_PAIS[z]||''; }
+function banderaRegion(r){ return r&&r.indexOf('Vietnam')===0?'🇻🇳':r&&r.indexOf('Tailandia')===0?'🇹🇭':''; }
+
 var zoneFilter='todas';
 var altsAbiertas={};
 
@@ -1033,7 +1231,7 @@ function dayZones(){
 function renderZoneFilters(){
   var el=document.getElementById('zonefilters');
   el.innerHTML=dayZones().map(function(z){
-    return '<button class="chip" aria-pressed="'+(zoneFilter===z)+'" onclick="setZone(\''+z+'\')">'+(z==='todas'?'Todo el viaje':esc(z))+'</button>';
+    return '<button class="chip" aria-pressed="'+(zoneFilter===z)+'" onclick="setZone(\''+z+'\')">'+(z==='todas'?'Todo el viaje':bandera(z)+' '+esc(z))+'</button>';
   }).join('');
 }
 function setZone(z){ zoneFilter=z; renderZoneFilters(); renderDays(); }
@@ -1070,7 +1268,9 @@ function renderDays(){
             '<p class="meal-dish">'+esc(d.sweet.w)+'</p>'+
             '<div class="actions">'+
               '<button class="btn" onclick="toggleNote(\''+sid+'\')">'+(sst.note||sst.rating?'Ver mi nota':'Añadir nota')+'</button>'+
+              '<button class="btn" onclick="abrirCamara(\''+sid+'\')">📷 Foto</button>'+
             '</div>'+
+            '<div class="foto-galeria" id="fotos-'+sid+'"></div>'+
             noteBox(sid,sst)+
           '</div>'+
         '</div></div></div>';
@@ -1078,7 +1278,7 @@ function renderDays(){
     out+='<article class="card day'+(open?' open':'')+'" id="day'+di+'">'+
       '<button class="day-head" onclick="toggleDay('+di+')" aria-expanded="'+(open?'true':'false')+'">'+
         '<span class="day-date"><span class="dd">'+d.dd+'</span><span class="ww">'+d.mm+' · '+d.ww+'</span></span>'+
-        '<span class="day-title"><strong>'+esc(d.t)+'</strong><span>'+esc(d.z)+'</span></span>'+
+        '<span class="day-title"><strong>'+esc(d.t)+'</strong><span>'+bandera(d.z)+' '+esc(d.z)+'</span></span>'+
         '<span class="day-count">'+done+'/'+d.meals.length+'</span>'+
       '</button>'+
       '<div class="day-body">'+
@@ -1089,6 +1289,7 @@ function renderDays(){
   });
   document.getElementById('dayslist').innerHTML=out||'<p class="empty">No hay días en este destino.</p>';
   updateProgress();
+  mostrarTodasLasFotos();
 }
 
 function lugarValidado(nombre){
@@ -1126,7 +1327,9 @@ function mealHtml(d,m,di,mi){
         '<div class="actions">'+
           (m.m?'<a class="btn map" href="'+mealMapUrl(m)+'" target="_blank" rel="noopener">Cómo llegar</a>':'')+
           '<button class="btn" onclick="toggleNote(\''+id+'\')">'+(st.note||st.rating?'Ver mi nota':'Añadir nota')+'</button>'+
+          '<button class="btn" onclick="abrirCamara(\''+id+'\')">📷 Foto</button>'+
         '</div>'+
+        '<div class="foto-galeria" id="fotos-'+id+'"></div>'+
         noteBox(id,st)+
       '</div>'+
     '</div></div>';
@@ -1175,14 +1378,20 @@ function reopenTo(id){
 }
 
 function updateProgress(){
-  var total=0,done=0;
-  DAYS.forEach(function(d,di){ d.meals.forEach(function(m,mi){ total++; if(get(mealId(di,mi)).done) done++; }); });
+  var totalVN=0,doneVN=0,totalTH=0,doneTH=0;
+  DISHES.forEach(function(d,i){
+    var esVN=d.r.indexOf('Vietnam')===0;
+    if(esVN){ totalVN++; if(get('d'+i).done) doneVN++; }
+    else{ totalTH++; if(get('d'+i).done) doneTH++; }
+  });
+  var total=totalVN+totalTH, done=doneVN+doneTH;
   document.getElementById('pcount').textContent=done;
   document.getElementById('ptotal').textContent=total;
   document.getElementById('pfill').style.width=(total?done/total*100:0)+'%';
-  var sdone=0;
-  DAYS.forEach(function(d,di){ if(d.sweet&&get('s'+di).done) sdone++; });
-  document.getElementById('scount').textContent=sdone;
+  document.getElementById('pcount-vn').textContent=doneVN+'/'+totalVN;
+  document.getElementById('pfill-vn').style.width=(totalVN?doneVN/totalVN*100:0)+'%';
+  document.getElementById('pcount-th').textContent=doneTH+'/'+totalTH;
+  document.getElementById('pfill-th').style.width=(totalTH?doneTH/totalTH*100:0)+'%';
 }
 
 /* =========================================================
@@ -1213,35 +1422,61 @@ function renderDishTypeFilters(){
 function setDishFilter(r){ dishFilter=r; renderDishFilters(); renderDishes(); }
 function setDishType(t){ dishType=t; renderDishTypeFilters(); renderDishes(); }
 
+var dishStatus='todas';
+function renderDishStatusFilters(){
+  var opts=[{k:'todas',l:'Todos'},{k:'pendiente',l:'Por probar'},{k:'probado',l:'Probados'}];
+  document.getElementById('dishstatus').innerHTML=opts.map(function(o){
+    return '<button class="chip" aria-pressed="'+(dishStatus===o.k)+'" onclick="setDishStatus(\''+o.k+'\')">'+o.l+'</button>';
+  }).join('');
+}
+function setDishStatus(s){ dishStatus=s; renderDishStatusFilters(); renderDishes(); }
+
+var dishOpenMap={};
+function toggleDishOpen(id){ dishOpenMap[id]=!dishOpenMap[id]; renderDishes(); }
+
 function renderDishes(){
   var q=normalizar(document.getElementById('dishsearch').value||'').trim();
-  var out='';
+  var items=[];
   DISHES.forEach(function(d,i){
     if(dishFilter!=='todas'&&(d.z||[]).indexOf(dishFilter)<0) return;
     if(dishType!=='todas'&&d.t!==dishType) return;
     if(q&&normalizar(d.n+' '+d.d+' '+d.w+' '+d.r).indexOf(q)<0) return;
     var id='d'+i, st=get(id);
-    out+='<article class="card dish'+(st.noting?' noting':'')+'" id="'+id+'">'+
-      '<div class="dish-head">'+
-        '<button class="tick" onclick="toggleDish(\''+id+'\')" aria-label="Marcar plato como probado" aria-pressed="'+(st.done?'true':'false')+'" style="'+(st.done?'background:var(--jade);border-color:var(--jade);color:#fff':'')+'">✓</button>'+
+    if(dishStatus==='pendiente'&&st.done) return;
+    if(dishStatus==='probado'&&!st.done) return;
+    items.push({d:d,id:id,st:st});
+  });
+  items.sort(function(a,b){ return (a.st.done?1:0)-(b.st.done?1:0); });
+  var out='';
+  items.forEach(function(it){
+    var d=it.d, id=it.id, st=it.st, abierto=dishOpenMap[id];
+    out+='<article class="card dish'+(st.done?' collected':'')+(st.noting?' noting':'')+(abierto?' open':'')+'" id="'+id+'">'+
+      '<div class="dish-head"'+(st.done?' onclick="toggleDishOpen(\''+id+'\')"':'')+'>'+
+        '<button class="tick" onclick="'+(st.done?'event.stopPropagation();':'')+'toggleDish(\''+id+'\')" aria-label="Marcar plato como probado" aria-pressed="'+(st.done?'true':'false')+'" style="'+(st.done?'background:var(--jade);border-color:var(--jade);color:#fff':'')+'">✓</button>'+
         '<div style="flex:1;min-width:0">'+
-          '<h3>'+esc(d.n)+(st.rating?' <span class="saved-flag">'+'★'.repeat(st.rating)+'</span>':'')+'</h3>'+
-          '<span class="region">'+esc(d.r)+(d.t?' · '+esc(d.t):'')+'</span>'+
+          '<h3>'+esc(d.n)+(st.done?' <span class="badge-probado">Probado</span>':'')+(st.rating?' <span class="saved-flag">'+'★'.repeat(st.rating)+'</span>':'')+'</h3>'+
+          '<span class="region">'+banderaRegion(d.r)+' '+esc(d.r)+(d.t?' · '+esc(d.t):'')+'</span>'+
         '</div>'+
+        (st.done?'<span class="expand-arrow">'+(abierto?'▲':'▼')+'</span>':'')+
       '</div>'+
-      '<p>'+esc(d.d)+'</p>'+
-      (d.como?'<p><span class="lbl">Cómo se come.</span> '+esc(d.como)+'</p>':'')+
-      '<p><span class="lbl">Historia.</span> '+esc(d.h)+'</p>'+
-      '<p><span class="lbl">Curiosidad.</span> '+esc(d.c)+'</p>'+
-      '<p class="where">Dónde probarlo: '+esc(d.w)+'</p>'+
-      (d.a?'<span class="warn">'+esc(d.a)+'</span>':'')+
-      '<div class="actions"><button class="btn" onclick="toggleDishNote(\''+id+'\')">'+(st.note||st.rating?'Ver mi nota':'Añadir nota')+'</button></div>'+
-      noteBox(id,st)+
+      '<div class="dish-body">'+
+        '<p>'+esc(d.d)+'</p>'+
+        (d.como?'<p><span class="lbl">Cómo se come.</span> '+esc(d.como)+'</p>':'')+
+        '<p><span class="lbl">Historia.</span> '+esc(d.h)+'</p>'+
+        '<p><span class="lbl">Curiosidad.</span> '+esc(d.c)+'</p>'+
+        '<p class="where">Dónde probarlo: '+esc(d.w)+'</p>'+
+        (d.a?'<span class="warn">'+esc(d.a)+'</span>':'')+
+        '<div class="actions"><button class="btn" onclick="toggleDishNote(\''+id+'\')">'+(st.note||st.rating?'Ver mi nota':'Añadir nota')+'</button>'+
+        '<button class="btn" onclick="abrirCamara(\''+id+'\')">📷 Foto</button></div>'+
+        '<div class="foto-galeria" id="fotos-'+id+'"></div>'+
+        noteBox(id,st)+
+      '</div>'+
     '</article>';
   });
   document.getElementById('disheslist').innerHTML=out||'<p class="empty">Nada coincide con esa búsqueda.</p>';
+  mostrarTodasLasFotos();
 }
-function toggleDish(id){ var st=get(id); set(id,{done:!st.done}); renderDishes(); }
+function toggleDish(id){ var st=get(id); set(id,{done:!st.done}); renderDishes(); updateProgress(); }
 function toggleDishNote(id){ var st=get(id); set(id,{noting:!st.noting}); renderDishes(); }
 
 /* =========================================================
@@ -1261,7 +1496,7 @@ function placeCats(){
 }
 function renderPlaceFilters(){
   document.getElementById('placefilters').innerHTML=placeZones().map(function(z){
-    return '<button class="chip" aria-pressed="'+(placeFilter===z)+'" onclick="setPlaceFilter(\''+z+'\')">'+(z==='todas'?'Todos':esc(z))+'</button>';
+    return '<button class="chip" aria-pressed="'+(placeFilter===z)+'" onclick="setPlaceFilter(\''+z+'\')">'+(z==='todas'?'Todos':bandera(z)+' '+esc(z))+'</button>';
   }).join('');
 }
 function renderPlaceCatFilters(){
@@ -1337,7 +1572,7 @@ function renderPlaces(){
     var lbl=p.pri===1?'Primera opción':(p.pri===2?'Plan B':'Plan C');
     out+='<article class="card place">'+
       '<h3>'+esc(p.n)+'</h3>'+
-      '<div class="meta"><span class="pri p'+p.pri+'">'+lbl+'</span>'+esc(p.z)+' · '+esc(p.cat)+' · '+esc(p.when)+'</div>'+
+      '<div class="meta"><span class="pri p'+p.pri+'">'+lbl+'</span>'+bandera(p.z)+' '+esc(p.z)+' · '+esc(p.cat)+' · '+esc(p.when)+'</div>'+
       tagsHtml(p)+
       '<p class="addr">'+esc(p.ad)+'</p>'+
       '<p class="line"><b>Qué pedir:</b> '+esc(p.dish)+'</p>'+
@@ -1521,11 +1756,14 @@ renderZoneFilters();
 renderDays();
 renderDishFilters();
 renderDishTypeFilters();
+renderDishStatusFilters();
 renderDishes();
+updateProgress();
 renderPlaceFilters();
 renderPlaceCatFilters();
 renderPlaces();
 markToday();
+cargarFotos(function(){ mostrarTodasLasFotos(); });
 
 
 /* =========================================================
