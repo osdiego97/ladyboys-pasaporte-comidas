@@ -1,0 +1,17 @@
+{
+  "name": "Pasaporte Gastronómico · Vietnam y Tailandia 2026",
+  "short_name": "Pasaporte",
+  "description": "Planning, platos, sitios y mapa del viaje, con avisos de alergia al marisco.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F3EFE1",
+  "theme_color": "#12594A",
+  "lang": "es",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

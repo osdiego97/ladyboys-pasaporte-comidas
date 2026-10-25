@@ -1,0 +1,1554 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#12594A">
+<title>Pasaporte Gastronómico · Vietnam y Tailandia 2026</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pasaporte">
+<style>
+:root{
+  --paper:#F3EFE1;
+  --card:#FBF8EF;
+  --ink:#1B2620;
+  --jade:#12594A;
+  --jade-soft:#E3EDE6;
+  --turmeric:#D99A1E;
+  --chili:#B3372A;
+  --chili-soft:#F7E7E3;
+  --muted:#6E7A70;
+  --line:#DCD6C4;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.5;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+h1,h2,h3,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 64px}
+
+/* ---------- Cabecera ---------- */
+header{
+  background:var(--jade);color:#F6F2E6;
+  padding:22px 16px 18px;
+  background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 9px);
+}
+header .inner{max-width:760px;margin:0 auto}
+header h1{margin:0 0 4px;font-size:1.45rem;line-height:1.2;letter-spacing:.2px}
+header p{margin:0;font-size:.9rem;color:#C7DAD0}
+
+/* ---------- Progreso ---------- */
+.progress-wrap{max-width:760px;margin:0 auto;padding:12px 14px 4px}
+.progress-top{display:flex;justify-content:space-between;align-items:baseline;font-size:.86rem;color:var(--muted)}
+.progress-top b{color:var(--ink);font-size:1rem}
+.track{height:9px;background:#E3DECD;border-radius:99px;overflow:hidden;margin-top:6px}
+.fill{height:100%;width:0;background:var(--turmeric);transition:width .3s ease}
+
+/* ---------- Pestañas ---------- */
+nav.tabs{
+  position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--line);
+  padding:8px 0 0;
+}
+nav.tabs .inner{max-width:760px;margin:0 auto;display:flex;gap:2px;padding:0 8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+nav.tabs button{
+  flex:1 0 auto;min-width:78px;background:none;border:0;border-bottom:3px solid transparent;
+  padding:9px 8px 8px;font:inherit;font-size:.86rem;font-weight:600;color:var(--muted);
+  cursor:pointer;white-space:nowrap;
+}
+nav.tabs button[aria-selected="true"]{color:var(--jade);border-bottom-color:var(--jade)}
+nav.tabs button:focus-visible{outline:2px solid var(--jade);outline-offset:-2px;border-radius:6px}
+
+/* ---------- Barra de filtros ---------- */
+.filters{display:flex;gap:6px;overflow-x:auto;padding:12px 0 4px;-webkit-overflow-scrolling:touch}
+.chip{
+  flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--muted);
+  border-radius:99px;padding:6px 12px;font:inherit;font-size:.82rem;font-weight:600;cursor:pointer;
+}
+.chip[aria-pressed="true"]{background:var(--jade);border-color:var(--jade);color:#fff}
+.search{
+  width:100%;margin:10px 0 4px;padding:11px 13px;font:inherit;font-size:.95rem;
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--card);color:var(--ink);
+}
+.search:focus{outline:2px solid var(--jade);outline-offset:-1px}
+
+/* ---------- Tarjetas ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin:12px 0;overflow:hidden}
+.day-head{
+  display:flex;align-items:center;gap:10px;width:100%;
+  background:none;border:0;padding:14px;font:inherit;text-align:left;cursor:pointer;color:inherit;
+}
+.day-head:focus-visible{outline:2px solid var(--jade);outline-offset:-3px}
+.day-date{
+  flex:0 0 auto;background:var(--jade-soft);color:var(--jade);border-radius:10px;
+  padding:6px 9px;text-align:center;min-width:56px;
+}
+.day-date .dd{display:block;font-family:Georgia,serif;font-size:1.05rem;font-weight:700;line-height:1.1}
+.day-date .ww{display:block;font-size:.68rem;color:var(--muted)}
+.day-title{flex:1 1 auto;min-width:0}
+.day-title strong{display:block;font-family:Georgia,serif;font-size:1.05rem;font-weight:700}
+.day-title span{display:block;font-size:.8rem;color:var(--muted)}
+.day-count{flex:0 0 auto;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.day-body{display:none;padding:0 14px 6px;border-top:1px solid var(--line)}
+.day.open .day-body{display:block}
+.day.today .day-date{background:var(--turmeric);color:#3A2A05}
+
+/* ---------- Comida ---------- */
+.meal{border-top:1px solid #EFEADA;padding:12px 0}
+.meal:first-child{border-top:0}
+.meal-row{display:flex;gap:11px;align-items:flex-start}
+.tick{
+  flex:0 0 auto;width:30px;height:30px;border:2px solid var(--line);border-radius:9px;
+  background:var(--paper);cursor:pointer;padding:0;font-size:1rem;line-height:1;color:transparent;
+}
+.tick:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+.meal.done .tick{background:var(--jade);border-color:var(--jade);color:#fff}
+.meal-main{flex:1 1 auto;min-width:0}
+.slot{display:inline-block;font-size:.74rem;font-weight:700;color:var(--muted);margin-bottom:2px}
+.meal-name{font-family:Georgia,serif;font-size:1.06rem;font-weight:700;margin:0}
+.meal.done .meal-name{color:var(--jade)}
+.meal-dish{font-size:.92rem;color:#3D4A42;margin:1px 0 0}
+.alt{font-size:.84rem;color:var(--muted);margin:5px 0 0}
+.alt b{color:#5A6A5F;font-weight:600}
+.alt-map{color:var(--jade);font-size:.78rem;font-weight:600;text-decoration:none;margin-left:4px;white-space:nowrap}
+.warn{
+  display:block;background:var(--chili-soft);border-left:3px solid var(--chili);color:#7E2519;
+  font-size:.82rem;padding:6px 9px;border-radius:0 8px 8px 0;margin:7px 0 0;
+}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.btn{
+  display:inline-block;border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  border-radius:9px;padding:7px 11px;font:inherit;font-size:.83rem;font-weight:600;
+  text-decoration:none;cursor:pointer;
+}
+.btn.map{background:var(--jade);border-color:var(--jade);color:#fff}
+.btn:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+
+/* ---------- Nota y puntuación ---------- */
+.note-box{display:none;margin-top:10px;padding:11px;background:var(--paper);border:1px solid var(--line);border-radius:11px}
+.meal.noting .note-box,.dish.noting .note-box{display:block}
+.stars{display:flex;gap:3px;margin-bottom:8px}
+.star{background:none;border:0;padding:2px 3px;font-size:1.4rem;line-height:1;cursor:pointer;color:#CFC8B4}
+.star.on{color:var(--turmeric)}
+.star:focus-visible{outline:2px solid var(--jade);outline-offset:1px;border-radius:4px}
+textarea{
+  width:100%;min-height:66px;padding:9px;font:inherit;font-size:.9rem;
+  border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);resize:vertical;
+}
+textarea:focus{outline:2px solid var(--jade);outline-offset:-1px}
+.note-hint{font-size:.76rem;color:var(--muted);margin:6px 0 0}
+.saved-flag{font-size:.78rem;color:var(--jade);font-weight:600;margin-left:6px}
+
+/* ---------- Platos ---------- */
+.dish{padding:14px}
+.dish-head{display:flex;gap:11px;align-items:flex-start}
+.dish h3{margin:0;font-size:1.08rem}
+.dish .region{font-size:.76rem;color:var(--muted);display:block;margin-top:1px}
+.dish p{margin:8px 0 0;font-size:.9rem}
+.dish .lbl{font-weight:700;color:var(--jade)}
+.dish .where{font-size:.86rem;color:var(--muted);margin-top:7px}
+
+/* ---------- Sitios ---------- */
+.place{padding:13px 14px}
+.place h3{margin:0;font-size:1.04rem}
+.place .meta{font-size:.78rem;color:var(--muted);margin-top:2px}
+.place .addr{font-size:.86rem;margin-top:6px}
+.place .line{font-size:.85rem;margin-top:5px;color:#3D4A42}
+.pri{display:inline-block;border-radius:99px;padding:2px 8px;font-size:.72rem;font-weight:700;margin-right:6px}
+.pri.p1{background:var(--jade);color:#fff}
+.pri.p2{background:var(--jade-soft);color:var(--jade)}
+.pri.p3{background:#EDE7D5;color:#6B5A2B}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{display:inline-flex;align-items:center;gap:5px;border-radius:8px;padding:4px 9px;font-size:.76rem;font-weight:700;border:1px solid transparent}
+.tag.a0{background:var(--jade-soft);color:var(--jade)}
+.tag.a1{background:#FBF0D8;color:#7A5A12;border-color:#E8D4A4}
+.tag.a2{background:var(--chili-soft);color:#7E2519;border-color:#E6B8B0}
+.tag.money{background:#EFEADA;color:#5A5238}
+.tag.validado{background:var(--jade-soft);color:var(--jade);border-color:var(--jade)}
+.tag .euros{letter-spacing:1px}
+.tag .euros i{font-style:normal;opacity:.3}
+
+/* ---------- Alergia ---------- */
+.panel-intro{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px;margin:12px 0}
+.panel-intro h2{margin:0 0 8px;font-size:1.15rem}
+.panel-intro p,.panel-intro li{font-size:.92rem}
+.panel-intro ul{margin:8px 0 0;padding-left:20px}
+.alert-card{background:#fff;border:2px solid var(--chili);border-radius:var(--radius);padding:16px;margin:12px 0}
+.alert-card h2{margin:0 0 6px;color:var(--chili);font-size:1.1rem}
+.phrase{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:9px 0}
+.phrase .native{font-size:1.05rem;font-weight:700;font-family:Georgia,serif}
+.phrase .es{font-size:.85rem;color:var(--muted);margin-top:2px}
+.big-card{
+  background:#fff;border:3px solid var(--chili);border-radius:var(--radius);
+  padding:18px;margin:12px 0;text-align:center;
+}
+.big-card .flag{font-size:1.9rem}
+.big-card .txt{font-size:1.12rem;font-weight:700;font-family:Georgia,serif;margin:8px 0 0;line-height:1.35}
+.big-card .sub{font-size:.85rem;color:var(--muted);margin-top:7px}
+
+/* ---------- Utilidades ---------- */
+.hidden{display:none!important}
+.footer-tools{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 8px}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;font-size:.92rem}
+.legend{font-size:.82rem;color:var(--muted);margin:10px 0 0}
+
+#installbar{display:none;align-items:center;gap:10px;background:var(--jade);color:#F6F2E6;
+ border-radius:var(--radius);padding:12px 14px;margin:12px 0}
+#installbar p{margin:0;font-size:.88rem;flex:1}
+#installbar button{background:#F6F2E6;color:var(--jade);border:0;border-radius:9px;padding:8px 12px;font:inherit;font-weight:700}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ---------- Aviso de trampa (ojo) ---------- */
+.heads{display:block;background:#FBF0D8;border-left:3px solid var(--turmeric);
+  color:#7A5A12;font-size:.82rem;padding:6px 9px;border-radius:0 8px 8px 0;margin:7px 0}
+.heads b{font-weight:600}
+.pro-inline{color:var(--jade);font-size:.8rem;display:block}
+.ojo-inline{color:#8A6514;font-size:.8rem;display:block}
+
+/* ---------- Alternativas plegables ---------- */
+.alts-toggle{background:none;border:0;padding:5px 0;font:inherit;font-size:.82rem;
+  font-weight:600;color:var(--jade);cursor:pointer;text-decoration:underline}
+.alts{display:none}
+.alts.open{display:block}
+
+/* ---------- Dulce del día ---------- */
+.sweet{border-top:1px dashed var(--line);padding:11px 0 4px;margin-top:4px}
+.sweet .slot{color:var(--turmeric)}
+.sweet .meal-name{font-size:1rem}
+
+@media print{
+  nav.tabs,.filters,.search,.footer-tools,.tick,.actions{display:none!important}
+  .panel{display:block!important}
+  .day-body{display:block!important}
+  .card{break-inside:avoid}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>Pasaporte gastronómico</h1>
+    <p>Vietnam y Tailandia · 30 oct – 16 nov 2026 · 4 personas</p>
+  </div>
+</header>
+
+<div class="wrap" style="padding-bottom:0"><div id="installbar">
+  <p>Instálala en la pantalla de inicio y funcionará sin datos.</p>
+  <button onclick="instalar()">Instalar</button>
+</div></div>
+<div class="progress-wrap">
+  <div class="progress-top">
+    <span>Comidas marcadas</span>
+    <b><span id="pcount">0</span> de <span id="ptotal">0</span></b>
+  </div>
+  <div class="track"><div class="fill" id="pfill"></div></div>
+  <div class="progress-top" style="margin-top:6px"><span>Dulces probados</span><b><span id="scount">0</span> de 18</b></div>
+</div>
+
+<nav class="tabs">
+  <div class="inner" role="tablist">
+    <button role="tab" id="tab-dias" aria-selected="true" onclick="showTab('dias')">Días</button>
+    <button role="tab" id="tab-platos" aria-selected="false" onclick="showTab('platos')">Platos</button>
+    <button role="tab" id="tab-sitios" aria-selected="false" onclick="showTab('sitios')">Sitios</button>
+    <button role="tab" id="tab-alergia" aria-selected="false" onclick="showTab('alergia')">Alergia</button>
+    <button role="tab" id="tab-guia" aria-selected="false" onclick="showTab('guia')">Guía</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <section class="panel" id="panel-dias">
+    <div class="filters" id="zonefilters"></div>
+    <input class="search" id="daysearch" type="search" placeholder="Buscar un sitio, plato o alternativa…" oninput="renderDays()">
+    <div id="dayslist"></div>
+    <div class="footer-tools">
+      <button class="btn" onclick="expandAll(true)">Abrir todos los días</button>
+      <button class="btn" onclick="expandAll(false)">Cerrar todos</button>
+      <button class="btn" onclick="backup()">Copia de seguridad</button>
+      <button class="btn" onclick="window.print()">Imprimir</button>
+    </div>
+    <p class="legend">Se guarda todo en este móvil automáticamente. Los enlaces a Maps necesitan conexión; el resto funciona sin datos.</p>
+  </section>
+
+  <section class="panel hidden" id="panel-platos">
+    <input class="search" id="dishsearch" type="search" placeholder="Buscar un plato…" oninput="renderDishes()">
+    <div class="filters" id="dishfilters"></div>
+    <div class="filters" id="dishtypes"></div>
+    <div id="disheslist"></div>
+  </section>
+
+  <section class="panel hidden" id="panel-sitios">
+    <input class="search" id="placesearch" type="search" placeholder="Buscar un sitio o un plato…" oninput="renderPlaces()">
+    <div class="filters" id="placefilters"></div>
+    <div class="filters" id="placecatfilters"></div>
+    <p class="legend">Cada sitio lleva dos etiquetas: el riesgo de crustáceos y contaminación cruzada, y lo caro que sale. Los euros van de € (menos de 3 € por persona) a €€€€ (más de 20 €). La etiqueta ✓ indica quién ha estado y lo recomienda: Diego es un amigo del grupo que ya hizo el viaje.</p>
+    <div id="placeslist"></div>
+  </section>
+
+  <section class="panel hidden" id="panel-alergia"></section>
+  <section class="panel hidden" id="panel-guia"></section>
+</div>
+
+<script>
+/* =========================================================
+   ALMACENAMIENTO — funciona descargado (localStorage),
+   dentro de la app (window.storage) y, si falla, en memoria.
+   ========================================================= */
+var KEY='pasaporte-vn-th-2026';
+var mem={};
+var state={};
+function loadState(){
+  try{
+    var raw=window.localStorage.getItem(KEY);
+    state=raw?JSON.parse(raw):{};
+  }catch(e){ state=mem; }
+}
+function saveState(){
+  try{ window.localStorage.setItem(KEY,JSON.stringify(state)); }
+  catch(e){ mem=state; }
+  try{ if(window.storage&&window.storage.set){ window.storage.set(KEY,JSON.stringify(state)); } }catch(e){}
+}
+function get(id){ return state[id]||{}; }
+function set(id,patch){
+  var cur=state[id]||{};
+  for(var k in patch){ cur[k]=patch[k]; }
+  state[id]=cur; saveState();
+}
+
+/* =========================================================
+   DATOS — planning día a día
+   ========================================================= */
+var SLOTS={des:'Desayuno',com:'Comida',mer:'Merienda',cen:'Cena'};
+
+var DAYS=[
+{dd:'30',mm:'oct',ww:'vie',z:'Hanói',t:'Llegada a Hanói',h:'Aterrizáis a las 20:25. Cena tardía y cerca del hotel.',meals:[
+ {s:'cen',p:'Xôi Yến',dish:'Xôi con pollo o cerdo',b:'Cháo Sườn Sụn Huyền Anh, frente al mercado Đồng Xuân, abierto hasta las 3:00',c:'Bánh Mì Nguyên Sinh',m:'Xôi Yến, 35B Nguyễn Hữu Huân, Hoàn Kiếm, Hà Nội',a:'Evitar el bún riêu: lleva cangrejo y pasta de gamba.'}
+],sweet:{d:'Bánh mì caliente mojado en leche condensada',w:'En el mismo puesto de pan de la cena. Es lo que piden los locales de postre.'}},
+{dd:'31',mm:'oct',ww:'sáb',z:'Hanói',t:'Hoan Kiem y barrio francés',h:'Día andando. Caldo por la mañana, parrilla al mediodía, pescado por la noche.',meals:[
+ {s:'des',p:'Phở Gia Truyền Bát Đàn',dish:'Phở bò (chín, tái o tái nạm)',b:'Phở Bò Lâm, 48 Hàng Vai',c:'Family Pho, 39B Lý Quốc Sư',d:'Los puestos del Ngõ Đồng Xuân, el callejón del mercado',m:'Phở Gia Truyền Bát Đàn, 49 Bát Đàn, Hoàn Kiếm, Hà Nội',a:'',n:'Bib Gourmand. Abre 6:00–10:00 y se agota. Se paga primero.'},
+ {s:'com',p:'Bún Chả Lằu Gật Gù',dish:'Bún chả + nem rán',b:'Bún Bò Nam Bộ, 67 Hàng Điếu',c:'Cỏ Restaurant',d:'Bún Chả Hương Liên, el de Obama, en Hai Bà Trưng',m:'Bún Chả Lằu Gật Gù, 41-43 Hàng Bè, Hoàn Kiếm, Hà Nội',a:'',n:'Ojo con los imitadores del número 1 de Hàng Mành.'},
+ {s:'mer',p:'Café Giảng',dish:'Cà phê trứng (café de huevo)',b:'Bánh mì a la leña de Hàng Bè, 15:00–19:00, en el mismo portal que el bún chả',c:'Cà phê muối en Cầu Gỗ',d:'Chè Gỗ, Hàng Thiếc',e:'Trà chanh en una esquina, que es donde se sienta la gente joven por la tarde',m:'Café Giảng, 39 Nguyễn Hữu Huân, Hoàn Kiếm, Hà Nội',a:''},
+ {s:'cen',p:'Chả Cá Thăng Long',dish:'Chả cá con eneldo, terminado en la mesa',b:'Chả Cá Hà Nội 1871, 165B Phùng Hưng',c:'Viet Traditional Cuisine, 79 Hàng Bồ',m:'Chả Cá Thăng Long, 6B Đường Thành, Hoàn Kiếm, Hà Nội',a:'Es pescado, apto. Pedir salsa de pescado en lugar de mắm tôm.',n:'El Google Maps de este sitio ha sido secuestrado por imitadores: ir a 6B Đường Thành.'}
+],sweet:{d:'Tào phớ: tofu sedoso en almíbar, con hielo',w:'Zô Zô Tofu Pudding, 7b Hàng Da. Alternativa: chè en Chè Gỗ.'}},
+{dd:'1',mm:'nov',ww:'dom',z:'Hanói',t:'Mausoleo, Train Street y salida a Ninh Binh',h:'Check-out a las 11:00. Traslado de unas 2 h por la tarde.',meals:[
+ {s:'des',p:'Bánh Cuốn Gia Truyền Thanh Vân',dish:'Bánh cuốn al vapor',b:'Bánh Cuốn Bà Xuân',c:'Banh Mi 25, 25 Hàng Cá, abierto 7:00–21:00',d:'Xôi Bánh Mì Kim Hương, 28 Báo Khánh',m:'Bánh Cuốn Gia Truyền Thanh Vân, 12-14 Hàng Gà, Hoàn Kiếm, Hà Nội',a:'',n:'Aparece en la guía Michelin. Revisad la cuenta.'},
+ {s:'com',p:'Bún Bò Nam Bộ Bách Phương',dish:'Bún bò Nam Bộ (bol seco de ternera)',b:'Bún Đậu Mắm Tôm Cô Hoa, 25 Ấu Triệu',c:'Family Pho',m:'Bún Bò Nam Bộ Bách Phương, 67 Hàng Điếu, Hoàn Kiếm, Hà Nội',a:'Si vais al plan B: el mắm tôm es pasta de gamba. Pedir salsa de pescado o de soja aparte.'},
+ {s:'mer',p:'Café con huevo junto a Train Street',dish:'Cà phê trứng con vistas a la vía',b:'Egg Coffee & More',c:'Cualquier phin en Phùng Hưng',m:'Train Street, Phùng Hưng, Hoàn Kiếm, Hà Nội',a:'',n:'La señal de que viene el tren es que los dueños recogen las mesas de la vía. Haced caso a los locales y apartaos; no os fieis de los horarios publicados. La cerveza va por unos 35.000 dongs, menos de 1,50 €. Si el tren no cuadra, un trà chanh en cualquier esquina cumple igual.'},
+ {s:'cen',p:'Bamboo Garden Tam Coc',dish:'Dê núi (cabra de montaña) + cơm cháy',b:'Chef Hien Restaurant',c:'Family Restaurant Tam Coc',d:'Family Restaurant Tam Coc',m:'Bamboo Garden, Van Lam, Tam Coc, Ninh Bình',a:''}
+],sweet:{d:'Sữa chua nếp cẩm: yogur con arroz glutinoso negro',w:'Puestos del Old Quarter. No se parece a nada que hayáis probado.'}},
+{dd:'2',mm:'nov',ww:'lun',z:'Ninh Binh',t:'Trang An, Hang Mua y Bich Dong',h:'Día físico, con 500 escalones. Comida contundente al mediodía y algo más ligero de noche.',meals:[
+ {s:'des',p:'Hang Lan Bungalow',dish:'Desayuno del alojamiento + café vietnamita',b:'—',c:'—',m:'Hang Lan Bungalow, Thung Chẽ Bèo, Khả Lương, Nam Hoa Lư, Ninh Bình',a:'',n:'Incluido. Cero desplazamiento antes de un día largo.'},
+ {s:'com',p:'Nhà Hàng Dê Núi Chính Thư',dish:'Cabra en varias preparaciones + cơm cháy',b:'An Tam Coc Restaurant & Coffee',c:'Thang Long Restaurant',d:'Thang Long Restaurant, especialista en cabra',m:'Nhà Hàng Dê Núi Chính Thư, Khe Thượng, Hoa Lư, Ninh Bình',a:'Pedir cabra o pollo. Carta amplia, pero preguntad por la salsa.',n:'Pedid la carta local, no la de precios para turistas. Los ốc núi no están en temporada en noviembre: van de abril a agosto.'},
+ {s:'mer',p:'Puestos de la base de Hang Mua',dish:'Coco fresco, zumo, fruta de temporada',b:'An Tam Coc Restaurant & Coffee',c:'—',m:'Hang Mua, Ninh Xuân, Hoa Lư, Ninh Bình',a:''},
+ {s:'cen',p:'Thảo Béo Restaurant Bar',dish:'Nem chua Yên Mạc, miến lươn, gà đồi',b:'Gỏi cá Vũ Bà: ensalada de anguila marinada, la especialidad de Kim Sơn',c:'Bamboo Garden Tam Coc',m:'Thảo Béo Restaurant Bar, Tam Coc, Ninh Bình',a:'Anguila de agua dulce y pollo: aptos.',n:'Hoy nada de cabra, que ya cayó anoche y al mediodía.'}
+],sweet:{d:'Caqui y mandarina de temporada',w:'Puestos de la base de Hang Mua. En Tam Coc no hay mucho más, y es justo su mes.'}},
+{dd:'3',mm:'nov',ww:'mar',z:'Ha Long',t:'Traslado y embarque en el crucero',h:'Unas 3,5 h de coche. Todas las comidas a bordo del Peony.',meals:[
+ {s:'des',p:'Hang Lan Bungalow',dish:'Desayuno del alojamiento antes de salir',b:'—',c:'—',m:'Hang Lan Bungalow, Thung Chẽ Bèo, Khả Lương, Nam Hoa Lư, Ninh Bình',a:''},
+ {s:'com',p:'Almuerzo de embarque a bordo',dish:'Menú del crucero',b:'Xôi o bánh mì en el puerto de Tuan Chau',c:'—',m:'Tuan Chau Marina, Hạ Long, Quảng Ninh',a:'CRÍTICO: la alergia tiene que estar avisada por escrito a la naviera con 48 h de antelación, con los ingredientes uno a uno, y reconfirmada el día antes.'},
+ {s:'mer',p:'Té y fruta a bordo',dish:'Fruta de temporada',b:'—',c:'—',m:'',a:''},
+ {s:'cen',p:'Cena a bordo',dish:'Menú fijo del crucero (muy marisquero)',b:'Menú alternativo confirmado',c:'—',m:'',a:'La persona alérgica come su menú paralelo: pollo, cerdo o ternera, tofu con setas, rollitos de verdura, arroz o fideos, verduras y fruta. Llevad snacks por si el menú alternativo se queda corto.',n:'Los otros tres pueden probar el chả mực de Hạ Long: pastel de calamar machacado a mano.'}
+],sweet:{d:'La fruta del crucero',w:'A bordo del Peony. Hoy no hay elección.'}},
+{dd:'4',mm:'nov',ww:'mié',z:'Ha Long',t:'Mañana en la bahía y vuelta a Hanói',h:'Desembarque a mediodía. Noche en LangX Phủ Doãn.',meals:[
+ {s:'des',p:'Buffet del crucero',dish:'Desayuno a bordo',b:'—',c:'—',m:'',a:'En buffet es fácil identificar y esquivar el marisco a simple vista.'},
+ {s:'com',p:'Brunch del crucero',dish:'Última comida a bordo',b:'Algo ligero al desembarcar',c:'—',m:'',a:''},
+ {s:'mer',p:'Bia hơi de Tạ Hiện',dish:'Bia hơi + cà phê muối',b:'Bánh chưng cô Mai, a 250 m de Tạ Hiện subiendo la calle',c:'Chè en Chè Gỗ',m:'Tạ Hiện, Hoàn Kiếm, Hà Nội',a:'',n:'La cerveza de barril más fresca y barata de Hanói, sobre taburetes de plástico.'},
+ {s:'cen',p:'Bún thang y después Ngũ Xã',dish:'Sopa clara de pollo, y luego phở cuốn y phở chiên phồng',b:'Lý Văn Phức, la calle del pollo a la brasa, a 3 km en Grab',c:'Kem caramen en Hàng Than, a un paseo de Ngũ Xã',m:'Ngũ Xã, Ba Đình, Hà Nội',a:'',n:'Ngũ Xã y Hàng Than están a quinientos metros, así que la cena y el postre se encadenan. Lý Văn Phức es la otra opción, pero está al otro lado de la ciudad: o una cosa o la otra.'}
+],sweet:{d:'Kem caramen: el flan vietnamita',w:'Hàng Than, en Ba Đình. Cae al lado de Ngũ Xã, así que encadena con el phở cuốn.'}},
+{dd:'5',mm:'nov',ww:'jue',z:'Chiang Mai',t:'Vuelo a Chiang Mai',h:'Vuelo 15:20–17:00. Solo cenáis ya en Tailandia.',meals:[
+ {s:'des',p:'Phở 10 Lý Quốc Sư',dish:'Phở bò de despedida: tái, chín o bắp trần',b:'Café Giảng para el último cà phê trứng',c:'Banh Mi 25, 25 Hàng Cá, abierto 7:00–21:00',d:'Bánh Mì Nguyên Sinh, o un bánh giò o cháo sườn de puesto',e:'Phở tái lăn, con la ternera salteada con ajo, y huevo extra en el caldo',m:'Phở 10 Lý Quốc Sư, 10 P. Lý Quốc Sư, Hàng Trống, Hoàn Kiếm, Hà Nội',a:'',n:'Distinto de Bát Đàn: aquí hay mesa, carta y sitio para sentarse. Compararlos merece la pena.'},
+ {s:'com',p:'Aeropuerto de Hanói',dish:'Algo rápido antes de facturar',b:'—',c:'—',m:'Noi Bai International Airport, Hà Nội',a:''},
+ {s:'cen',p:'Khao Soi Mae Sai',dish:'Khao soi gai (curry de coco con fideos de huevo)',b:'Khao Soi Lung Prakit Kad Kom',c:'Thaan Aoan, Old City',m:'Khao Soi Mae Sai, 29/1 Ratchaphuek Rd, Chiang Mai',a:'La pasta de curry lleva kapi (pasta de gamba). Si la alergia es solo a crustáceos y moluscos suele tolerarse, pero confirmadlo antes del viaje.',n:'Primera cena en Tailandia y el plato bandera del norte.'}
+],sweet:{d:'Bánh rán: buñuelos de arroz glutinoso con judía mungo',w:'Puestos del Old Quarter, antes de ir al aeropuerto.'}},
+{dd:'6',mm:'nov',ww:'vie',z:'Chiang Mai',t:'Casco antiguo y Night Bazaar',h:'Templos por la mañana y mercado por la noche.',meals:[
+ {s:'des',p:'Khao tom o jok en la ciudad amurallada',dish:'Sopa de arroz o congee de cerdo',b:'Patongo con leche de soja',c:'Khao niao con sai ua',m:'Chiang Mai Old City, Chiang Mai',a:''},
+ {s:'com',p:'Huen Phen',dish:'Bandeja lanna: sai ua, nam prik ong y num, khaep mu',b:'Tong Tem Toh, Nimman',c:'Huen Muan Jai, Santitham',m:'Huen Phen, 112 Rachamankha Rd, Chiang Mai',a:'Los dos nam prik llevan kapi. La persona alérgica: sai ua + gaeng hang lay + sticky rice.'},
+ {s:'mer',p:'Café de montaña del norte',dish:'Café de los proyectos reales (Doi Chang, Doi Tung)',b:'Roti Pa Dae, delante del Wat Mahawan',c:'—',m:'Nimmanhaemin Rd, Chiang Mai',a:'',n:'Estos cultivos sustituyeron al opio en las montañas del norte. Roti Pa Dae abre a las 18:30, así que es postre de después del Night Bazaar y no merienda de tarde.'},
+ {s:'cen',p:'Night Bazaar (Kalare y Anusarn)',dish:'Brochetas, gai yang, som tam',b:'Khantoke en el Old Chiang Mai Cultural Center: se cena en el suelo con danzas lanna',c:'Anusarn Market',m:'Kalare Night Bazaar, Chang Klan Rd, Chiang Mai',a:'En el som tam hay que decir “mai sai kung, mai sai pu”: sin gambas secas y sin cangrejo.'}
+],sweet:{d:'Roti de plátano con leche condensada',w:'Roti Pa Dae, delante del Wat Mahawan. Abre a las 18:30.'}},
+{dd:'7',mm:'nov',ww:'sáb',z:'Chiang Mai',t:'Elefantes y clase de cocina',h:'Santuario por la mañana. La cena ya está cubierta por la clase de cocina.',meals:[
+ {s:'des',p:'Khao Soi Lamduan Fa Ham',dish:'Khao soi junto al río',b:'Jok (congee)',c:'Café + patongo',m:'Khao Soi Lamduan Fa Ham, 352/22 Charoenrat Rd, Chiang Mai',a:'Curry con kapi.',n:'Lleva más de 75 años abierto.'},
+ {s:'com',p:'Khanom jeen nam ngiao',dish:'Fideos fermentados con caldo de tomate y cerdo',b:'Khao kha moo (codillo estofado)',c:'—',m:'Khanom Jeen Nam Ngiao, Chiang Mai',a:'A veces lleva sangre cuajada y pasta de gamba.',n:'Comida ligera: por la tarde cocináis y cenáis en la clase.'},
+ {s:'cen',p:'Clase de cocina tailandesa',dish:'Mercado + lo que cocinéis vosotros',b:'Dash! Restaurant, Old City',c:'SP Chicken (gai yang)',m:'Chiang Mai Old City, Chiang Mai',a:'Avisad de la alergia al organizador para que adapten las recetas con kapi.',n:'Cena incluida. Los planes B y C solo si cambian el horario.'}
+],sweet:{d:'Khanom krok: bolitas de coco a la plancha',w:'En el mercado al que os lleven en la clase de cocina.'}},
+{dd:'8',mm:'nov',ww:'dom',z:'Chiang Mai',t:'Doi Suthep y Sunday Walking Street',h:'El mercado del domingo es la mejor cena de la semana en Chiang Mai.',meals:[
+ {s:'des',p:'Warorot Market (Kad Luang)',dish:'Khao soi, sai ua recién hecha, patongo, café',b:'Jok',c:'Café + roti',m:'Warorot Market, Wichayanon Rd, Chiang Mai',a:'Según el puesto: preguntad antes en los fritos.'},
+ {s:'com',p:'SP Chicken',dish:'Gai yang: pollo a la rotisserie',b:'Laab Kai Meuang Phan Waen, raciones pequeñas de cocina del norte',c:'Cherng Doi Roast Chicken, Nimman',m:'SP Chicken, Soi 1 Samlan Rd, Chiang Mai',a:'Pollo, apto.',n:'Cierra a las 17:00: es comida, no cena.'},
+ {s:'mer',p:'Khao Kha Moo Chang Phueak',dish:'Khao kha moo: codillo estofado con huevo y encurtido',b:'Ristr8to',c:'Graph Café',m:'Khao Kha Moo Chang Phueak, Chang Phueak Gate, Chiang Mai',a:'Cerdo, apto.',n:'Es la famosa señora del sombrero de vaquero. Abre sobre las 17:00, así que es merienda tardía. Encadena con el Sunday Walking Street.'},
+ {s:'cen',p:'Sunday Walking Street',dish:'Khao soi, sai ua, som tam, khanom jeen, mango sticky rice',b:'Patios de los templos del recorrido',c:'—',m:'Sunday Walking Street, Ratchadamnoen Rd, Chiang Mai',a:'En brochetas y ensaladas: “mai sai kung, mai sai pu, mai sai kapi”.',n:'Comed dentro de los patios de los templos: mejor comida, mejor precio y sitio para sentarse. Roti Pa Dae está a dos minutos del final del Sunday Walking Street, en la puerta Tha Phae, y abre hasta medianoche.'}
+],sweet:{d:'Mango sticky rice',w:'Sunday Walking Street, en los patios de los templos.'}},
+{dd:'9',mm:'nov',ww:'lun',z:'Krabi',t:'Vuelo a Krabi',h:'Vuelo 17:05–19:05. Cena tardía en Krabi Town.',meals:[
+ {s:'des',p:'Khao niao con sai ua',dish:'Arroz glutinoso con salchicha del norte',b:'Jok',c:'Café de especialidad',m:'Chiang Mai Old City, Chiang Mai',a:''},
+ {s:'com',p:'Khao soi de despedida',dish:'El último del norte',b:'Warorot Market',c:'—',m:'Khao Soi Mae Sai, 29/1 Ratchaphuek Rd, Chiang Mai',a:'Curry con kapi.'},
+ {s:'cen',p:'Gecko Cabane',dish:'Curry penang de pato',b:'Baitoey, en la orilla del río, abierto hasta las 22:00',c:'Lo que esté abierto cerca del Greenery: llegáis tarde y es lunes',m:'Gecko Cabane, Soi Ruam Jit, Pak Nam, Krabi Town, Krabi',a:'Baitoey es marisquería: si acabáis ahí, carne y aviso en cocina. Gecko es cocina formal y entienden de alergias.',n:'El mercado nocturno de Krabi Town no abre los lunes. RuenMai cierra a las 21:00 y está a 15-20 min hacia el oeste, así que no llegáis: queda para el 13, que cae de camino a Ao Nang.'}
+],sweet:{d:'Kanom beuang: crepes crujientes tailandesas',w:'Warorot Market, por la mañana, antes de volar a Krabi.'}},
+{dd:'10',mm:'nov',ww:'mar',z:'Phi Phi',t:'Ferry a Phi Phi',h:'Dim sum en Krabi Town y ferry a media mañana. Primera noche en la isla.',meals:[
+ {s:'des',p:'Dim sum del sur en Krabi Town',dish:'Dumplings de cerdo, jok, khao yam',b:'Sai Mei o Racharos',c:'Desayuno del Greenery Hotel',m:'Sai Mei Dim Sum, Krabi Town, Krabi',a:'Evitad los dim sum de gamba y cangrejo; los de cerdo son aptos.',n:'Abren a las 5:30. Desayunad antes del ferry.'},
+ {s:'com',p:'Pooky, en el Food market',dish:'Pad thai, pollo con albahaca o arroz frito con piña',b:'Pa-Noi Thai Food',c:'Puestos del Food market Koh Phi Phi',d:"Anna's Restaurant",m:'Pooky, Food market Koh Phi Phi, Tonsai, Ko Phi Phi Don',a:'Es donde más gente se ha sentido cómoda comiendo ensaladas frescas en la isla, por lo cuidadosa que es con la manipulación. Aun así, enseñad la tarjeta: hace tom yum con gamba.',n:'Nada más dejar las maletas. Está dentro del mercado, a cinco minutos del muelle.'},
+ {s:'mer',p:'Agua de coco en la playa',dish:'Coco, piña, sandía',b:'Aroi Cafe & Tropical Bar: bol de açaí y batidos'},
+ {s:'cen',p:'Pa-Noi Thai Food',dish:'Fideos salteados con pollo y batido de fruta recién hecha',b:"Anna's Restaurant",c:'Praiya Thai Food, que abre desde las 14:00',m:'Pa-Noi Thai Food, Moo 7, Tonsai, Ko Phi Phi Don',a:'Se pide por escrito apuntando plato y nivel de picante: aprovechad para escribir también la alergia. Tienen tom yum kung, así que avisad.',n:'Llegad sobre las 17:00 y no hay cola. Lo lleva una sola persona y hay pocas mesas. Nada de parrilladas de marisco en la playa.'}
+],sweet:{d:'Roti de plátano de carrito',w:'Los carritos de roti del callejón de Tonsai, por la noche.'}},
+{dd:'11',mm:'nov',ww:'mié',z:'Phi Phi',t:'Día en Phi Phi',h:'Playa, snorkel o excursión. Si reserváis un tour, avisad de la alergia.',meals:[
+ {s:'des',p:'Bakery Hut by Payjay',dish:'Tortita tailandesa con huevo, o avena con leche de coco, y un espresso en serio',b:'The Locals, que abre a las 7:00',c:'Desayuno del PP PalmTree Resort',m:'Bakery Hut by Payjay, Moo 7, Tonsai, Ko Phi Phi Don',a:'Sin marisco: de las opciones más controladas de la isla.',n:'Es donde desayunan los tailandeses de la isla antes de entrar a trabajar. Si hacéis excursión, desayunad temprano y sólido.'},
+ {s:'com',p:'The Locals',dish:'Curry de pollo o cerdo al peso, arroz frito con piña',b:'Puestos del Food market',c:'Snacks propios si estáis de excursión',m:'The Locals, Rimna Plaza, Moo 7, Tonsai, Ko Phi Phi Don',a:'Carta amplia de pollo y cerdo. Hacen pad thai con marisco: pedidlo sin. Si contratáis un tour de snorkel con comida, avisad de la alergia al reservar.',n:'Lejos del muelle y sin captadores en la puerta. Muchos tailandeses de la isla se llevan de aquí la comida del mediodía.'},
+ {s:'mer',p:'Aroi Cafe & Tropical Bar',dish:'Batido de fruta cortada al momento, o bol de açaí',b:'Coco en la playa'},
+ {s:'cen',p:'Praiya Thai Food',dish:'Curry verde o massaman de pollo, y rollitos de primavera',b:'Torlady Restaurant, con vistas a la bahía al atardecer',c:"Anna's Restaurant",m:'Praiya Thai Food, Moo 7, Tonsai, Ko Phi Phi Don',a:'Hacen massaman y tom yum con marisco: pedid la versión de pollo y avisad en cocina.',n:'De los mejor valorados de la isla. El picante va del 1 al 5: pedid 2 o 3, que el 4 es sufrimiento de verdad. Se llena y la comida tarda.'}
+],sweet:{d:'Helado de coco servido dentro del coco',w:'Puestos de Tonsai. Lo llevan con coco rallado por encima.'}},
+{dd:'12',mm:'nov',ww:'jue',z:'Krabi',t:'Vuelta a Ao Nang',h:'Ferry de vuelta por la mañana. Cena en Ao Nang.',meals:[
+ {s:'des',p:'Torlady Restaurant',dish:'Desayuno con vistas a la bahía antes del ferry',b:'Bakery Hut by Payjay',c:'Desayuno del resort',m:'Torlady Restaurant, Moo 7, Tonsai, Ko Phi Phi Don',n:'Abre a las 7:30. El ferry de vuelta suele salir a media mañana.'},
+ {s:'com',p:'Ao Nang Boat Noodle',dish:'Boat noodles de cerdo, larb moo',b:'PHUPHA Thai Food, abierto todo el día',c:'Comida rápida en Phi Phi antes de salir',m:'Ao Nang Boat Noodle, Ao Nang, Krabi',a:'Cerdo, apto.',n:'La ruta habitual del ferry desde Phi Phi llega al muelle de Klong Jilad, cerca de Krabi Town, no a Ao Nang. Los barcos directos a Ao Nang son estacionales: confirmad dónde desembarcáis, porque de eso depende dónde coméis.'},
+ {s:'mer',p:'Agua de coco y fruta en la playa',dish:'Coco, piña, sandía, roti',b:'—',c:'—',m:'Ao Nang Beach, Krabi',a:''},
+ {s:'cen',p:'D&E Jungle Kitchen',dish:'Massaman de pollo, cerdo a la brasa',b:'Red Chilli Ao Nang, que tiene la carta marcada por alergias',c:'Thanya Kitchen, Ao Nang',d:'Nong Thai Kitchen',m:'D&E Jungle Kitchen, Ao Nang, Krabi',a:'La persona alérgica pide pollo o cerdo, avisando de la contaminación cruzada en el wok.',n:'Primera cena de vuelta en tierra firme.'}
+],sweet:{d:'Fruta tropical del sur: mangostán tardío, rambután, pomelo',w:'Puestos de Ao Nang. Noviembre pilla el final del mangostán.'}},
+{dd:'13',mm:'nov',ww:'vie',z:'Krabi',t:'Día libre en Ao Nang',h:'Hay dos planes y no se mezclan, porque van en direcciones opuestas. Plan Krabi Town: desayunáis en Ao Nang, salís sobre las 12:00, coméis en RuenMai que cae de camino, pasáis la tarde en el pueblo y cenáis en el mercado nocturno a las 17:30. Plan playa: longtail a Phra Nang, comida en The Grotto y cena en Ao Nang. Hoy es viernes, así que el mercado nocturno sí abre.',meals:[
+ {s:'des',p:'PHUPHA Thai Food',dish:'Pollo con albahaca y huevo sobre arroz, o arroz frito',b:'Desayuno del Toto Resident + cha yen',c:'Dim sum en Krabi Town, solo si salís muy pronto hacia el pueblo',m:'PHUPHA Thai Food, Ao Nang, Mueang Krabi, Krabi',n:'Abre a las 6:30 y está en Ao Nang: evita el viaje a Krabi Town solo para desayunar.'},
+ {s:'com',p:'RuenMai, de camino a Krabi Town',dish:'Gaeng som, khua kling y moo hong: el sur de verdad',b:'Khun Noi Thai Food, en un jardín a 10 min de Ao Nang',c:'The Grotto, en la cueva de Phra Nang, solo si hacéis el plan playa',d:'KoDam Kitchen',m:'RuenMai, 117 Tambon Sai Thai, Amphoe Mueang Krabi, Krabi',a:'Los caldos nam ya son de pescado y los currys llevan kapi. El moo hong es cerdo estofado sin marisco: la opción segura.',n:'Está en la carretera entre Ao Nang y Krabi Town, así que es parada de camino, no un viaje aparte. La cocina empieza a cerrar sobre las 14:30: salid de Ao Nang a las 12:00 como tarde. Es la única comida del sur de todo el viaje, así que pedid lo que no vais a volver a ver.'},
+ {s:'mer',p:'Roti con cha chak',dish:'Roti recién hecho y té con leche batido',b:'—',c:'—',m:'Krabi Town, Krabi',a:''},
+ {s:'cen',p:'Mercado nocturno de Krabi Town',dish:'Gai yang, moo ping, som tam, currys y postres',b:'Red Chilli Ao Nang, si al final hacéis el plan playa',c:'Chao Fah Pier Night Market',m:'Krabi Town Night Market, Soi Maharaj 8, Krabi',a:'”Mai sai kung, mai sai pu” en las ensaladas.',n:'Abre de viernes a domingo, de 17:00 a 22:00, y hoy es viernes. Llegad antes de las 18:30. Si habéis comido en RuenMai de camino, ya estáis en la zona y no hay segundo viaje: desde Ao Nang son 20-30 min, unos 400-600 THB de taxi ida y vuelta, o songthaew mucho más barato.'}
+],sweet:{d:'La fila de puestos de dulces del mercado nocturno',w:'Mercado nocturno de Krabi Town: khanom tom, bua loy, roti.'}},
+{dd:'14',mm:'nov',ww:'sáb',z:'Bangkok',t:'Vuelo a Bangkok y rooftop',h:'Vuelo 09:00–10:25. Tarde libre y atardecer en altura.',meals:[
+ {s:'des',p:'Temprano en el hotel',dish:'Algo rápido antes del vuelo',b:'Dim sum si da tiempo',c:'—',m:'Krabi International Airport, Krabi',a:''},
+ {s:'com',p:'Rung Rueang Pork Noodles',dish:'Fideos de cerdo en caldo claro',b:'Baan Kuay Tiew Ruathong: boat noodles en Victory Monument',c:'Go-Ang Kaomunkai Pratunam',m:'Rung Rueang Pork Noodles, 10/3 Sukhumvit 26, Khlong Toei, Bangkok',a:'El tom yum de aquí lleva gamba en la base: pedid el caldo claro de cerdo.',n:'Cierra a las 17:00. Cae de camino desde el aeropuerto y en la misma zona que el rooftop de la tarde.'},
+ {s:'mer',p:'Khlong Toei Market',dish:'Mercado de abastos: para ver, no para comer',b:'Café de especialidad o cha yen',c:'—',m:'Khlong Toei Market, Rama IV Rd, Khlong Toei, Bangkok',a:'Puestos de marisco fresco por todas partes: la persona alérgica que no toque nada.',n:'De tarde está tranquilo; lo bestia es de madrugada.'},
+ {s:'cen',p:'Above Eleven (rooftop) y cena en Pantaree',dish:'Cóctel al atardecer y después curry verde en el callejón del Soi 8',b:'Cielo Sky Bar, Phra Khanong',c:'Rooftop Bar Sala Rattanakosin (vista de Wat Arun)',m:'Above Eleven, Fraser Suites Sukhumvit, Soi 11, Bangkok',a:'',n:'Código smart casual: nada de pantalón corto, chanclas ni camiseta sin mangas.'}
+],sweet:{d:'Thong yip y foi thong: dulces de yema dorados',w:'Or Tor Kor Market. Los inventó una portuguesa en la corte de Ayutthaya.'}},
+{dd:'15',mm:'nov',ww:'dom',z:'Bangkok',t:'Gran Palacio, Wat Pho, Wat Arun y Chatuchak',h:'Día largo. Rattanakosin por la mañana, Or Tor Kor y Chatuchak de merienda, Yaowarat de cena. Todo en la línea azul del MRT.',meals:[
+ {s:'des',p:'Jok o khao man gai cerca del hotel',dish:'Congee de cerdo o arroz con pollo',b:'Café + patongo',c:'—',m:'Bangkok',a:''},
+ {s:'com',p:'Thipsamai Pad Thai',dish:'Pad thai',b:'Original Pad Kra Pao 1993, cruzando el río',c:'Wang Lang Market (krapao, currys)',d:'AMA Eatery, frente a Wat Pho',m:'Thipsamai Pad Thai, 313-315 Maha Chai Rd, Bangkok',a:'Pedirlo sin gamba ni camarón seco. El “superb” lleva grasa de gamba: que la persona alérgica tome la versión normal con huevo.',n:'Abierto desde 1939. Cierra los martes: hoy es domingo, bien.'},
+ {s:'mer',p:'Or Tor Kor Market + Chatuchak',dish:'Currys, khao man gai, fruta y compras',b:'Gallery Drip Coffee',c:'Khanom krok junto al río',m:'Or Tor Kor Market, 101 Kamphaeng Phet Rd, Bangkok',a:'En Chatuchak, los fideos con cangrejo de Onewin no son para la persona alérgica: hay khao soi y cerdo al lado.',n:'Or Tor Kor cierra a las 18:00 y Chatuchak solo funciona en fin de semana: el domingo es el único día del viaje en que los dos están abiertos. Se come en Or Tor Kor y se compra enfrente. MRT Sanam Chai → Kamphaeng Phet.'},
+ {s:'cen',p:'Yaowarat (Chinatown)',dish:'Guay jub, khao kha moo, pato asado',b:'Jek Pui (curry sobre arroz) + Kuay Jub Ouan Pochana',c:'Nai Ek Roll Noodle, abierto hasta las 00:30',m:'Yaowarat Road, Chinatown, Bangkok',a:'Evitad los puestos de marisco con captadores en la puerta. Hay pollo, cerdo y pato de sobra.',n:'En domingo sí abre Kuay Jub Ouan Pochana, que cierra los lunes. Kamphaeng Phet → Wat Mangkon.'}
+],sweet:{d:'Pa tong go con natilla de pandan',w:'Yaowarat, en la cena.'}},
+{dd:'16',mm:'nov',ww:'lun',z:'Bangkok',t:'Mercado flotante y cena de despedida',h:'Vuelo a las 05:55. Cenad con calma y salid hacia el aeropuerto sobre las 02:00.',meals:[
+ {s:'des',p:'Café y patongo temprano',dish:'Patongo con leche de soja, o jok',b:'—',c:'—',m:'Bangkok',a:'',n:'Al mercado flotante hay que salir pronto.'},
+ {s:'com',p:'Damnoen Saduak',dish:'Boat noodles, brochetas, khanom krok y fruta desde las barcas',b:'—',c:'—',m:'Damnoen Saduak Floating Market, Ratchaburi',a:'Cuidado con los woks compartidos de los puestos de marisco.',n:'Amphawa tiene mejor comida pero cierra los lunes, así que hoy toca Damnoen Saduak. Llegad antes de las 8:00 y asumid que es el más turístico.'},
+ {s:'mer',p:'Kor Panich Sticky Rice',dish:'Mango sticky rice',b:'Café de especialidad en Thonglor',c:'—',m:'Kor Panich Sticky Rice, 431-433 Tanao Rd, Bangkok',a:'',n:'Bib Gourmand seis años seguidos. El lunes abre (7:00–17:00) y cae de camino al volver de Damnoen Saduak.'},
+ {s:'cen',p:'Supanniga Eating Room',dish:'Cocina tailandesa regional con vistas a Wat Arun',b:'Wattana Panich, en Ekamai (10:00–19:00)',c:'Nai Ek Roll Noodle, Yaowarat (abierto a diario hasta las 00:30)',m:'Supanniga Eating Room, Tha Tien, Bangkok',a:'Carta amplia y avisan en cocina.',n:'Cena de despedida. Abre todos los días 11:00–22:00, a 1 km de Kor Panich y con Wat Arun enfrente. Con un vuelo a las 05:55 y las maletas encima, una mesa sentados vale más que Chinatown de pie.'}
+],sweet:{d:'Mango sticky rice de Kor Panich',w:'En la merienda, de camino desde Damnoen Saduak.'}}
+];
+
+/* =========================================================
+   DATOS — pasaporte de platos
+   ========================================================= */
+var DISHES=[
+{n:'Phở bò',t:'Desayuno',r:'Vietnam · Norte',d:'Sopa de fideos de arroz con caldo de ternera cocido durante horas con anís, canela y jengibre.',h:'Nació en el norte de Vietnam a principios del siglo XX, con influencia francesa en el uso de la carne y china en los fideos.',c:'En Hanói se toma sobrio, sin la avalancha de hierbas y salsas que le añaden en el sur.',w:'Phở Gia Truyền Bát Đàn · Phở 10 Lý Quốc Sư · Phở Bò Lâm · Family Pho'},
+{n:'Bún chả',t:'Plato principal',r:'Vietnam · Hanói',d:'Panceta y albóndigas de cerdo a la parrilla en un bol de salsa agridulce templada, con vermicelli y hierbas aparte.',h:'Plato de mediodía clásico de Hanói: se moja el fideo y la hierba en el bol, no se mezcla todo de golpe.',c:'El 23 de mayo de 2016 Obama y Anthony Bourdain lo comieron juntos en Bún Chả Hương Liên. Bourdain pagó los seis dólares de la cuenta. El combo incluye un rollito de cangrejo.',w:'Bún Chả Lằu Gật Gù · Bún Chả Hương Liên · Bún Chả Đắc Kim',como:'Llega en tres partes. Mojad los fideos y las hierbas en el bol de salsa templada; no se mezcla todo de golpe.'},
+{n:'Bánh cuốn',t:'Desayuno',r:'Vietnam · Norte',d:'Crepes finísimos de arroz al vapor rellenos de cerdo picado y seta negra. La versión especial lleva un huevo de pato entero cocinado al vapor dentro, embutido vietnamita ahumado y una capa generosa de ajo frito.',h:'Del delta del río Rojo. Se cuecen sobre un paño tenso colocado encima del vapor.',c:'La versión de Thanh Trì se sirve sin relleno, solo con cebolla frita y salsa.',w:'Bánh Cuốn Gia Truyền Thanh Vân · Bánh Cuốn Bà Xuân'},
+{n:'Xôi xéo',t:'Desayuno',r:'Vietnam · Norte',d:'Arroz glutinoso con mung bean triturado, cebolla frita y grasa, servido en hoja de plátano. Se pide tuneado: panceta de cerdo, huevo frito, paté, lạp xưởng (salchicha china) y pepinillos encurtidos, encima de la bola de puré de judía mungo y la chalota frita.',h:'El arroz glutinoso tiene raíces rituales y aparece en las leyendas de los reyes Hùng.',c:'Es el desayuno callejero por excelencia de Hanói: se come de pie y con las manos.',w:'Xôi Yến · Xôi Bánh Mì Kim Hương',como:'Se come de pie y con las manos, en la propia hoja de plátano.'},
+{n:'Bún đậu mắm tôm',t:'Plato principal',r:'Vietnam · Hanói',d:'Tofu frito, vermicelli prensado y cerdo, con pasta de gamba fermentada para mojar.',h:'Street food de barrio construido sobre ingredientes baratos.',c:'El mắm tôm es la prueba de fuego del paladar visitante: el olor forma parte de la experiencia.',w:'Bún Đậu Mắm Tôm Cô Hoa',a:'Contiene pasta de gamba.',como:'Se moja cada cosa en el mắm tôm. Exprimid lima y batidlo hasta que espume: así se suaviza.'},
+{n:'Bún bò Nam Bộ',t:'Plato principal',r:'Vietnam · Hanói',d:'Bol seco de vermicelli con ternera salteada, brotes, hierbas y cacahuete.',h:'Estilo del sur que Hanói adoptó como bol sin caldo.',c:'Juega al contraste: carne caliente sobre hierbas frías y crujiente de cacahuete.',w:'Bún Bò Nam Bộ Bách Phương'},
+{n:'Chả cá',t:'Plato principal',r:'Vietnam · Hanói',d:'Pescado marinado en cúrcuma y galanga, salteado en la mesa con una montaña de eneldo.',h:'De Hanói, siglo XIX, ligado a la familia Đoàn. Hay una calle entera que se llama Chả Cá.',c:'Es tanto experiencia como plato: se termina de cocinar delante de vosotros.',w:'Chả Cá Thăng Long · Chả Cá Hà Nội 1871',como:'Llega la sartén con el pescado y el eneldo y se termina de saltear en la mesa, sobre el vermicelli.'},
+{n:'Bánh mì',t:'Desayuno',r:'Vietnam',d:'Baguette vietnamizada con paté, embutidos, encurtidos, pepino y cilantro. En Hàng Bè lo hacen con dos brochetas de cerdo marinado asadas al carbón dentro del pan. Y existe la versión dulce: el mismo baguette recién hecho mojado en leche condensada.',h:'Adaptación local de la baguette francesa de la época colonial.',c:'La palabra “bánh mì” entró en el Oxford English Dictionary en 2011.',w:'Bánh mì a la leña de Hàng Bè · Banh Mi 25 · Bánh Mì Nguyên Sinh'},
+{n:'Cà phê trứng',t:'Bebida',r:'Vietnam · Hanói',d:'Café fuerte cubierto con una crema batida de yema de huevo y leche condensada.',h:'Lo inventó en 1946 Nguyễn Văn Giảng, barman del Metropole, cuando la guerra dejó a Hanói sin leche fresca y sustituyó la nata por yema.',c:'Sabe a tiramisú líquido. Café Giảng lo sigue llevando su familia.',w:'Café Giảng · Egg Coffee & More'},
+{n:'Cà phê muối',t:'Bebida',r:'Vietnam',d:'Café con una crema ligeramente salada por encima.',h:'Nació en Huế hacia 2010 y se ha extendido a todo el país.',c:'La sal no lo hace salado: rebaja el amargor y alarga el dulce.',w:'Puestos de Cầu Gỗ y del Old Quarter'},
+{n:'Bún thang',t:'Plato principal',r:'Vietnam · Hanói',d:'Sopa clara y delicada de pollo, huevo en juliana finísima y jamón vietnamita.',h:'Plato de Hanói que nació para aprovechar las sobras del Tết.',c:'Puede llevar hasta veinte ingredientes distintos, cortados todos del mismo grosor.',w:'Puestos del Old Quarter'},
+{n:'Bún riêu',t:'Plato principal',r:'Vietnam · Norte',d:'Sopa de tomate con pastel de cangrejo de río, tofu y hierbas. El caldo es de un rojo intenso pero no pica: el picante y los fermentados se añaden en la mesa.',h:'Sopa norteña construida sobre pasta de cangrejo de agua dulce.',c:'El color naranja del caldo viene del achiote y de la grasa de cangrejo. Es sobre todo desayuno, y los puestos cierran en cuanto se acaba la olla del día, sin atenerse al horario publicado.',w:'Bún Riêu Hàng Bạc',a:'Lleva cangrejo y pasta de gamba.'},
+{n:'Phở cuốn',t:'Plato principal',r:'Vietnam · Hanói',d:'Rollitos frescos hechos con la lámina del phở sin cortar, rellenos de ternera y hierbas.',h:'Nació por accidente en Ngũ Xã, junto al lago Trúc Bạch. Hoàng Thị Xuân, una vendedora de phở de setenta años, se había quedado sin caldo una noche al cerrar y unos clientes habituales le pidieron phở igualmente: enrolló la lámina sin cortar alrededor de ternera cocida y eneldo, con salsa para mojar.',c:'Les gustó tanto que dejó la sopa y se dedicó solo a esto. Hoy Ngũ Xã tiene una calle entera de phở cuốn.',w:'Zona de Ngũ Xã'},
+{n:'Nem rán',t:'Plato principal',r:'Vietnam · Norte',d:'Rollitos fritos de cerdo, seta y fideo de cristal.',h:'Acompañan al bún chả y aparecen en toda mesa de celebración.',c:'La versión “nem cua bể” de Hải Phòng se hace cuadrada y lleva cangrejo.',w:'Bún Chả Lằu Gật Gù',a:'La versión de cangrejo, no.'},
+{n:'Bánh giò',t:'Comida',r:'Vietnam · Hanói',d:'Pirámide de masa de arroz cocida al vapor en hoja de plátano, rellena de cerdo picado y seta de monte. Textura gelatinosa, casi de flan salado.',h:'Es el formato de calle del bánh chưng, el pastel de arroz del Año Nuevo lunar. El bánh chưng se hace una vez al año y es cuadrado; el bánh giò se hace a diario y es un cono.',c:'Es, literalmente, un tamal: masa de arroz, relleno de cerdo y hoja de plátano al vapor. Se desenvuelve igual y se come igual.',w:'Bánh chưng cô Mai (16 Đào Duy Từ)'},
+{n:'Cháo sườn sụn',t:'Desayuno',r:'Vietnam · Norte',d:'Crema de arroz molido muy fino, con costilla y cartílago de cerdo, pimienta y cilantro. No queda grano: es una papilla espesa.',h:'El cháo es la comida de los enfermos y de los días de frío en todo el norte. La versión de sườn sụn, con cartílago, es la de Hanói.',c:'Se moja con quẩy, la masa frita alargada que los chinos llaman youtiao: el churro de aquí. La textura del cháo es la del atole, y se desayuna igual.',w:'Cháo Sườn Sụn Huyền Anh (14 Đồng Xuân)'},
+{n:'Kem caramen',t:'Postre',r:'Vietnam · Hanói',d:'Flan vietnamita de textura muy suave, servido muy frío y a veces con hielo picado y café.',h:'Herencia del flan francés de la época colonial.',c:'Las casas más conocidas van por la tercera generación y despachan miles de porciones al día.',w:'Casas de caramen del Old Quarter'},
+{n:'Chân gà nướng',t:'Plato principal',r:'Vietnam · Hanói',d:'Patas y alitas de pollo a la brasa con marinado agridulce caramelizado.',h:'Comida de noche, para sentarse en taburetes en plena acera.',c:'Hay una calle entera dedicada a esto, Lý Văn Phức, donde además sirven pan con mantequilla y miel, mollejas y costillitas.',w:'Calle Lý Văn Phức'},
+{n:'Phở trộn',t:'Plato principal',r:'Vietnam · Hanói',d:'Phở seco: los mismos fideos finos pero sin caldo, con carne jugosa, verduras frescas y una salsa agridulce hecha con fruta, pera entre otras.',h:'Versión de verano del phở, para cuando apetece menos el caldo caliente.',c:'Mismos fideos que la sopa y experiencia opuesta.',w:'Puestos del Old Quarter'},
+{n:'Phở chiên phồng',t:'Plato principal',r:'Vietnam · Hanói',d:'Láminas de masa de arroz dobladas en almohadillas y fritas hasta quedar huecas y crujientes, cubiertas de ternera y verduras salteadas sobre una salsa agridulce reducida.',h:'La misma lámina del phở llevada al extremo contrario, de la sopa a la fritura.',c:'Por dentro quedan huecas, como una almohada, y se comen con cuchillo y tenedor.',w:'Restaurantes de phở cuốn de la zona de Ngũ Xã'},
+{n:'Phở tái lăn',t:'Plato principal',r:'Vietnam · Hanói',d:'Variante donde la ternera se saltea con ajo a fuego vivo antes de ir al caldo, que queda ahumado y braseado. Se acompaña de mucho cebollino, huevo extra y quẩy.',h:'El salteado previo nació para aprovechar cortes más duros.',c:'El huevo extra cuesta unos 5.000 dongs y vuelve el caldo cremoso.',w:'Puestos de phở del Old Quarter'},
+{n:'Trà chanh',t:'Bebida',r:'Vietnam · Hanói',d:'Té frío con limón, ligeramente afrutado.',h:'Es la bebida social de Hanói, el equivalente a la caña de después del trabajo.',c:'Los locales de trà chanh se llenan de jóvenes por la tarde, resguardándose del calor, sentados en taburetes en la acera.',w:'Esquinas del Old Quarter y alrededores de la catedral'},
+{n:'Chè',t:'Postre',r:'Vietnam',d:'Postres dulces de judías, frutas y gelatinas, fríos o templados. El mix lleva fruta fresca, judía negra, coco rallado y almíbar de té de jazmín. Aparte está el arroz pegajoso con jengibre, templado y cremoso.',h:'Familia enorme de dulces con influencia del tong sui chino.',c:'El xôi chè se sirve en ceremonias familiares, como el primer mes de vida de un bebé.',w:'Chè Gỗ'},
+{n:'Cốm',t:'Postre',r:'Vietnam · Otoño',d:'Arroz verde joven tostado y aplastado, de color verde intenso.',h:'Especialidad de la aldea de Vòng, en las afueras de Hanói.',c:'Solo existe en otoño, justo cuando vais. Probadlo en xôi cốm o en bánh cốm.',w:'Mercados y puestos del Old Quarter'},
+{n:'Dê núi',t:'Plato principal',r:'Vietnam · Ninh Binh',d:'Cabra de montaña, a la brasa, a la plancha o en ensalada con hierbas.',h:'Especialidad de Ninh Binh, ligada al pastoreo entre los karsts.',c:'Es, con el cơm cháy, el plato identitario de la región.',w:'Bamboo Garden Tam Coc · Nhà Hàng Dê Núi Chính Thư'},
+{n:'Cơm cháy',t:'Picoteo',r:'Vietnam · Ninh Binh',d:'Costra de arroz tostada y frita, crujiente, servida con salsa de cabra.',h:'Nació aprovechando el arroz pegado al fondo de la olla.',c:'Funciona mejor como acompañamiento que como plato principal: no pidáis una ración enorme.',w:'Nhà Hàng Dê Núi Chính Thư · Bamboo Garden',como:'Es acompañamiento, no plato principal: pedid ración pequeña para mojar en la salsa de cabra.'},
+{n:'Nem chua Yên Mạc',t:'Picoteo',r:'Vietnam · Ninh Binh',d:'Cerdo fermentado con arroz tostado, hierbas y especias.',h:'Especialidad del pueblo de Yên Mạc.',c:'Se come crudo: la fermentación es la que “cocina” la carne.',w:'Thảo Béo Restaurant Bar'},
+{n:'Miến lươn',t:'Plato principal',r:'Vietnam · Norte',d:'Fideos de cristal con anguila de agua dulce, crujiente o en caldo.',h:'Muy típico de Ninh Binh y de la provincia de Nghệ An.',c:'La versión seca, con la anguila frita por encima, es la más adictiva.',w:'Thảo Béo Restaurant Bar'},
+{n:'Gỏi cá nhệch',t:'Plato principal',r:'Vietnam · Ninh Binh',d:'Ensalada de anguila marinada con limón y especias, que se come envuelta en papel de arroz con hierbas.',h:'Especialidad de la comarca de Kim Sơn, al sur de la provincia.',c:'Es el plato que separa al curioso del turista, porque se come prácticamente crudo.',w:'Gỏi cá Vũ Bà · Gỏi cá 9A'},
+{n:'Bún chả quạt',t:'Plato principal',r:'Vietnam · Ninh Binh',d:'Variante local del bún chả, con albóndigas de cerdo a la parrilla, fideos y salsa agridulce.',h:'Versión de Ninh Binh del plato de Hanói.',c:'Compararlo con el de Hanói en el mismo viaje es el mejor modo de notar la diferencia.',w:'Tín Mai · Trung Giang · Tuấn'},
+{n:'Chả mực',t:'Picoteo',r:'Vietnam · Ha Long',d:'Pastel de calamar machacado a mano y frito, elástico por dentro y dorado por fuera.',h:'Símbolo culinario de Hạ Long y de la provincia de Quảng Ninh.',c:'El machacado a mano, y no la picadora, es lo que le da esa textura que rebota.',w:'A bordo del crucero · Mercado nocturno de Bãi Cháy',a:'Es calamar: no apto.'},
+{n:'Khao soi',t:'Plato principal',r:'Tailandia · Norte',d:'Fideos de huevo en curry de coco con pollo o ternera, coronados de fideos fritos, con lima, chalota cruda y encurtido de mostaza.',h:'Lo trajeron los comerciantes musulmanes yunnaneses que recorrían las rutas del norte.',c:'Los fideos blandos y los crujientes son los mismos: unos hervidos y otros fritos.',w:'Khao Soi Mae Sai · Khao Soi Lung Prakit · Khao Soi Lamduan Fa Ham',a:'La pasta de curry lleva kapi.',como:'Se mezclan los fideos blandos con el curry, se corona con los fritos y se ajusta con lima, chalota cruda y encurtido de mostaza.'},
+{n:'Sai ua',t:'Picoteo',r:'Tailandia · Norte',d:'Salchicha de cerdo con hierba limón, lima kaffir y galanga, hecha a la brasa.',h:'Emblema de la cocina lanna, el reino que gobernó el norte durante siglos.',c:'Se vende al vacío en Warorot: es el souvenir comestible del norte.',w:'Warorot Market · Huen Phen · Sunday Walking Street'},
+{n:'Nam prik ong',t:'Picoteo',r:'Tailandia · Norte',d:'Especie de boloñesa tailandesa: cerdo picado con tomate y chile seco, para mojar.',h:'Se sirve con verdura cruda y khaep mu, la corteza de cerdo del norte.',c:'Es el nam prik más suave de todos: buena puerta de entrada al picante lanna.',w:'Huen Phen · Huen Muan Jai',a:'Suele llevar kapi.'},
+{n:'Nam prik num',t:'Picoteo',r:'Tailandia · Norte',d:'Dip de chiles verdes asados, ajo y chalota, machacado en mortero.',h:'El asado previo de los chiles es lo que le da el punto ahumado.',c:'Pica bastante más que el ong, aunque no lo parezca por el color.',w:'Huen Phen · Tong Tem Toh',a:'Suele llevar kapi.'},
+{n:'Gaeng hang lay',t:'Plato principal',r:'Tailandia · Norte',d:'Curry de cerdo de influencia birmana, con jengibre y tamarindo, sin leche de coco.',h:'Llegó desde Birmania por las rutas comerciales del norte.',c:'Se marina con una mezcla de especias muy parecida al garam masala indio.',w:'Huen Muan Jai · Huen Phen'},
+{n:'Khanom jeen nam ngiao',t:'Plato principal',r:'Tailandia · Norte',d:'Fideos de arroz fermentado con caldo de tomate, cerdo y flor de kapok.',h:'Plato de origen shan, muy extendido en Chiang Mai y Chiang Rai.',c:'La flor de kapok, seca y rehidratada, es el ingrediente que casi nadie identifica.',w:'Puestos del norte',a:'A veces lleva sangre cuajada y kapi.',como:'Los fideos vienen en ovillos y el bufé de verduras es gratis: os servís vosotros y lo ahogáis en el caldo.'},
+{n:'Larb Lanna',t:'Plato principal',r:'Tailandia · Norte',d:'Ensalada de carne picada del norte, oscura y muy especiada, con sangre y especias tostadas.',h:'Nada que ver con el larb isaan, que es ácido y con lima.',c:'La versión “khua” se saltea; la cruda solo la sirven en sitios de mucha confianza.',w:'Huen Phen · Tong Tem Toh · Laab Kai Meuang Phan Waen'},
+{n:'Khao kha moo',t:'Plato principal',r:'Tailandia',d:'Codillo de cerdo estofado hasta deshacerse, sobre arroz, con huevo y encurtido.',h:'De origen chino, hoy es uno de los platos de puesto más queridos del país.',c:'El de la señora del sombrero de vaquero, en Chang Phueak, se hizo famoso con Anthony Bourdain.',w:'Khao Kha Moo Chang Phueak · Yaowarat'},
+{n:'Miang kham',t:'Picoteo',r:'Tailandia',d:'Bocado envuelto en hoja de cha plu con coco tostado, cacahuete, lima, jengibre y chile.',h:'Aperitivo antiguo, de los que se comen en grupo.',c:'Se come de un bocado, entero: si lo mordéis por la mitad se desmonta.',w:'Mercados y sitios lanna',a:'A veces lleva gambas secas.',como:'Se envuelve en la hoja y se come de un bocado entero. Si lo mordéis por la mitad se desmonta.'},
+{n:'Gaeng som',t:'Plato principal',r:'Tailandia · Sur',d:'Curry agrio y muy picante, sin coco, de color amarillo intenso por la cúrcuma.',h:'Uno de los pilares de la cocina del sur, mucho más agresiva que la del centro.',c:'El caldo se espesa con pescado majado, no con harina ni coco.',w:'RuenMai',a:'Base marina.'},
+{n:'Khua kling',t:'Plato principal',r:'Tailandia · Sur',d:'Curry seco de carne picada salteada con pasta hasta que no queda nada de líquido.',h:'Del sur profundo. Es de los platos más picantes de toda Tailandia.',c:'Al no llevar coco ni caldo, el picante va directo y sin amortiguar.',w:'RuenMai',a:'La pasta lleva kapi.'},
+{n:'Moo hong',t:'Plato principal',r:'Tailandia · Sur',d:'Cerdo estofado dulce con pimienta negra y salsa de soja.',h:'Herencia de los hokkien que se asentaron en Phuket y la costa de Andamán.',c:'Es de los pocos platos del sur que no pica nada: la alternativa segura del viaje.',w:'RuenMai'},
+{n:'Khao mok gai',t:'Plato principal',r:'Tailandia · Sur',d:'Biryani tailandés-musulmán: pollo con arroz teñido de cúrcuma y especias.',h:'Llegó con las comunidades musulmanas del sur y de Malasia.',c:'Se sirve con una salsa verde de menta y cilantro que lo cambia por completo.',w:'Puestos musulmanes de Krabi Town'},
+{n:'Khao yam',t:'Desayuno',r:'Tailandia · Sur',d:'Ensalada de arroz con hierbas picadas, coco tostado, lima y salsa budu.',h:'Desayuno tradicional del sur, especialmente en la costa este.',c:'Se sirve deconstruido y lo mezcláis vosotros en la mesa.',w:'Mercados de Krabi Town',a:'El budu es pescado fermentado.',como:'Llega deconstruido: lo mezcláis vosotros en la mesa antes de empezar.'},
+{n:'Dim sum del sur',t:'Desayuno',r:'Tailandia · Sur',d:'Dumplings al vapor de cerdo, congee y té, servidos a primera hora.',h:'Herencia hokkien de los inmigrantes chinos del sur de Tailandia.',c:'Los locales desayunan a las seis de la mañana: a las diez ya está todo recogido.',w:'Sai Mei · Racharos',a:'Evitad los de gamba y cangrejo.'},
+{n:'Cha chak',t:'Bebida',r:'Tailandia · Sur',d:'Té con leche batido pasándolo de un vaso a otro desde lo alto.',h:'Comparte origen con el teh tarik malayo.',c:'El “estirado” no es espectáculo: airea el té y lo deja cremoso.',w:'Puestos de Krabi Town'},
+{n:'Boat noodles',t:'Plato principal',r:'Tailandia · Bangkok',d:'Fideos en un caldo oscuro e intenso de carne especiada, en boles muy pequeños.',h:'Se vendían desde barcas por los canales hasta que en 1985 los trasladaron a tierra, junto a Victory Monument.',c:'Se piden de cinco en cinco y se apilan los boles vacíos: al final los cuentan.',w:'Baan Kuay Tiew Ruathong · Ao Nang Boat Noodle',como:'Los boles son minúsculos: se piden de cinco en cinco y se apilan los vacíos, que al final los cuentan.'},
+{n:'Khao man gai',t:'Plato principal',r:'Tailandia',d:'Arroz cocido en caldo de pollo con pollo hervido, pepino y salsa de soja fermentada con jengibre.',h:'Versión tailandesa del pollo hainanés.',c:'El secreto no es el pollo, es el arroz: lo cuecen en el propio caldo con grasa y ajo.',w:'Go-Ang Kaomunkai Pratunam · Or Tor Kor'},
+{n:'Pad thai',t:'Plato principal',r:'Tailandia',d:'Fideos de arroz salteados con tamarindo, huevo, tofu y cacahuete.',h:'Se promovió como plato nacional en los años cuarenta, dentro de una campaña de identidad tailandesa.',c:'El original no lleva ketchup ni azúcar de más: el ácido viene del tamarindo.',w:'Thipsamai Pad Thai',a:'Suele llevar camarón seco o gamba: pedidlo sin.'},
+{n:'Som tam',t:'Plato principal',r:'Tailandia · Isaan',d:'Ensalada de papaya verde majada en mortero con lima, chile, tomate y judía larga.',h:'Del noreste, hoy en cada esquina del país.',c:'Cuantos más golpes de mortero oís, más picante lo están dejando.',w:'Mercados nocturnos de todo el viaje',a:'Puede llevar gambas secas o cangrejo salado: “mai sai kung, mai sai pu”.'},
+{n:'Gai yang y moo ping',t:'Plato principal',r:'Tailandia · Isaan',d:'Pollo y cerdo marinados y hechos a la brasa, con arroz glutinoso.',h:'La trilogía isaan es som tam, gai yang y sticky rice.',c:'El sticky rice se come con la mano, haciendo una bolita que sirve de cuchara.',w:'SP Chicken · Mercado nocturno de Krabi Town',como:'El arroz glutinoso se come con la mano: una bolita apretada que hace de cuchara.'},
+{n:'Tom yum',t:'Plato principal',r:'Tailandia',d:'Sopa agripicante con hierba limón, galanga y hoja de lima.',h:'Puede que sea el plato tailandés más conocido fuera del país.',c:'“Gung” significa gamba y “gai” pollo: la versión de pollo es igual de buena y sí es apta.',w:'Restaurantes de carta amplia',a:'Pedid siempre tom yum gai, nunca gung.'},
+{n:'Massaman',t:'Plato principal',r:'Tailandia',d:'Curry suave con cacahuete, patata, canela y cardamomo.',h:'De influencia persa y musulmana, entró por el sur y llegó a la corte de Ayutthaya.',c:'Es el curry menos picante de la carta: buen refugio en el sur.',w:'D&E Jungle Kitchen · Nong Thai Kitchen',a:'La pasta puede llevar kapi.'},
+{n:'Guay jub',t:'Plato principal',r:'Tailandia · Bangkok',d:'Fideos de arroz enrollados en un caldo transparente muy cargado de pimienta, con casquería de cerdo.',h:'De origen teochew, es el plato nocturno de Yaowarat.',c:'El bol arde de pimienta blanca, no de chile: es otro tipo de picante.',w:'Kuay Jub Ouan Pochana',como:'El picante es de pimienta blanca, no de chile: no intentéis corregirlo con lima.'},
+{n:'Mango sticky rice',t:'Postre',r:'Tailandia',d:'Arroz glutinoso con leche de coco y mango maduro.',h:'Postre de temporada convertido en clásico de todo el año.',c:'La sal de la leche de coco es lo que hace que el mango sepa más dulce.',w:'Kor Panich · Sunday Walking Street'},
+{n:'Khanom krok',t:'Postre',r:'Tailandia',d:'Bolitas de harina de arroz y coco hechas en plancha con huecos, crujientes por fuera y cremosas dentro.',h:'Dulce callejero antiguo, se hace a la vista en cada mercado.',c:'Se comen de dos en dos, pegadas, como si fueran una sola.',w:'Mercados de Bangkok'},
+{n:'Bia hơi',t:'Bebida',r:'Vietnam · Hanói',d:'Cerveza de barril fresca, sin pasteurizar, que se sirve el mismo día que se hace.',h:'Herencia de la cervecería checa que se instaló en Hanói.',c:'Cuesta menos de medio euro y se bebe en taburetes de plástico en plena calle.',w:'Esquina de Tạ Hiện'},
+{n:'Sữa chua nếp cẩm',t:'Postre',r:'Vietnam · Hanói',d:'Yogur casero servido sobre arroz glutinoso negro fermentado, frío y con hielo.',h:'Los franceses trajeron el yogur y Vietnam lo casó con su arroz negro.',c:'El arroz está ligeramente fermentado, así que tiene un fondo alcohólico muy leve.',w:'Puestos del Old Quarter'},
+{n:'Tào phớ',t:'Postre',r:'Vietnam · Hanói',d:'Tofu sedoso recién cuajado en almíbar de jazmín o jengibre, con hielo picado y a veces perlas de tapioca.',h:'El postre de calle de toda la vida de Hanói, vendido desde cubos a hombros.',c:'No está dulce en sí: el dulce lo pone el almíbar, y por eso refresca tanto.',w:'Zô Zô Tofu Pudding',como:'Se toma frío, removiendo el almíbar desde el fondo antes del primer bocado.'},
+{n:'Bánh rán',t:'Postre',r:'Vietnam · Norte',d:'Buñuelos de arroz glutinoso fritos y cubiertos de sésamo, rellenos de judía mungo dulce.',h:'Primos vietnamitas de las bolas de sésamo chinas.',c:'Los buenos suenan huecos: la masa se separa del relleno al freírse y queda una cámara de aire dentro.',w:'Puestos del Old Quarter'},
+{n:'Kanom beuang',t:'Postre',r:'Tailandia',d:'Crepes finísimas y crujientes dobladas sobre una crema de huevo, con coco rallado o hilos de yema por encima.',h:'Dulce antiguo de la corte que acabó en los mercados.',c:'Las llaman tacos tailandeses por la forma, pero son finas como una oblea.',w:'Warorot Market · mercados de Bangkok'},
+{n:'Thong yip y foi thong',t:'Postre',r:'Tailandia',d:'Dulces de yema de huevo y almíbar, uno plegado en forma de flor y otro en hilos dorados.',h:'Los introdujo en el siglo XVII Maria Guyomar de Pinha, de ascendencia portuguesa, japonesa y bengalí, en la corte de Ayutthaya; vienen de los dulces conventuales portugueses de yema.',c:'El oro de estos dulces se asocia a la prosperidad, así que se regalan en bodas y celebraciones.',w:'Or Tor Kor Market'}
+];
+
+/* Zona de viaje de cada plato: dónde se come de verdad en este viaje */
+var ZONA_POR_REGION={
+  'Vietnam · Hanói':['Hanói'],
+  'Vietnam · Norte':['Hanói','Ninh Binh'],
+  'Vietnam · Ninh Binh':['Ninh Binh'],
+  'Vietnam · Ha Long':['Ha Long'],
+  'Vietnam · Otoño':['Hanói'],
+  'Vietnam':['Hanói','Ninh Binh'],
+  'Tailandia · Norte':['Chiang Mai'],
+  'Tailandia · Bangkok':['Bangkok'],
+  'Tailandia · Isaan':['Chiang Mai','Krabi','Bangkok'],
+  'Tailandia · Sur':['Krabi'],
+  'Tailandia':['Chiang Mai','Krabi','Phi Phi','Bangkok']
+};
+var ZONA_EXCEPCION={
+  'Khao kha moo':['Chiang Mai','Bangkok'],
+  'Kanom beuang':['Chiang Mai','Bangkok'],
+  'Thong yip y foi thong':['Bangkok'],
+  'Guay jub':['Bangkok'],
+  'Boat noodles':['Bangkok']
+};
+DISHES.forEach(function(d){ d.z=ZONA_EXCEPCION[d.n]||ZONA_POR_REGION[d.r]||[]; });
+
+/* =========================================================
+   DATOS — sitios
+   ========================================================= */
+var PLACES=[
+{n:'Phở Gia Truyền Bát Đàn',z:'Hanói',cat:'Desayuno',pri:1,ad:'49 Bát Đàn, Hoàn Kiếm',dish:'Phở bò',when:'31 oct',pr:'1,8–2,2 €',hrs:'6:00–10:00 y 18:00–20:30',a:'',nt:'Bib Gourmand. Se paga primero y se agota.',ojo:'Se paga antes de sentarse y se agota a media mañana.'},
+{n:'Bún Chả Lằu Gật Gù',z:'Hanói',cat:'Comida',pri:1,ad:'41-43 Hàng Bè, Hoàn Kiếm',dish:'Bún chả + nem',when:'31 oct',pr:'2,2–4,5 €',hrs:'≈10:30–14:00',a:'',nt:'Familiar y auténtico, a 300 m del hotel.'},
+{n:'Bún Chả Đắc Kim',z:'Hanói',cat:'Comida',pri:2,ad:'1 Hàng Mành, Hoàn Kiếm',dish:'Bún chả',when:'31 oct',pr:'2,5–4,5 €',hrs:'9:00–21:00',a:'',nt:'Famoso pero turístico. Ojo con los imitadores de al lado.',ojo:'Los locales de al lado imitan el nombre y la fachada. El bueno es el número 1 de Hàng Mành.'},
+{n:'Bún Chả Hương Liên',z:'Hanói',cat:'Comida',pri:3,ad:'24 Lê Văn Hưu, Hai Bà Trưng',dish:'Combo Obama',when:'31 oct',pr:'3–5 €',hrs:'8:00–20:30',a:'El Combo Obama lleva un rollito de cangrejo. La persona alérgica pide el bún chả suelto con nem de cerdo, nunca el combo.',nt:'Donde comieron Obama y Bourdain en 2016. Suele haber cola: id sobre las 11:00. En el primer piso conservan la mesa donde comieron Obama y Bourdain en 2016. El combo va de 85.000 a 120.000 dongs según la fuente: confirmad el precio al pedir.',v:'Vídeo',ojo:'Es famoso por la visita de Obama, no por ser el mejor bún chả de Hanói.'},
+{n:'Bánh Cuốn Gia Truyền Thanh Vân',z:'Hanói',cat:'Desayuno',pri:1,ad:'12-14 Hàng Gà, Hoàn Kiếm',dish:'Bánh cuốn',when:'1 nov',pr:'0,5–1,6 €',hrs:'Mañanas',a:'',nt:'En la guía Michelin. Revisad la cuenta.',ojo:'Revisad la cuenta antes de pagar.'},
+{n:'Bún Bò Nam Bộ Bách Phương',z:'Hanói',cat:'Comida',pri:1,ad:'67 Hàng Điếu, Hoàn Kiếm',dish:'Bún bò Nam Bộ',when:'1 nov',pr:'2,2–2,5 €',hrs:'7:00–22:30',a:'',nt:'Abierto desde 1986.'},
+{n:'Bún Đậu Mắm Tôm Cô Hoa',z:'Hanói',cat:'Comida',pri:2,ad:'25 Ấu Triệu, Hoàn Kiếm',dish:'Bún đậu',when:'1 nov',pr:'1,5–2,5 €',hrs:'Mediodía',a:'Mắm tôm es pasta de gamba: pedir salsa de pescado aparte.',nt:'Junto a la catedral de San José.'},
+{n:'Chả Cá Thăng Long',z:'Hanói',cat:'Cena',pri:1,ad:'6B Đường Thành, Hoàn Kiếm',dish:'Chả cá',when:'31 oct',pr:'6–12 €',hrs:'7:00–22:00',a:'Pescado, apto. Salsa de pescado en vez de mắm tôm.',nt:'Bib Gourmand. El Maps está secuestrado: ir a 6B Đường Thành.',ojo:'Su ficha de Google Maps está secuestrada por imitadores. La dirección buena es 6B Đường Thành.'},
+{n:'Chả Cá Hà Nội 1871',z:'Hanói',cat:'Cena',pri:2,ad:'165B Phùng Hưng, Hoàn Kiếm',dish:'Chả cá',when:'31 oct',pr:'3,6–7,3 €',hrs:'10:30–22:00',a:'Apto.',nt:'Junto a Train Street.'},
+{n:'Café Giảng',z:'Hanói',cat:'Merienda',pri:1,ad:'39 Nguyễn Hữu Huân, Hoàn Kiếm',dish:'Cà phê trứng',when:'31 oct y 4 nov',pr:'1,5–2 €',hrs:'7:00–22:00',a:'',nt:'Lo lleva la familia del inventor del café de huevo, desde 1946.',v:'Vídeo'},
+{n:'Xôi Yến',z:'Hanói',cat:'Cena',pri:1,v:'Calixto Serna (México Cooking Club) con guía local + reseñas de Google',ad:'35B Nguyễn Hữu Huân, Hoàn Kiếm',dish:'Xôi xéo',when:'30 oct',pr:'0,4–2,6 €',hrs:'≈6:00–24:00',a:'',nt:'Icónico. Ha subido precios, pero abre hasta tarde: perfecto el día de llegada.',ojo:'Ha subido precios y bajado algo de calidad con la fama. Vale por el horario, no por ser el mejor.'},
+{n:'Bánh Mì Nguyên Sinh',z:'Hanói',cat:'Desayuno',pri:3,ad:'17-19 Lý Quốc Sư, Hoàn Kiếm',dish:'Bánh mì',when:'Varios días',pr:'1–2,5 €',hrs:'Mañanas',a:'',nt:'Clásico de estilo colonial.'},
+{n:'Phở 10 Lý Quốc Sư',z:'Hanói',cat:'Desayuno',pri:1,ad:'10 P. Lý Quốc Sư, Hàng Trống, Hoàn Kiếm',dish:'Phở bò: tái, chín, nạm o bắp trần',when:'5 nov',pr:'2,5 €',hrs:'6:00–22:00',a:'',nt:'Bib Gourmand Michelin, con el precio confirmado en 65.000 dongs. Diez versiones de phở y la cocina a la vista tras una mampara. A cinco minutos del hotel LangX Phủ Doãn. Es normal compartir mesa. Michelin avisa de que hay imitaciones en la ciudad: el bueno es el número 10 de Lý Quốc Sư.',v:'Vídeo'},
+{n:'Bia hơi de Tạ Hiện',z:'Hanói',cat:'Merienda',pri:1,ad:'Esquina de Tạ Hiện con Lương Ngọc Quyến',dish:'Bia hơi',when:'4 nov',pr:'0,4–2 €',hrs:'Tardes',a:'',nt:'La esquina de la cerveza del Old Quarter.'},
+{n:'Phở Bò Lâm',z:'Hanói',cat:'Desayuno',pri:2,ad:'48 Hàng Vai, Hoàn Kiếm',dish:'Phở bò',when:'31 oct',pr:'1,5–2,5 €',hrs:'6:00–10:00',a:'',nt:'Alternativa a Bát Đàn si hay demasiada cola.'},
+{n:'Bánh Cuốn Bà Xuân',z:'Hanói',cat:'Desayuno',pri:2,ad:'Old Quarter, Hoàn Kiếm',dish:'Bánh cuốn',when:'1 nov',pr:'0,5–1,5 €',hrs:'Mañanas',a:'',nt:'Alternativa a Thanh Vân.'},
+{n:'Egg Coffee & More',z:'Hanói',cat:'Merienda',pri:2,ad:'Old Quarter, Hoàn Kiếm',dish:'Cà phê trứng',when:'1 nov',pr:'1–2 €',hrs:'Todo el día',a:'',nt:'Alternativa al Café Giảng para el café de huevo.'},
+{n:'Chè Gỗ',z:'Hanói',cat:'Postre',pri:2,ad:'Hàng Thiếc, Hoàn Kiếm',dish:'Chè (postres dulces vietnamitas)',when:'31 oct – 4 nov',pr:'0,5–1,5 €',hrs:'Todo el día',a:'',nt:'Varios tipos de chè dulce, frío o templado.'},
+{n:'Family Pho',z:'Hanói',cat:'Desayuno',pri:3,ad:'39B Lý Quốc Sư, Hoàn Kiếm',dish:'Phở bò, phở gà',when:'31 oct – 1 nov',pr:'2–3 €',hrs:'Todo el día',a:'',nt:'Cerca de la catedral. Abierto más horas que Bát Đàn.'},
+{n:'Cỏ Restaurant',z:'Hanói',cat:'Cena',pri:3,ad:'Old Quarter, Hoàn Kiếm',dish:'Cocina vietnamita',when:'31 oct',pr:'3–8 €',hrs:'Mediodía y noche',a:'Carta amplia.',nt:'Plan C para la cena del primer día completo.'},
+{n:'Viet Traditional Cuisine',z:'Hanói',cat:'Cena',pri:3,ad:'79 Hàng Bồ, Hoàn Kiếm',dish:'Cocina vietnamita tradicional',when:'31 oct',pr:'3–8 €',hrs:'Mediodía y noche',a:'Carta variada: elegid platos de pollo o cerdo.',nt:'En pleno Old Quarter.'},
+{n:'Bamboo Garden Tam Coc',z:'Ninh Binh',cat:'Cena',pri:1,ad:'Van Lam, junto al embarcadero de Tam Coc',dish:'Dê núi + cơm cháy',when:'1 nov',pr:'3,6–9 €',hrs:'≈9:30–22:00',a:'Cabra y pollo aptos. Carta amplia.',nt:'Hay varios locales con nombre parecido: confirmad la ubicación.'},
+{n:'Nhà Hàng Dê Núi Chính Thư',z:'Ninh Binh',cat:'Comida',pri:1,ad:'Khe Thượng, Hoa Lư',dish:'Cabra + cơm cháy',when:'2 nov',pr:'3,6–9 €',hrs:'≈8:00–23:00',a:'Cabra y pollo aptos. Carta amplia.',nt:'Cerca de Hang Mua. Pedid la carta local.'},
+{n:'Chef Hien Restaurant',z:'Ninh Binh',cat:'Comida',pri:2,ad:'Tam Coc Rd, Ninh Hải',dish:'Pato asado, cabra',when:'1–2 nov',pr:'3,6–11 €',hrs:'Confirmar in situ',a:'Carta amplia.',nt:'Orientado al visitante, pero el pato está muy bien.'},
+{n:'Thảo Béo Restaurant Bar',z:'Ninh Binh',cat:'Cena',pri:1,ad:'Tam Coc, Ninh Bình',dish:'Nem chua, miến lươn, gà đồi',when:'2 nov',pr:'3,6–9 €',hrs:'Tardes y noche',a:'Anguila y pollo aptos.',nt:'Buen ambiente y cocina casera.'},
+{n:'An Tam Coc Restaurant & Coffee',z:'Ninh Binh',cat:'Comida',pri:2,ad:'Tam Coc Rd',dish:'Arroz salteado, café',when:'2 nov',pr:'3–8 €',hrs:'Todo el día',a:'Carta amplia.',nt:'Junto al embarcadero; cómodo pero turístico.'},
+{n:'Thang Long Restaurant',z:'Ninh Binh',cat:'Cena',pri:3,ad:'Tam Coc, Ninh Bình',dish:'Cocina local y turística',when:'2 nov',pr:'3–8 €',hrs:'Mediodía y noche',a:'Carta amplia.',nt:'Restaurante turístico en la zona de Tam Coc.',v:'Vídeo'},
+{n:'Family Restaurant Tam Coc',z:'Ninh Binh',cat:'Cena',pri:3,ad:'Tam Coc, Ninh Bình',dish:'Cabra, pollo, arroz',when:'1 nov',pr:'3–8 €',hrs:'Mediodía y noche',a:'Carta amplia.',nt:'Genérico pero socorrido si los otros están llenos.'},
+{n:'Crucero Peony',z:'Ha Long',cat:'Alojamiento',pri:1,ad:'Tuan Chau Marina, Hạ Long',dish:'Pensión completa a bordo',when:'3–4 nov',pr:'Incluido',hrs:'Embarque a mediodía',a:'CRÍTICO: avisad por escrito 48 h antes y reconfirmad el día previo.',nt:'Reservado vía TheBestPrice.'},
+{n:'Khao Soi Mae Sai',z:'Chiang Mai',cat:'Cena',pri:1,ad:'29/1 Ratchaphuek Rd',dish:'Khao soi gai',when:'5 nov',pr:'1,3–2,1 €',hrs:'Mañana y tarde',a:'Curry con kapi.',nt:'Aparece en la guía Michelin.',v:'Diego'},
+{n:'Khao Soi Lung Prakit Kad Kom',z:'Chiang Mai',cat:'Comida',pri:2,ad:'Kad Kom, Chiang Mai',dish:'Khao soi',when:'5–9 nov',pr:'1,3–2,1 €',hrs:'Mediodía',a:'Curry con kapi.',nt:'De los más queridos por los locales.'},
+{n:'Khao Soi Lamduan Fa Ham',z:'Chiang Mai',cat:'Desayuno',pri:2,ad:'352/22 Charoenrat Rd',dish:'Khao soi',when:'7 nov',pr:'1,3–2,1 €',hrs:'Mañanas',a:'Curry con kapi.',nt:'Más de 75 años abierto.'},
+{n:'Thaan Aoan',z:'Chiang Mai',cat:'Desayuno',pri:3,ad:'Cerca de Wat Chedi Luang, Old City',dish:'Khao soi, desayuno tailandés',when:'5–8 nov',pr:'2–4 €',hrs:'7:00–21:00',a:'Confirmad el kapi.',nt:'Cómodo, con jardín, buen refugio del calor.'},
+{n:'Huen Phen',z:'Chiang Mai',cat:'Comida',pri:1,ad:'112 Rachamankha Rd, Old City',dish:'Bandeja lanna',when:'6 nov',pr:'3–6 €',hrs:'Almuerzo',a:'Los nam prik llevan kapi.',nt:'Institución de la cocina del norte.',v:'Diego'},
+{n:'Huen Muan Jai',z:'Chiang Mai',cat:'Comida',pri:2,ad:'24 Ratchaphuek Rd, Santitham',dish:'Gaeng hang lay, nam prik ong',when:'6 nov',pr:'3–6 €',hrs:'Almuerzo y cena',a:'Kapi en los nam prik.',nt:'Muy valorado y menos turístico.'},
+{n:'Tong Tem Toh',z:'Chiang Mai',cat:'Comida',pri:2,ad:'11 Nimmanhaemin Soi 13',dish:'Bandeja lanna, naem',when:'6 nov',pr:'3–6 €',hrs:'8:00–22:00',a:'Kapi en los nam prik.',nt:'Suele haber cola: apuntad el nombre y esperad.'},
+{n:'Khao Kha Moo Chang Phueak',z:'Chiang Mai',cat:'Cena',pri:1,ad:'Frente a la puerta Chang Phueak',dish:'Khao kha moo',when:'8 nov',pr:'1–1,5 €',hrs:'Desde ≈17:00',a:'Cerdo, apto.',nt:'La señora del sombrero de vaquero. Llegad antes de las 18:00.',v:'Diego y vídeo',ojo:'No abre hasta las 17:00 y la señora del sombrero no siempre está. Al mediodía está cerrado.'},
+{n:'SP Chicken',z:'Chiang Mai',cat:'Comida',pri:2,ad:'9/1 Soi 1 Samlan Rd, Old City',dish:'Gai yang',when:'8 nov',pr:'2–4 €',hrs:'Mediodía y tarde',a:'Pollo, apto.',nt:'Pollo asado a la brasa excelente.'},
+{n:'Cherng Doi Roast Chicken',z:'Chiang Mai',cat:'Comida',pri:3,ad:'Nimman, Chiang Mai',dish:'Pollo asado, ensaladas',when:'8 nov',pr:'2–5 €',hrs:'Mediodía',a:'Pollo, apto.',nt:'Alternativa en Nimman.'},
+{n:'Warorot Market (Kad Luang)',z:'Chiang Mai',cat:'Desayuno',pri:1,ad:'Wichayanon Rd, junto al río',dish:'Sai ua, khao soi, café',when:'8 nov',pr:'1–3 €',hrs:'Mañanas',a:'Según puesto.',nt:'El mercado de siempre de Chiang Mai.'},
+{n:'Sunday Walking Street',z:'Chiang Mai',cat:'Cena',pri:1,ad:'Ratchadamnoen Rd, de Tha Phae a Wat Phra Singh',dish:'Street food del norte',when:'8 nov',pr:'3–6 €',hrs:'Domingos 16:00–23:00',a:'“Mai sai kung, mai sai pu, mai sai kapi”.',nt:'Comed en los patios de los templos.'},
+{n:'Night Bazaar (Kalare y Anusarn)',z:'Chiang Mai',cat:'Cena',pri:1,ad:'Chang Klan Rd',dish:'Brochetas, gai yang, som tam',when:'6 nov',pr:'3–6 €',hrs:'18:00–24:00',a:'Sin marisco en las ensaladas.',nt:'Mucha variedad en un solo sitio.'},
+{n:'Dash! Restaurant',z:'Chiang Mai',cat:'Cena',pri:2,ad:'Old City, Chiang Mai',dish:'Cocina tailandesa del norte',when:'7 nov',pr:'3–8 €',hrs:'Mediodía y noche',a:'Confirmad kapi en los currys.',nt:'Bien valorado en el centro histórico.'},
+{n:'Ristr8to',z:'Chiang Mai',cat:'Merienda',pri:2,ad:'Nimmanhaemin Rd, Chiang Mai',dish:'Café de especialidad, latte art',when:'8 nov',pr:'2–4 €',hrs:'7:00–18:00',a:'',nt:'El barista Arnon Thitiprasert ha ganado campeonatos de latte art.'},
+{n:'Graph Café',z:'Chiang Mai',cat:'Merienda',pri:3,ad:'Nimmanhaemin Rd, Chiang Mai',dish:'Café de especialidad',when:'8 nov',pr:'2–4 €',hrs:'8:00–18:00',a:'',nt:'Otra opción de café de especialidad en Nimman.'},
+{n:'Anusarn Market',z:'Chiang Mai',cat:'Cena',pri:3,ad:'Anusarn Rd, junto a Chang Klan Rd',dish:'Street food nocturno',when:'6 nov',pr:'2–5 €',hrs:'18:00–23:00',a:'En las ensaladas: "mai sai kung, mai sai pu".',nt:'Junto al Night Bazaar, más pequeño y menos agobiante.'},
+{n:'Roti Pa Dae',z:'Chiang Mai',cat:'Postre',pri:1,ad:'Delante del Wat Mahawan, Tha Phae Road Soi 4, Chang Moi, Mueang Chiang Mai',dish:'Roti sencillo con leche condensada, o de huevo con plátano fresco',when:'6 y 8 nov',pr:'1–2 €',hrs:'18:30–00:00, todos los días',a:'Sin marisco.',nt:'Bib Gourmand en la Guía MICHELIN 2026 de Tailandia. La masa no lleva huevo y se fríe despacio en aceite de coco: crujiente fuera y chiclosa dentro. Veinte coberturas. Solo efectivo. El Sunday Walking Street del 8 termina justo en la puerta Tha Phae, a dos minutos. Suele haber cola por la noche.',v:'Vídeo'},
+{n:'Laab Kai Meuang Phan Waen',z:'Chiang Mai',cat:'Comida',pri:2,ad:'Soi Bamrungburi 3, Phra Sing, Old City',dish:'Larb del norte, raciones pequeñas para probar varias cosas',when:'8 nov',pr:'2–5 €',hrs:'11:30–21:00; CIERRA LOS SÁBADOS',a:'Tienen pasta de cangrejo en carta y es una cocina pequeña con el mismo mortero para todo: contaminación cruzada probable. Enseñad la tarjeta de alergia al cocinero nada más llegar, antes de pedir.',nt:'Casero y sin ninguna concesión al visitante. Las raciones pequeñas permiten probar muchas cosas, que es justo lo que buscamos. Solo efectivo. Lo popular se agota sobre las 17:00.',v:'Diego'},
+{n:'Sai Mei Dim Sum',z:'Krabi',cat:'Desayuno',pri:1,ad:'Centro de Krabi Town',dish:'Dim sum, jok, khao yam',when:'10–13 nov',pr:'1–3 €',hrs:'5:30–mediodía',a:'Evitad los de gamba y cangrejo.',nt:'Vintage y muy local.'},
+{n:'Racharos Dim Sum',z:'Krabi',cat:'Desayuno',pri:2,ad:'Pak Nam, Krabi',dish:'Dim sum',when:'10–13 nov',pr:'1–3 €',hrs:'5:30–mediodía',a:'Algunos llevan gamba o cangrejo.',nt:'Colas de locales desde primera hora.'},
+{n:'Maharaj Market',z:'Krabi',cat:'Desayuno',pri:3,ad:'Soi Maharaj 7, Krabi Town',dish:'Desayuno local y fruta',when:'10–13 nov',pr:'1–3 €',hrs:'4:00–11:00',a:'Según puesto.',nt:'El mercado fresco más grande de la provincia.'},
+{n:'Nong Thai Kitchen',z:'Krabi',cat:'Cena',pri:1,ad:'Ao Nang, camino al pueblo',dish:'Curry verde, massaman, pad thai',when:'9–13 nov',pr:'3–8 €',hrs:'Mediodía y noche',a:'Adaptan platos a alergias si avisáis.',nt:'Auténtico dentro de una zona muy turística.'},
+{n:'KoDam Kitchen',z:'Krabi',cat:'Cena',pri:2,ad:'Nopparat Thara Beach',dish:'Currys tailandeses',when:'10–13 nov',pr:'3–8 €',hrs:'Noche',a:'Carta amplia.',nt:'Buena relación calidad-precio.'},
+{n:'D&E Jungle Kitchen',z:'Krabi',cat:'Cena',pri:2,ad:'Final de la playa de Ao Nang',dish:'Massaman de pollo, cerdo a la brasa',when:'12 nov',pr:'3–8 €',hrs:'12:00–24:00',a:'Carta amplia.',nt:'Familiar y rústico.'},
+{n:'RuenMai',z:'Krabi',cat:'Comida',pri:1,ad:'117 Tambon Sai Thai, Amphoe Mueang Krabi',dish:'Khua kling, gaeng som, moo hong',when:'13 nov',pr:'4–9 €',hrs:'10:30–15:00 y 17:00–21:00, todos los días',a:'Currys con kapi; el moo hong es la opción segura.',nt:'Lo más auténtico del sur en un jardín precioso, y de lo mejor valorado de la provincia. OJO: no está en Krabi Town, está en Sai Thai, en la carretera entre Ao Nang y Krabi Town, así que cae de camino si vais de una a otra. La cocina empieza a cerrar sobre las 14:30 antes del descanso de la tarde, así que a mediodía hay que llegar pronto. Pedid el gaeng som, el khua kling y el moo hong, que es donde se nota el sur de verdad.'},
+{n:'Thanya Kitchen',z:'Krabi',cat:'Cena',pri:2,ad:'Ao Nang, Krabi',dish:'Cocina tailandesa sin pretensiones',when:'12–13 nov',pr:'3–6 €',hrs:'13:00–21:30',a:'Carta tailandesa amplia de pollo y cerdo.',nt:'Abre solo por la tarde.'},
+{n:'Ao Nang Boat Noodle',z:'Krabi',cat:'Comida',pri:2,ad:'Ao Nang, Krabi',dish:'Boat noodles, larb moo',when:'12 nov',pr:'2–5 €',hrs:'Mediodía',a:'Cerdo, apto.',nt:'Pequeño y local, dentro de Ao Nang.'},
+{n:'Mercado nocturno de Krabi Town',z:'Krabi',cat:'Cena',pri:1,ad:'Soi Maharaj 8, junto a Chao Fah Pier',dish:'Gai yang, moo ping, som tam, currys',when:'13 nov',pr:'2–5 €',hrs:'Viernes a domingo, 17:00–22:00',a:'“Mai sai kung, mai sai pu”.',nt:'Lo más auténtico y barato de Krabi. Llegad antes de las 18:30.'},
+{n:'Chao Fah Pier Night Market',z:'Krabi',cat:'Cena',pri:2,ad:'Chao Fah Pier, Krabi Town',dish:'Street food nocturno, marisco y brochetas',when:'13 nov',pr:'2–5 €',hrs:'Noches',a:'Puestos de marisco por todas partes: elegid los de pollo y cerdo.',nt:'Más pequeño que el de Soi Maharaj 8 pero abierto más días.'},
+{n:'Gecko Cabane',z:'Krabi',cat:'Cena',pri:1,ad:'1, 36-37 Soi Ruam Jit, Tambon Pak Nam, Krabi Town',dish:'Curry penang de pato, cocina tailandesa con toque francés',when:'9 nov',pr:'6–12 €',hrs:'12:00–22:00; CIERRA LOS MIÉRCOLES',a:'Tienen langostinos en carta, pero la mayoría de los platos son de carne y ave. Cocina formal, con personal que entiende de alergias.',nt:'La opción realista para la noche de llegada: abre hasta las 22:00 y los lunes sí. No es lo más local del viaje, pero llegando a las 20:00 de un lunes en Krabi Town hay poco abierto y esto está muy bien hecho. En el centro, a pie desde el Greenery.',v:'Reseñas'},
+{n:'Baitoey',z:'Krabi',cat:'Cena',pri:2,ad:'79 Khongkha Rd, Tambon Pak Nam, Krabi Town',dish:'Ensalada de cerdo, sopa agripicante de pescado, carta tailandesa amplia',when:'9 nov',pr:'4–9 €',hrs:'10:00–22:00, todos los días',a:'Es marisquería: cocina compartida y marisco en casi todas las mesas. La persona alérgica solo si no hay alternativa, pidiendo carne y avisando en cocina.',nt:'En la orilla del río, con terraza sobre los barcos, y bastante menos turístico de lo que parece. Pese al nombre tiene buena carta de platos tailandeses de carne. Plan B del 9 por el horario: abre hasta las 22:00.',v:'Reseñas'},
+{n:'PHUPHA Thai Food',z:'Krabi',cat:'Desayuno',pri:1,ad:'Ao Nang, Mueang Krabi',dish:'Pollo con albahaca y huevo sobre arroz, som tam, arroz frito, curry panang',when:'12–13 nov',pr:'2–4 €',hrs:'6:30–22:00, todos los días',a:'Hacen pescado frito y laab de calamar. Carta amplia de pollo y cerdo: pedid por ahí y avisad.',nt:'Abre a las 6:30 y cierra a las 22:00, así que sirve para cualquier franja. Lo llevan madre e hija, es de lo más barato de Ao Nang y el cocinero ajusta el picante a lo que pidáis. Raciones generosas.',v:'Reseñas'},
+{n:'Red Chilli Ao Nang',z:'Krabi',cat:'Cena',pri:1,ad:'Thanon Khlong Hang, Tambon Ao Nang',dish:'Curry penang de pollo, mango sticky rice',when:'12–13 nov',pr:'4–8 €',hrs:'13:00–22:00, todos los días',a:'EL MEJOR DE LA ZONA PARA LA ALERGIA: tienen la carta marcada por alergias y varias reseñas destacan lo bien que las manejan. Aun así, avisad al pedir.',nt:'Familiar, con decoración desconcertante y muy buen ambiente. En toda la zona de Ao Nang no he encontrado otro sitio del que se diga que entienden de alergias, así que es el refugio si algo va mal.',v:'Reseñas'},
+{n:'Khun Noi Thai Food',z:'Krabi',cat:'Comida',pri:2,ad:'122 Tambon Ao Nang, a unos 10 min del centro',dish:'Som tam, pad thai, té con leche tailandés, mango sticky rice',when:'13 nov',pr:'3–6 €',hrs:'10:00–18:00; CIERRA LOS LUNES',a:'Carta tailandesa amplia. Preguntad por el som tam, que puede llevar gambas secas.',nt:'A diez minutos del centro de Ao Nang, en un jardín con un riachuelo donde te puedes meter. Los domingos se llena de familias tailandesas. Cierra a las 18:00, así que es solo comida. La alternativa si el 13 lo hacéis de playa y no de Krabi Town.',v:'Reseñas'},
+{n:'Pooky',z:'Phi Phi',cat:'Comida',pri:1,ad:'Dentro del Food market Koh Phi Phi, Moo 7, Tonsai, Ko Phi Phi Don',dish:'Pad thai, pollo con albahaca, arroz frito con piña, ensaladas tailandesas',when:'10 nov',pr:'3–5 €',hrs:'10:00–23:00, todos los días',a:'Es el sitio de la isla donde más gente dice haberse sentido cómoda comiendo ensaladas frescas, por lo cuidadosa que es con la manipulación. Aun así, enseñad la tarjeta: hace tom yum con gamba.',nt:'Un puesto dentro del mercado, llevado por una sola mujer que cultiva parte de lo que usa. Hay quien dice que es la mejor comida tailandesa de la isla y con diferencia. Pad thai y curry penang sobre 120 THB, tom yum 200 THB.',v:'Reseñas'},
+{n:'Pa-Noi Thai Food',z:'Phi Phi',cat:'Cena',pri:1,ad:'Moo 7, Tonsai, Ko Phi Phi Don',dish:'Fideos salteados con pollo, pad thai, batidos de fruta recién hecha',when:'10 nov',pr:'2–4 €',hrs:'11:30–21:30, todos los días',a:'Se pide por escrito en un papel, apuntando plato y nivel de picante: aprovechad para escribir también la alergia. Tienen tom yum kung, así que avisad.',nt:'Lo lleva una sola persona, así que en hora punta se espera. Llegad sobre las 17:00 y no hay cola. Mezcla de locales y visitantes, que es la mejor señal. Agua y hielo gratis, cosa rara en la isla. Pocas mesas.',v:'Reseñas'},
+{n:'Praiya Thai Food',z:'Phi Phi',cat:'Cena',pri:1,ad:'Moo 7, Tonsai, Ko Phi Phi Don',dish:'Curry verde, massaman, tom yum, rollitos de primavera',when:'11 nov',pr:'2,5–5 €',hrs:'14:00–00:30; NO abre por la mañana',a:'Hacen massaman y tom yum con marisco. Pedid la versión de pollo y avisad en cocina.',nt:'De los mejor valorados de toda la isla. Platos entre 100 y 200 THB. El picante va del 1 al 5: el 3 ya es serio para un paladar europeo y el 4 es sufrimiento. Se llena y la comida tarda: id con tiempo.',v:'Reseñas'},
+{n:'The Locals (Phi Phi)',z:'Phi Phi',cat:'Desayuno',pri:1,ad:'Rimna Plaza, Moo 7, Tonsai, Ko Phi Phi Don',dish:'Currys al peso, arroz frito con piña, desayuno tailandés',when:'11 nov',pr:'2–4 €',hrs:'7:00–21:00, todos los días',a:'Carta amplia de curry de pollo y cerdo. Hacen pad thai con marisco: pedidlo sin.',nt:'Abre a las siete, lejos del bullicio del muelle, y muchos tailandeses de la isla se llevan de aquí la comida del mediodía. No todo está disponible cada día y el picante es real aunque pidas poco. Nadie te arrastra a la puerta, al contrario que en la calle principal.',v:'Reseñas'},
+{n:'Food market Koh Phi Phi',z:'Phi Phi',cat:'Comida',pri:2,ad:'Moo 7, en el centro de la isla, Tonsai, Ko Phi Phi Don',dish:'Puestos de street food y comedores pequeños',when:'10–12 nov',pr:'2–4 €',hrs:'Todo el día',a:'Es un mercado: hay puestos de marisco y woks compartidos. Elegid puesto con cuidado y preguntad antes de pedir.',nt:'Lo más local que hay dentro de Tonsai, con más platos de verdad que la mayoría de restaurantes de la isla. La calidad varía mucho de un puesto a otro: Pooky es el que merece la pena.',v:'Reseñas',ojo:'La calidad cambia mucho de un puesto a otro. Pooky es el que merece la pena.'},
+{n:'Torlady Restaurant',z:'Phi Phi',cat:'Desayuno',pri:2,ad:'Moo 7, Tonsai, Ko Phi Phi Don',dish:'Curry verde de pollo, pad thai, mango sticky rice',when:'12 nov',pr:'3–6 €',hrs:'7:30–23:30, todos los días',a:'Hacen salteados de marisco. Carta amplia de pollo: pedid por ahí.',nt:'Pequeño, con vistas a la bahía desde debajo de los árboles. Abre a las 7:30, así que vale para el desayuno del día del ferry. Al atardecer es de los sitios más bonitos de la isla. No todo el mundo coincide: hay quien lo encuentra flojo.',v:'Reseñas'},
+{n:'Bakery Hut by Payjay',z:'Phi Phi',cat:'Desayuno',pri:1,ad:'Moo 7, Tonsai, Ko Phi Phi Don',dish:'Tortita tailandesa con huevo, huevos revueltos, avena con leche de coco, café',when:'11–12 nov',pr:'3–5 €',hrs:'7:00–20:00, todos los días',a:'Sin marisco en el desayuno. De las opciones más controladas de la isla.',nt:'Lo llevan los dueños y es donde desayunan los tailandeses de la isla antes de entrar a trabajar. Tiene el mejor espresso de Tonsai según más de uno.',v:'Reseñas'},
+{n:"Anna's Restaurant",z:'Phi Phi',cat:'Cena',pri:3,ad:'111 Moo 7, Tonsai, Ko Phi Phi Don',dish:'Pad nam prik pao, arroz frito con piña, pollo con anacardos',when:'10–11 nov',pr:'4–8 €',hrs:'12:00–22:00, todos los días',a:'Carta muy amplia con bastantes platos de pollo y verdura, y de los locales más limpios de la isla. Buen refugio si la alergia da problemas en otros sitios.',nt:'Más turístico y más caro que los puestos, pero muy fiable y limpio: se entra descalzo.',v:'Reseñas'},
+{n:'Aroi Cafe & Tropical Bar',z:'Phi Phi',cat:'Merienda',pri:1,ad:'Moo 7, Tonsai, Ko Phi Phi Don',dish:'Bol de açaí, batidos de fruta fresca, café',when:'10–11 nov',pr:'3–5 €',hrs:'8:00–23:00, todos los días',a:'Sin marisco.',nt:'Fruta cortada al momento, no sacada de un bote. Buen sitio para el calor de la tarde entre playa y cena.',v:'Reseñas'},
+{n:'Baan Kuay Tiew Ruathong',z:'Bangkok',cat:'Comida',pri:1,ad:'Ratchawithi Rd, Victory Monument',dish:'Boat noodles',when:'14 nov',pr:'1–3 €',hrs:'≈9:00–21:00',a:'Sin marisco.',nt:'El epicentro de los boat noodles de la ciudad.'},
+{n:'Go-Ang Kaomunkai Pratunam',z:'Bangkok',cat:'Comida',pri:1,ad:'Pratunam, Bangkok',dish:'Khao man gai',when:'14 nov',pr:'1–2 €',hrs:'6:00–14:00 y 15:00–22:00',a:'Pollo, apto.',nt:'Bib Gourmand. 4,2 con 7.247 reseñas.'},
+{n:'Thipsamai Pad Thai',z:'Bangkok',cat:'Comida',pri:1,ad:'313-315 Maha Chai Rd',dish:'Pad thai',when:'15 nov',pr:'2–5 €',hrs:'17:00–01:00',a:'Pedirlo sin gamba ni camarón seco.',nt:'Abierto desde 1939, cerca del Gran Palacio.',ojo:'Suele haber cola larga, y el \'superb\' cuesta bastante más y lleva grasa de gamba.'},
+{n:'Kor Panich Sticky Rice',z:'Bangkok',cat:'Postre',pri:1,ad:'431-433 Tanao Rd',dish:'Mango sticky rice',when:'16 nov',pr:'1–3 €',hrs:'7:00–17:00; CIERRA LOS DOMINGOS',a:'Apto.',nt:'Bib Gourmand seis años seguidos. En la guía Michelin.'},
+{n:'Wang Lang Market',z:'Bangkok',cat:'Comida',pri:2,ad:'Wang Lang Rd, ferry desde Tha Chang',dish:'Krapao, currys',when:'15 nov',pr:'1–3 €',hrs:'Todo el día',a:'Según puesto.',nt:'Mercado universitario, muy local y sin turistas.'},
+{n:'Or Tor Kor Market',z:'Bangkok',cat:'Merienda',pri:1,ad:'101 Kamphaeng Phet Rd, MRT Kamphaeng Phet',dish:'Currys, khao man gai, fruta',when:'15 nov',pr:'3–8 €',hrs:'6:00–20:00',a:'Según puesto.',nt:'Mercado gourmet enfrente de Chatuchak.'},
+{n:'Yaowarat (Chinatown)',z:'Bangkok',cat:'Cena',pri:1,ad:'Yaowarat Rd, MRT Wat Mangkon',dish:'Guay jub, khao kha moo, pato',when:'15 nov',pr:'3–8 €',hrs:'Tardes y noche',a:'Evitad los puestos de marisco con captadores.',nt:'El mejor street food nocturno de Bangkok.',ojo:'Esquivad los puestos con captador en la puerta: lo bueno no necesita que te llamen.'},
+{n:'Kuay Jub Ouan Pochana',z:'Bangkok',cat:'Cena',pri:2,ad:'Yaowarat Rd, Chinatown',dish:'Guay jub',when:'15 nov',pr:'1–2 €',hrs:'Noche; CIERRA LOS LUNES',a:'Cerdo, apto.',nt:'Bib Gourmand. Caldo cargadísimo de pimienta.'},
+{n:'Jek Pui Curry Rice',z:'Bangkok',cat:'Cena',pri:2,ad:'Esquina Mangkon con Charoen Krung',dish:'Curry sobre arroz',when:'16 nov',pr:'1–2 €',hrs:'Tardes',a:'Currys con kapi; pedid pollo.',nt:'No hay mesas: se come de pie en la acera.'},
+{n:'Supanniga Eating Room',z:'Bangkok',cat:'Cena',pri:3,ad:'Tha Tien (vistas a Wat Arun) o Thonglor',dish:'Cocina tailandesa regional',when:'16 nov',pr:'15–30 €',hrs:'Mediodía y noche',a:'Carta amplia y avisan en cocina.',nt:'El capricho del viaje, dentro del presupuesto.'},
+{n:'Above Eleven',z:'Bangkok',cat:'Rooftop',pri:1,ad:'Fraser Suites, Sukhumvit Soi 11',dish:'Cóctel al atardecer',when:'14 nov',pr:'15–25 €',hrs:'Desde las 17:00',a:'',nt:'Ambiente relajado. Pantalón largo y calzado cerrado.'},
+{n:'Cielo Sky Bar',z:'Bangkok',cat:'Rooftop',pri:2,ad:'BTS Phra Khanong',dish:'Cóctel con vistas de 360º',when:'14 nov',pr:'6–8 € la copa',hrs:'17:00–01:00',a:'',nt:'Mucho menos turístico y bastante más barato.'},
+{n:'Rooftop Bar Sala Rattanakosin',z:'Bangkok',cat:'Rooftop',pri:3,ad:'39 Maharat Rd',dish:'Cóctel frente a Wat Arun',when:'14–15 nov',pr:'20–30 €',hrs:'16:00–22:30',a:'',nt:'La mejor vista de Wat Arun al atardecer.'},
+{n:'Rung Rueang Pork Noodles',z:'Bangkok',cat:'Comida',pri:1,ad:'10/3 Sukhumvit 26, Khlong Tan, Khlong Toei',dish:'Fideos de cerdo, en caldo o secos',when:'14 nov',pr:'2–5 €',hrs:'8:00–17:00, todos los días',a:'El caldo de tom yum lleva gamba o pasta de gamba en la base. Pedid la versión de caldo claro de cerdo, que es la segura.',nt:'Lleva años en la guía Michelin. A un paseo del BTS Phrom Phong. Cierra a las 17:00, así que es comida y no cena. Pedid boles pequeños de varios tipos.',v:'Diego'},
+{n:'Pantaree',z:'Bangkok',cat:'Cena',pri:1,ad:'9 Soi Sukhumvit 8, Khlong Toei',dish:'Curry verde, salteados, carta tailandesa amplia',when:'14 nov',pr:'2–5 €',hrs:'10:00–22:00, todos los días',a:'Tienen calamar frito en carta: cocina compartida. La carta es amplia y hay curry de pollo y cerdo de sobra.',nt:'Metido en un callejón del Soi 8, sin cartel llamativo y sin turistas. Baratísimo. Preparan platos que no están en la carta si los pedís.',v:'Diego'},
+{n:'Khlong Toei Market',z:'Bangkok',cat:'Curioso',pri:2,ad:'Khlong Toei Market, Rama IV Rd, Khlong Toei',dish:'Mercado de abastos: para ver, no para comer',when:'14 nov',pr:'1–3 €',hrs:'Mañanas; lo bruto es antes del amanecer',a:'Puestos de marisco fresco por todas partes: la persona alérgica que no toque nada.',nt:'El mercado de abastos más grande de Bangkok y lo más crudo y real del viaje. De día está tranquilo; el espectáculo de verdad es de madrugada. Junto al MRT Queen Sirikit.',v:'Diego'},
+{n:'Original Pad Kra Pao 1993',z:'Bangkok',cat:'Comida',pri:2,ad:'231 Soi Charoen Rat 4, Khlong Ton Sai, Khlong San',dish:'Pad krapao de cerdo o ternera con huevo frito de pato',when:'15 nov',pr:'2–5 €',hrs:'11:00–21:00; cierra los miércoles',a:'Hacen también versión con gamba: avisad para que usen sartén limpia y enseñad la tarjeta al cocinero, que la cocina está a la vista y son seis mesas.',nt:'A dos minutos del BTS Wongwian Yai, cruzando el río desde Rattanakosin. Solo seis mesas. Pedid el picante normal: el fuerte es de verdad fuerte.',v:'Diego'},
+{n:'Damnoen Saduak',z:'Bangkok',cat:'Comida',pri:1,ad:'Damnoen Saduak, Ratchaburi',dish:'Boat noodles, brochetas, khanom krok',when:'16 nov',pr:'2–6 €',hrs:'Mañana temprano',a:'Cuidado con los woks compartidos.',nt:'El más turístico, pero Amphawa cierra los lunes. Id antes de las 8:00.',ojo:'El mercado flotante más turístico y más caro. Llegad antes de las 8:00 y asumid que vais por la foto.'},
+{n:'AMA Eatery',z:'Bangkok',cat:'Comida',pri:3,ad:'270-272 Maha Rat Road, Phra Borom Maha Ratchawang, Phra Nakhon',dish:'Pad thai y mango sticky rice',when:'15 nov',pr:'2–5 €',hrs:'11:00–17:15; no abre por la noche',a:'Carta tailandesa amplia, pero no está verificado qué alternativas sin marisco tiene: preguntad al llegar.',nt:'A un paseo de Wat Pho. Lo que más recomiendan es el pad thai y el mango sticky rice, que ese día ya están cubiertos por Thipsamai y Kor Panich: si vais, pedid otra cosa para no repetir.'},
+{n:'Gallery Drip Coffee',z:'Bangkok',cat:'Merienda',pri:2,ad:'Rattanakosin, Bangkok',dish:'Café de especialidad',when:'15 nov',pr:'2–5 €',hrs:'9:00–18:00',a:'',nt:'Café de filtrado en la zona de los templos.'},
+{n:'Hanoi Lakeside Premium Hotel',z:'Hanói',cat:'Alojamiento',pri:1,ad:'60 Cầu Gỗ, Hoàn Kiếm',dish:'Base para los desayunos',when:'30 oct – 1 nov',pr:'—',hrs:'Check-out 11:00 el 1 nov',a:'',nt:'Todo lo del Old Quarter queda andando.'},
+{n:'Hang Lan Bungalow',z:'Ninh Binh',cat:'Alojamiento',pri:1,ad:'Thung Chẽ Bèo, Khả Lương, Nam Hoa Lư',dish:'Desayuno incluido',when:'1–3 nov',pr:'—',hrs:'—',a:'',nt:'Junto a Tam Coc. Desayunad aquí los dos días.'},
+{n:'LangX Phủ Doãn',z:'Hanói',cat:'Alojamiento',pri:1,ad:'Phủ Doãn, Hoàn Kiếm',dish:'Base de la última noche en Vietnam',when:'4–5 nov',pr:'—',hrs:'—',a:'',nt:'En pleno Old Quarter.'},
+{n:'The Odyssey Chiang Mai',z:'Chiang Mai',cat:'Alojamiento',pri:1,ad:'Chiang Mai',dish:'Base para Chiang Mai',when:'5–8 nov',pr:'—',hrs:'—',a:'',nt:'Tres noches.'},
+{n:'The Greenery Hotel',z:'Krabi',cat:'Alojamiento',pri:1,ad:'Krabi Town',dish:'Noche de llegada a Krabi',when:'9–10 nov',pr:'—',hrs:'—',a:'',nt:'Una noche. En Krabi Town, cerca de los dim sum.'},
+{n:'PP PalmTree Resort',z:'Phi Phi',cat:'Alojamiento',pri:1,ad:'Phi Phi Don',dish:'Base en la isla',when:'10–11 nov',pr:'—',hrs:'—',a:'Avisad de la alergia en el restaurante del resort.',nt:'Una noche.'},
+{n:'Toto Resident',z:'Krabi',cat:'Alojamiento',pri:1,ad:'Ao Nang, Krabi',dish:'Base en Ao Nang',when:'12–13 nov',pr:'—',hrs:'—',a:'',nt:'Dos noches.'},
+{n:'The Grotto @ Rayavadee',z:'Krabi',cat:'Curioso',pri:2,ad:'Playa de Phra Nang, Rayavadee, Ao Nang, Mueang Krabi',dish:'Comer dentro de una cueva de caliza, con el mar a unos metros',when:'13 nov',pr:'20–35 €',hrs:'Comida 12:00–16:00 · Cena 18:00–22:30',a:'Carta muy cargada de marisco y cocina compartida: revisadla con calma y avisad al reservar.',nt:'Bajo un acantilado con estalactitas sobre las mesas. Solo se llega en barco: longtail desde Ao Nang, unos 200 THB por trayecto, y el resort no pone traslado. Llamad antes, porque hay versiones contradictorias sobre si entran quienes no se alojan allí. Reservas: +66 2301 18613.'},
+{n:'Khantoke en el Old Chiang Mai Cultural Center',z:'Chiang Mai',cat:'Curioso',pri:2,ad:'185/3 Wualai Rd Soi 3, Chiang Mai',dish:'Bandeja khantoke: gaeng hang lay, nam prik ong y num, sai ua, khaep mu, sticky rice',when:'6 nov',pr:'25–35 €',hrs:'19:00–21:00',a:'Los nam prik llevan kapi. Piden avisar de restricciones al reservar: hacedlo.',nt:'Se cena sentados en cojines en el suelo, con la comida en una bandeja redonda sobre pedestal, mientras hay danzas lanna y de tribus de montaña. Es un espectáculo montado para visitantes, no un sitio de locales, pero la comida es del norte de verdad. Reservad con uno o dos días.'},
+{n:'Cabbages & Condoms',z:'Bangkok',cat:'Curioso',pri:2,ad:'10 Sukhumvit Soi 12, Khlong Toei',dish:'Massaman, currys, ensaladas y sopas tailandesas',when:'14 nov',pr:'8–15 €',hrs:'11:00–22:00',a:'Carta larga de currys y salteados: de los sitios más fáciles para la cuarta persona. Los currys llevan kapi.',nt:'Lo fundó Mechai Viravaidya, apodado Mr Condom, y los beneficios van a su ONG de planificación familiar. Lámparas, maniquíes y flores del baño hechos con preservativos, y al final de la comida os dan uno en vez de caramelo. Está en el soi de al lado del rooftop Above Eleven.'},
+{n:'Moo krata (barbacoa con foso de caldo)',z:'Bangkok',cat:'Curioso',pri:3,ad:'Formato extendido por Bangkok y Chiang Mai, sobre todo en barrios locales',dish:'Carne a la brasa arriba y verduras y fideos cociéndose en el canal de caldo',when:'15 nov',pr:'5–8 €',hrs:'Noches',a:'Parrilla y bandeja compartidas: riesgo real de contaminación cruzada. Pedid bandeja aparte sin marisco.',nt:'Una cúpula metálica sobre brasas en el centro de la mesa: la grasa de la carne cae al canal de caldo que la rodea. Suele ser buffet, sale baratísimo y está lleno de tailandeses. Lo más divertido y lo menos europeo de todo el viaje.'},
+{n:'Kem Caramen Dương Hoa',z:'Hanói',cat:'Postre',pri:1,v:'Calixto Serna (México Cooking Club) con guía local + reseñas de Google',ad:'29 Hàng Than, Nguyễn Trung Trực, Ba Đình',dish:'Kem caramen (flan) y helado de coco servido en el coco entero',when:'4 nov',pr:'0,4–3 €',hrs:'9:00–22:00, todos los días',a:'Sin marisco.',nt:'La casa famosa de Hàng Than, por la que los vecinos pasan a comprar flan por docenas. El flan cuesta unos 9.000 dongs y el helado de coco 80.000. Pedid que os lo pongan con hielo o lo sirven del tiempo.',ojo:'Va por fama: música alta, servicio inexistente y moscas. Si no os convence, la casa de al lado está mejor valorada.'},
+{n:'Caramen Kim Yến',z:'Hanói',cat:'Postre',pri:2,v:'Reseñas',ad:'31 Hàng Than, Ba Đình',dish:'Kem caramen y helado de coco',when:'4 nov',pr:'0,4–3 €',hrs:'13:00–22:00, todos los días',a:'Sin marisco.',nt:'La casa pequeña de al lado de la famosa, y mejor valorada que ella. Caben cuatro o cinco personas en taburetes, así que es más de llevárselo. No abre hasta la una.'},
+{n:'Zô Zô Tofu Pudding',z:'Hanói',cat:'Postre',pri:1,v:'Reseñas',ad:'7b P. Hàng Da, Hoàn Kiếm',dish:'Tào phớ con perlas de tapioca y gelatina',when:'31 oct',pr:'0,6–1 €',hrs:'13:00–21:30, todos los días',a:'Sin marisco.',nt:'Prácticamente el único sitio de tofu dulce del Old Quarter, y lleno de vietnamitas todas las noches. Unos 18.000 dongs. Se pide abajo y te lo subes a una sala con ventiladores, lejos del ruido de la calle.'},
+{n:'Ngõ Đồng Xuân',z:'Hanói',cat:'Desayuno',pri:1,v:'Zona confirmada por Calixto Serna (México Cooking Club)',ad:'Ngõ Đồng Xuân, junto al mercado Đồng Xuân, Hoàn Kiếm',dish:'Puestos de bún chả, bánh cuốn, bún riêu y bánh tôm',when:'31 oct – 1 nov',pr:'1–3 €',hrs:'Mañanas; casi todos cierran a mediodía',a:'Hay puestos de bánh tôm, que es buñuelo de gamba, y de bún riêu, que lleva cangrejo. Preguntad puesto por puesto.',nt:'Un callejón estrechísimo lleno de puestos, que nació para dar de comer a los vendedores del mercado de al lado. Es de lo más auténtico del Old Quarter y está a diez minutos andando del hotel. Es de desayuno y de comida temprana: a mediodía empieza a cerrar casi todo.',ojo:'No lo confundáis con el Chợ Đồng Xuân, el mercado grande, que es de ropa y venta al por mayor. Lo de comer está en el callejón de al lado.'},
+{n:'Lý Văn Phức (calle del pollo)',z:'Hanói',cat:'Cena',pri:2,v:'Reseñas',ad:'P. Lý Văn Phức, Ô Chợ Dừa, Đống Đa',dish:'Chân gà nướng: patas y alitas al carbón, con pan con miel y boniato',when:'4 nov',pr:'3–6 €',hrs:'Desde las 16:00 hasta medianoche',a:'Sin marisco: es todo pollo, cerdo y pan.',nt:'Una calle entera de brasas, con taburetes en la acera. El mejor valorado es Gà Nướng Thịnh Vượng, en el número 5, por delante de Quán Gà Nướng Việt Hà, en el 18. Qué pedir: alitas y patitas de pollo al carbón con marinado dulce, mollejas, costilla de cerdo, y el pan con mantequilla y miel (bánh mì nướng bơ mật ong) que se pide siempre de acompañamiento. A 150.000 dongs se come de sobra.',ojo:'Está a 3 km del Old Quarter, en Đống Đa: hace falta Grab. Y las opiniones están partidas, que hay quien la ve sucia y mediocre. Los taburetes son minúsculos: en media hora se acaba la paciencia.'},
+{n:'Ngũ Xã (calle del phở cuốn)',z:'Hanói',cat:'Cena',pri:1,v:'Reseñas',ad:'P. Ngũ Xã, junto al lago Trúc Bạch, Ba Đình',dish:'Phở cuốn y phở chiên phồng',when:'4 nov',pr:'3–6 €',hrs:'9:00–22:30 según el local',a:'Sin marisco en los dos platos de la calle.',nt:'La calle donde se inventó el phở cuốn, en la isla del lago Trúc Bạch. Hay varios y no son iguales: Phở Cuốn Thanh Hằng, en el 29b, es más fresco y menos industrializado que los grandes; Phở Cuốn 31 es más amplio pero trabaja con grupos de tours. Pedid las dos cosas, el rollo y la almohadilla frita.',ojo:'Los locales grandes de la calle trabajan con excursiones en jeep. Los pequeños están mejor.'},
+{n:'Train Street',z:'Hanói',cat:'Merienda',pri:1,ad:'P. Phùng Hưng, tramo entre Trần Phú y Điện Biên Phủ, Hoàn Kiếm',dish:'Cerveza fría y café mientras pasa el tren',when:'1 nov',pr:'1–2 €',hrs:'Según el paso del tren',a:'Sin marisco.',nt:'Terrazas a centímetros de la vía. La cerveza va por unos 35.000 dongs. Chả Cá Hà Nội 1871 está en esta misma calle, en el 165B.',ojo:'La señal de que viene el tren es que los dueños recogen las mesas de la vía. Haced caso a los locales y apartaos; no os fieis de los horarios publicados, que la policía cierra el tramo a temporadas.'},
+{n:'Chợ Rồng',z:'Ninh Binh',cat:'Comida',pri:3,ad:'Chợ Rồng, ciudad de Ninh Bình',dish:'Nem chua Yên Mạc para llevar, fruta y productos de la zona',when:'2 nov',pr:'1–3 €',hrs:'Mañanas',a:'Es mercado: hay puestos de pescado de río y de caracol.',nt:'El mercado de la ciudad de Ninh Bình, que no es Tam Coc: está a unos 20 minutos. Es donde se compra el nem chua Yên Mạc para llevar. Solo merece el viaje si vais a la ciudad por algo más.'},
+{n:'Chatuchak Weekend Market',z:'Bangkok',cat:'Comida',pri:2,ad:'Kamphaeng Phet 2 Rd, Chatuchak; MRT Kamphaeng Phet o BTS Mo Chit',dish:'Puestos de street food repartidos entre las secciones',when:'15 nov',pr:'2–5 €',hrs:'Sábados y domingos, 9:00–18:00',a:'Puestos de marisco y woks compartidos por todas partes.',nt:'Más de ocho mil puestos, de los que comer es una parte pequeña. Se come mejor enfrente, en Or Tor Kor, y se compra aquí. Solo abre fines de semana, y el 15 es domingo.',ojo:'Es inmenso y agota. Entrad con una idea de qué buscáis o se os va la tarde dando vueltas.'},
+{n:'Bánh chưng cô Mai',z:'Hanói',cat:'Merienda',pri:1,ad:'16 P. Đào Duy Từ, Hàng Buồm, Hoàn Kiếm',dish:'Bánh giò + bánh chưng rán',when:'4 nov',pr:'0,5–1,5 €',hrs:'Sin horario publicado; las reseñas lo citan de mañana y de tarde, hasta agotar',v:'Calixto Serna (México Cooking Club) con guía local + reseñas de Google',a:'Cerdo y seta, sin marisco. Pedid que la machaca sea de cerdo (chà bông heo), no de gamba (chà bông tôm).',nt:'Receta de los padres de la señora Mai, más de 60 años en la misma acera. Banquitos en la calle y se acaba pronto. A 250 m de la esquina de Tạ Hiện, tres minutos andando: encadena con la bia hơi.'},
+{n:'Bánh mì a la leña de Hàng Bè',z:'Hanói',cat:'Merienda',pri:1,ad:'43A P. Hàng Bè, Hàng Bạc, Hoàn Kiếm',dish:'Bánh mì de cerdo a la brasa',when:'31 oct',pr:'1,5–1,8 €',hrs:'15:00–19:00 (solo tardes)',v:'Calixto Serna (México Cooking Club) con guía local + 4,7 en Google',a:'Brochetas de cerdo, pepinillo y salsa. Sin marisco.',nt:'Dos brochetas de cerdo marinado hechas al carbón dentro del pan, 40-50.000 dongs. Está en el mismo portal que el Bún Chả Lằu Gật Gù y a 150 m del hotel.'},
+{n:'Cháo Sườn Sụn Huyền Anh',z:'Hanói',cat:'Cena',pri:2,ad:'14 P. Đồng Xuân, Hoàn Kiếm (frente al mercado)',dish:'Cháo sườn sụn',when:'30 oct',pr:'1,4–1,8 €',hrs:'12:00–03:00',v:'Calixto Serna (México Cooking Club) con guía local + 4,2 con 1.940 reseñas',a:'Pedid cháo sườn sụn (costilla de cerdo). En los puestos de cháo suele haber versión de gamba o almeja: confirmad que es la de cerdo.',nt:'Frente al Chợ Đồng Xuân y abierto hasta las 3 de la mañana: es el sitio de madrugada del Old Quarter. Se pide con quẩy, la masa frita que hace de churro.'},
+{n:'Banh Mi 25',z:'Hanói',cat:'Desayuno',pri:2,ad:'25 P. Hàng Cá, Hoàn Kiếm',dish:'Bánh mì',when:'Varios días',pr:'1–2 €',hrs:'7:00–21:00, todos los días',v:'Reseñas de Google (4,5 con 17.777)',a:'Las versiones de cerdo y paté no llevan marisco. Preguntad por el paté si hay duda.',nt:'Solo efectivo. Se pide en el puesto y se come enfrente.'}
+
+];
+
+/* pro = por qué merece la pena · ojo = qué vigilar.
+   Se consulta con el nombre del sitio: el campo n: de PLACES para el principal,
+   y para los planes B/C/D/E el texto que hay antes de la primera coma. */
+var INFO = {
+
+/* ===================== HANÓI ===================== */
+'Phở Gia Truyền Bát Đàn': ['Bib Gourmand y 4,3 con 5.710 reseñas: el caldo más serio del barrio', 'solo 6:00–11:00 y 17:00–21:30, se paga antes de sentarse y se agota'],
+'Phở 10 Lý Quốc Sư': ['4,1 con 12.413 reseñas y abre 6:00–21:00: siempre hay sitio', 'es el phở cómodo del barrio, correcto más que memorable'],
+'Family Pho': ['4,8 y abre 6:00–21:00, a dos minutos de Lý Quốc Sư', 'solo 425 reseñas: muestra pequeña, no comparable con las de miles'],
+'Phở Bò Lâm': ['hace phở xào, el salteado que casi nadie sirve', 'el Maps de 48 Hàng Vai devuelve un karaoke: hay que llegar a pie y preguntar'],
+'Bún Chả Lằu Gật Gù': ['4,9 con 1.166 reseñas y a 300 m del hotel', 'abre 11:00–23:30: no sirve para desayunar'],
+'Bún Chả Đắc Kim': ['el bún chả más antiguo de Hàng Mành', '3,9 con 8.531 reseñas y tres imitadores en la misma acera: es el número 1'],
+'Bún Chả Hương Liên': ['donde comieron Obama y Bourdain en 2016, 4,1 con 12.442 reseñas', 'cola de turistas, y el Combo Obama trae un nem de cangrejo que hay que quitar'],
+'Bánh Cuốn Gia Truyền Thanh Vân': ['en la guía Michelin, 4,3 con 792 reseñas', 'cierra a mediodía (7:00–13:30 y 17:00–21:00) y conviene repasar la cuenta'],
+'Bánh Cuốn Bà Xuân': ['4,3 con 1.879 reseñas y horario amplísimo (6:30–13:30 y 15:30–23:00)', 'está en Hàng Than, 1 km al norte del hotel'],
+'Bún Bò Nam Bộ Bách Phương': ['abierto desde 1986, 4,5 con 7.958 reseñas y 7:30–22:30', 'una sola carta: si no apetece el bol seco, no hay nada más dentro'],
+'Bún Đậu Mắm Tôm Cô Hoa': ['bandeja de tofu frito junto a la catedral, 4,4 y abre 6:30–22:00', 'el mắm tôm es pasta de gamba: hay que pedir salsa de pescado aparte'],
+'Chả Cá Thăng Long': ['Bib Gourmand, 4,7 con 577 reseñas: el chả cá se termina en la mesa', 'Google indexa el nombre en 17A P. Chả Cá y la dirección real es 6B Đường Thành: no fiarse del pin'],
+'Chả Cá Hà Nội 1871': ['4,7, la mitad de precio que Thăng Long y al lado de Train Street', 'abre 11:00–22:30 y es un local pequeño de dos plantas'],
+'Café Giảng': ['lo lleva la familia del inventor del café de huevo desde 1946, 4,4 con 17.311 reseñas', 'el callejón de entrada es estrechísimo y a media tarde hay cola'],
+'Egg Coffee & More': ['4,9 con 778 reseñas y abre 6:30–23:00: el mejor horario del barrio', 'es una cafetería moderna, no el sitio histórico'],
+'Xôi Yến': ['abre 6:00–24:00: resuelve la cena del día de llegada, 4,0 con 4.632 reseñas', 'ha subido precios y en hora punta se come de pie'],
+'Xôi Bánh Mì Kim Hương': ['5,0 con 1.046 reseñas, lo hace una señora al momento y pregunta preferencias', 'CIERRA LOS DOMINGOS y solo abre 7:00–17:00'],
+'Bánh Mì Nguyên Sinh': ['charcutería de estilo francés desde 1942: paté y embutido propios', '2,5 con 86 reseñas, pero las quejas son de precio y de no ser un bánh mì de verdad: no lo es, es otra cosa'],
+'Bia hơi de Tạ Hiện': ['la esquina de la cerveza del Old Quarter, cerveza del día desde 0,4 €', 'abre a las 14:00, el número 37 cobra 20.000 en vez de 10.000 y los captadores son insistentes'],
+'Cỏ Restaurant': ['4,9 con 11.446 reseñas y mucha carta sin marisco', 'es restaurante de carta: más caro que el puesto de al lado'],
+'Viet Traditional Cuisine': ['4,9 con 4.289 reseñas y abre 9:30–22:30', 'orientado a turistas: cómodo, pero no es un puesto de calle'],
+'Chè Gỗ': ['5,0 con 265 reseñas, chè casero en Hàng Thiếc', 'abre 13:30–21:30: no vale de desayuno'],
+'Zô Zô Tofu Pudding': ['4,7, tào phớ recién hecho en pleno Old Quarter', 'abre 13:00–21:30 y es un mostrador, no hay mesas'],
+'Kem Caramen Dương Hoa': ['4,1 con 1.096 reseñas, el flan de Hàng Than, 9:00–22:00', 'el flan es excelente y es la tercera generación de la familia, pero va por fama: música alta, servicio inexistente y moscas'],
+'Caramen Kim Yến': ['4,7 con 241 reseñas, 13:00–22:00, el otro flan de la misma calle', 'misma observación: están a metros uno del otro, mirad el número'],
+'Ngõ Đồng Xuân': ['callejón de puestos detrás del mercado: bún chả cá, bánh tôm, nada de turismo', 'no es el Chợ Đồng Xuân: está 90 m al sur y cierra a media tarde'],
+'Chợ Đồng Xuân': ['el mercado cubierto grande del Old Quarter, 6:00–18:00', 'es mercado de género más que de comida: la comida está en el ngõ de al lado'],
+'Ngũ Xã (calle del phở cuốn)': ['dos casas a 10 m una de otra (31 y Thanh Hằng), 4,2 con 2.516 y 726 reseñas', 'está en la isla de Trúc Bạch, 2 km al noroeste: 10 min en Grab'],
+'Phở Cuốn 31': ['el phở cuốn original de Ngũ Xã, 4,2 con 2.516 reseñas, 9:00–22:30', 'hay varias casas casi iguales en la misma acera'],
+'Phở Cuốn Thanh Hằng': ['al lado del 31 y con la misma carta, 4,2 y abre 10:00–22:00', 'a 10 m del otro: si uno está lleno, el otro no'],
+'Lý Văn Phức (calle del pollo)': ['la calle entera son parrillas de pollo con taburetes en la acera, 16:00–24:00', 'está en Ô Chợ Dừa, Đống Đa, a 3 km de Hoàn Kiếm: hace falta Grab'],
+'Gà Nướng Thịnh Vượng': ['4,1 con 653 reseñas, el más concurrido de la calle del pollo', 'abre a las 16:00 y está a 3 km del Old Quarter'],
+'Quán Gà Nướng Việt Hà': ['la alternativa de la misma acera, 680 reseñas', '3,8 y abre a las 16:00: id al Thịnh Vượng primero'],
+'Train Street': ['café pegado a la vía, con horario de paso del tren', 'lo cierran sin avisar, y en el número 8 de Phùng Hưng hay un dueño que bloquea el paso para forzar la entrada a su café: entrad por otro tramo'],
+'Hanoi Lakeside Premium Hotel': ['a 300 m de Hàng Bè: el Bún Chả Lằu Gật Gù y Café Giảng a pie', '4,2 con 316 reseñas y varias se quejan del estado: el desayuno mejor fuera'],
+'LangX Phủ Doãn': ['junto a Lý Quốc Sư: Phở 10 y Family Pho a dos minutos', 'última noche: manda el vuelo, no la cena'],
+'Bánh chưng cô Mai': ['receta de familia de más de 60 años, y el bánh giò es difícil de encontrar incluso en Hanói', '3,6 pero con solo 13 reseñas, que no dicen nada: las que hay son todas buenas y hablan de institución del barrio'],
+'Bánh mì a la leña de Hàng Bè': ['4,7 con 54 reseñas y el cerdo se hace al carbón delante: a tres metros del bún chả y a 150 m del hotel', 'SOLO ABRE DE 15:00 A 19:00: es merienda, nunca desayuno, y hay cola de motos'],
+'Cháo Sườn Sụn Huyền Anh': ['1.940 reseñas y ABRE HASTA LAS 3:00: el único plan sólido para la noche de llegada', 'está sucio de verdad (huesos y servilletas en el suelo), se come en banquitos y abre a las 12:00, no por la mañana'],
+'Banh Mi 25': ['4,5 con 17.777 reseñas y abre 7:00–21:00 todos los días: el bánh mì de día que no teníamos', 'solo efectivo, hay cola a media mañana y el local es diminuto'],
+
+/* ===================== NINH BINH ===================== */
+'Bamboo Garden Tam Coc': ['4,9 con 257 reseñas, cabra y cơm cháy junto al embarcadero, 9:30–23:00', 'hay varios locales con nombre parecido en Van Lam: confirmad la ubicación'],
+'Chef Hien Restaurant': ['4,8 con 5.600 reseñas y abre 10:00–23:30', 'el más turístico de Tam Coc: en temporada hay que reservar'],
+'Thảo Béo Restaurant Bar': ['4,9 con 2.516 reseñas, cocina de casa (nem chua, miến lươn, gà đồi)', 'carta corta y la cocina se atasca cuando se llena'],
+'An Tam Coc Restaurant & Coffee': ['4,8 con 2.228 reseñas y abre 8:00–22:00', 'es tanto café como restaurante: la cocina es sencilla'],
+'Nhà Hàng Dê Núi Chính Thư': ['4,2 con 5.072 reseñas, cabra a la brasa de las de verdad', 'está 1,5 km al norte de Hang Mua y para de 15:00 a 16:30'],
+'Hang Lan Bungalow': ['4,7 con 545 reseñas, desayuno buffet incluido y bicicletas gratis: Tam Coc a 10 min pedaleando', 'está en el campo: para cenar fuera hace falta bici, moto o taxi'],
+'Chợ Rồng': ['el mercado de la ciudad de Ninh Binh, donde no hay un turista', 'Google lo confunde con el Chợ Rồng de Nam Định, a 30 km: id por dirección, no por pin'],
+'Crucero Peony': ['pensión completa a bordo y no hay que decidir nada', 'se embarca en Tuan Chau Marina y las salidas suelen ser a las 12:00; los menús van cargados de marisco: avisad al reservar y repetidlo al embarcar'],
+'Family Restaurant Tam Coc': ['4,6 con 4.138 reseñas y abre 8:00–23:30: el pato asado es la especialidad de Tam Coc', 'es grande y entran grupos: ambiente de comedor, no de casa'],
+'Thang Long Restaurant': ['abre 7:00–22:30 y está junto al embarcadero de Tràng An, por si el día se alarga', 'es comedor de autobuses turísticos: menú fijo, comida fría y varias reseñas de falta de higiene'],
+
+/* ===================== CHIANG MAI ===================== */
+'Khao Soi Mae Sai': ['validado por Diego y por Cristi, Michelin cuatro años, 4,5 con 6.140 reseñas', 'CIERRA LOS DOMINGOS, abre 8:00–16:00 y está en Chang Phueak, fuera del casco'],
+'Khao Soi Khun Yai': ['4,6 con 2.942 reseñas, el khao soi del templo, dentro del casco', 'solo 10:00–14:00 y CIERRA LOS DOMINGOS'],
+'Khao Soi Lung Prakit Kad Kom': ['4,4 con 3.866 reseñas y abre todos los días 9:30–16:30', 'está en Kad Kom, al sur: no es paseable desde el casco'],
+'Khao Soi Lamduan Fa Ham': ['la casa de khao soi más antigua de la ciudad, 1.541 reseñas', '4,2, solo 8:30–15:30 y está en Fa Ham, al otro lado del río'],
+'Thaan Aoan': ['4,6 con 2.791 reseñas y abre 7:00–21:00: el horario más cómodo del casco', 'cocina de cafetería-hotel: correcta, no de puesto'],
+'Huen Phen': ['la bandeja lanna de referencia, 3.927 reseñas, y es paseable', '4,0: servicio irregular con grupos, y la carta de día (8:30–16:30) no es la de noche'],
+'Huen Muan Jai': ['4,4 con 4.927 reseñas: gaeng hang lay y nam prik ong como en casa', 'CIERRA LOS MIÉRCOLES y para de 15:00 a 17:00'],
+'Tong Tem Toh': ['4,2 con 6.755 reseñas en Nimman y abre 8:00–23:00', 'siempre hay cola y es el más orientado a público joven'],
+'Khao Kha Moo Chang Phueak': ['la señora del sombrero de vaquero, Bib Gourmand y salió con Bourdain', 'ES UN PUESTO DE NOCHE: abre a las 18:00, no vale como comida de mediodía'],
+'SP Chicken': ['4,2 con 2.241 reseñas, pollo a la rotisserie en el casco', 'cierra a las 17:00 y el local es un pasillo de cuatro mesas'],
+'Cherng Doi Roast Chicken': ['4,3 con 3.271 reseñas, pollo y ensaladas del norte', 'CIERRA LOS LUNES y abre solo 11:00–20:00'],
+'Laab Kai Meuang Phan Waen': ['laab de pollo del norte, 4,5 con 675 reseñas, dentro del casco', 'CIERRA LOS SÁBADOS: el 7 de noviembre es sábado'],
+'Warorot Market (Kad Luang)': ['4,4 con 7.403 reseñas: sai ua y chicharrón donde compran los de aquí', 'abre 6:00–18:00: es mercado de mañana, no de noche'],
+'Sunday Walking Street': ['el 8 de noviembre cae domingo: se monta sola', 'empieza a las 17:00, va llenísima y los patios de los templos son la zona de comer'],
+'Night Bazaar (Kalare y Anusarn)': ['Anusarn tiene patio de comidas cubierto y 4,2 con 4.572 reseñas', 'media zona es marisco a la parrilla: id al lado de brochetas, gai yang y som tam'],
+'Khantoke en el Old Chiang Mai Cultural Center': ['se cena en el suelo con danzas lanna, 4,3 con 2.495 reseñas', 'es un espectáculo para turistas, menú fijo y hay que reservar'],
+'Roti Pa Dae': ['Bib Gourmand, 4,2 con 2.247 reseñas, y se pide por escrito en un papel', 'abre a las 18:30: es postre de noche, no merienda'],
+'Ristr8to': ['4,6 con 1.314 reseñas, campeón de latte art, abre 7:00–17:30', 'local pequeño y el café a 88 THB es caro para Chiang Mai'],
+'Graph Café': ['4,5 con 1.281 reseñas, nitro y cafés de autor dentro del casco', 'caben ocho personas y cierra a las 17:00'],
+'Dash! Restaurant': ['4,5 con 3.266 reseñas en una casa teca del casco antiguo, con música en vivo', 'CIERRA LOS DOMINGOS (el 8 es domingo), abre 10:00–22:00 y conviene reservar'],
+
+/* ===================== KRABI Y AO NANG ===================== */
+'Sai Mei Dim Sum': ['4,4: dim sum de madrugada donde desayunan los de Krabi Town', 'CIERRA LOS MIÉRCOLES y abre solo de 6:00 a 11:00'],
+'Racharos Dim Sum': ['4,3 con 1.835 reseñas y abre 5:30–13:00 todos los días', 'está en Pak Nam, 1 km al norte del centro'],
+'Maharaj Market': ['4,3 con 2.218 reseñas: el mercado de la ciudad, 5:00–12:00', 'de mañana: a mediodía está recogiendo'],
+'Nong Thai Kitchen': ['4,8 con 1.172 reseñas y abre 11:00–23:00 en Ao Nang', 'está camino del pueblo: 15 min andando desde la playa'],
+'KoDam Kitchen': ['4,9 con 2.956 reseñas y currys con vistas en Nopparat Thara', 'hay que ir en taxi y la carta lleva mucho marisco: tirad de currys de pollo'],
+'D&E Jungle Kitchen': ['4,7 con 2.026 reseñas, massaman y brasa al final de la playa', 'CIERRA LOS DOMINGOS y para de 15:00 a 17:00'],
+'RuenMai': ['4,7 con 1.748 reseñas: khua kling y moo hong del sur de verdad', 'está en Sai Thai, no en Krabi Town, y abre 10:30–15:00 y 17:00–21:00'],
+'Gecko Cabane': ['4,7 con 1.064 reseñas, cocina del sur en Krabi Town', 'CIERRA LOS MIÉRCOLES y abre solo de 12:00 a 22:00'],
+'Baitoey': ['4,5 con 1.287 reseñas y carta amplia de cerdo, pollo y moo hong', 'su nombre completo es Baitoey Seafood: la casa es de marisco, hay que pedir con cuidado'],
+'Thanya Kitchen': ['4,6 con 1.074 reseñas en Ao Nang, cocina tailandesa sin pretensiones', 'abre solo por la tarde, de 13:00 a 21:30'],
+'PHUPHA Thai Food': ['4,8 y abre 6:30–22:00: resuelve el desayuno sin salir de Ao Nang', 'es pequeño y la cocina tarda cuando se llena'],
+'Red Chilli Ao Nang': ['4,8 con 1.649 reseñas, de los mejor valorados de Ao Nang', 'abre a las 13:00 y está en la calle de atrás, no en el paseo'],
+'Khun Noi Thai Food': ['4,7 con 301 reseñas, cocina de casa de verdad', 'CIERRA LOS LUNES (el 9 es lunes) y abre solo 10:00–18:00'],
+'Ao Nang Boat Noodle': ['4,5 con 1.286 reseñas, boat noodles y larb moo, 10:00–21:00', 'los boat noodles llevan sangre de cerdo en el caldo: avisad si no apetece'],
+'Mercado nocturno de Krabi Town': ['4,3 con 9.588 reseñas: probar mucho y barato en un sitio', 'SOLO ABRE VIERNES, SÁBADO Y DOMINGO de 17:00 a 22:00: el 13 es viernes y cae bien'],
+'The Grotto @ Rayavadee': ['se come dentro de una cueva de caliza con el mar a tres metros', '3,7 con 702 reseñas: el sitio es único, la comida divide y es lo más caro del viaje'],
+
+/* ===================== PHI PHI ===================== */
+'Pooky': ['4,8 y las reseñas elogian cómo tratan los ingredientes: el mejor sitio para explicar la alergia', 'abre 10:00–23:00 y son cuatro mesas'],
+'Pa-Noi Thai Food': ['4,8 con 1.711 reseñas y SE PIDE POR ESCRITO: la mejor ocasión del viaje para dejar la alergia clara', 'abre 11:30–21:30'],
+'Praiya Thai Food': ['4,8 con 413 reseñas, cocina tailandesa de verdad en Tonsai', 'abre a las 14:00: no sirve de desayuno'],
+'The Locals (Phi Phi)': ['4,8 con 282 reseñas, currys al momento y abre a las 7:00', 'está al final del pueblo, hacia el este'],
+'Food market Koh Phi Phi': ['puestos a cinco minutos del muelle: lo más barato de la isla', 'hay parrillas de marisco pegadas: pedid en los de pollo y cerdo'],
+'Torlady Restaurant': ['4,8 y abre 7:30–23:30, el horario más largo del pueblo', 'está apartado, al sur de Tonsai'],
+'Bakery Hut by Payjay': ['4,6 y abre a las 7:00: resuelve el desayuno del día del ferry', 'es panadería: desayuno, no comida'],
+"Anna's Restaurant": ['4,7 con 2.615 reseñas: la carta más amplia de Tonsai', 'abre a las 12:00 y es el más turístico de la lista'],
+'Aroi Cafe & Tropical Bar': ['4,8 y abre 8:00–23:00', 'es café-bar: la cocina es sencilla'],
+'Padthai Phi Phi Island': ['4,7 con 636 reseñas, pad thai de 10:00 a 22:00', 'una sola cosa en la carta'],
+'Papaya Restaurant': ['4,6 con 1.686 reseñas y abre hasta las 23:30', 'india y tailandesa a la vez, y pica de verdad si lo pedís picante'],
+'Patcharee French Bakery': ['abre a las 7:00 con pan recién hecho, 1.768 reseñas', '4,2: es el plan de desayuno rápido, nada más'],
+'Phi Phi Bakery': ['4,3 con 463 reseñas y abre 7:00–22:00: huevos, bollería y café decente', 'es panadería-cafetería de isla: correcta, sin más'],
+
+/* ===================== BANGKOK ===================== */
+'Baan Kuay Tiew Ruathong': ['4,4 con 3.270 reseñas: boat noodles en boles que se apilan', 'CIERRA LOS LUNES y abre 9:00–20:30'],
+'Go-Ang Kaomunkai Pratunam': ['el khao man gai con Bib Gourmand, 4,2 con 7.247 reseñas, 6:00–22:00', 'está en Pratunam, 1,8 km al sur de Victory Monument'],
+'Thipsamai Pad Thai': ['el pad thai histórico de Bangkok, abierto desde 1939, 12.679 reseñas', 'CIERRA LOS MARTES, siempre hay cola y el "superb" lleva grasa de gamba'],
+'Kor Panich Sticky Rice': ['Bib Gourmand seis años seguidos: el mango sticky rice más antiguo de la ciudad', 'CIERRA LOS DOMINGOS y abre solo 7:00–17:00: se paga en un lado y se come enfrente'],
+'Wang Lang Market': ['4,5 con 4.613 reseñas: mercado de estudiantes al otro lado del río', 'abre 9:00–18:00 y se llega en ferry desde Tha Chang'],
+'Or Tor Kor Market': ['4,3 con 14.365 reseñas: el mercado de producto más limpio de Bangkok', 'CIERRA A LAS 18:00: es merienda, no cena'],
+'Chatuchak Weekend Market': ['4,4 con 56.684 reseñas y los puestos de comida son de verdad', 'CIERRA LOS LUNES: solo vale el domingo 15'],
+'Yaowarat (Chinatown)': ['la calle de comida más intensa de Bangkok, a partir de las 18:00', 'media calle es marisco a la parrilla: llevad decididos los puestos'],
+'Nai Ek Roll Noodle': ['4,4 con 4.804 reseñas y ABRE TODOS LOS DÍAS de 7:30 a 00:30', 'el guay jub lleva despojos: se puede pedir solo con cerdo'],
+'Kuay Jub Ouan Pochana': ['3,9 con 1.574 reseñas, el guay jub de caldo pimentado de Yaowarat', 'CIERRA LOS LUNES: solo sirve si Chinatown cae en domingo'],
+'Jek Pui Curry Rice': ['currys sobre arroz sin mesas: se come de pie, 4,5 con 1.948 reseñas', 'solo 14:00–19:30 y no hay dónde sentarse'],
+'Wattana Panich': ['el caldo de ternera que lleva 50 años sin apagarse, 4,2 con 4.860 reseñas', 'abre 10:00–19:00 y está en Ekamai, lejos de Chinatown'],
+'Rung Rueang Pork Noodles': ['Bib Gourmand, 4,4 con 9.363 reseñas', 'cierra a las 17:00 y está en Sukhumvit 26'],
+'Original Pad Kra Pao 1993': ['4,7 con 764 reseñas: el pad kra pao de referencia', 'CIERRA LOS MIÉRCOLES y cierra a las 21:00'],
+'Ann Guay Tiew Kua Gai': ['4,4 con 2.817 reseñas: el guay tiew kua gai al carbón, 14:00–23:00', 'el original lleva calamar: pedidlo solo de pollo'],
+'Nueng Nom Nua': ['4,0 con 2.377 reseñas: tostada y leche fresca hasta la 1:00', 'abre a las 16:00: es merienda-cena, no desayuno'],
+'Supanniga Eating Room': ['4,5 con 2.990 reseñas y terraza frente a Wat Arun, abre todos los días', 'hay que reservar y es lo más caro del día, 20–30 € por persona'],
+'Above Eleven': ['4,6 con 6.522 reseñas y la mejor puesta de sol de Sukhumvit', 'abre a las 17:00, carta nikkei con mucho marisco, y hay código smart casual'],
+'Cielo Sky Bar': ['4,4 con 1.842 reseñas y 360º sin edificios delante', 'abre a las 17:30 y las mesas del borde se pagan por adelantado'],
+'Rooftop Bar Sala Rattanakosin': ['4,5 y Wat Arun justo enfrente', 'cierra a las 22:30 y hay que reservar y pagar la mesa antes'],
+'Gallery Drip Coffee': ['4,6 con 959 reseñas, dentro del centro de arte y pegado al BTS', 'CIERRA LOS LUNES y abre 10:30–19:30'],
+'Cabbages & Condoms': ['4,2 con 3.582 reseñas, jardín con esculturas de preservativos y los beneficios van a planificación familiar', 'la gracia es el sitio: la cocina es correcta sin más'],
+'Pantaree': ['4,4 con 1.618 reseñas y abre 10:00–22:00', 'está en Khlong Toei, al lado de Cabbages & Condoms'],
+'Khlong Toei Market': ['el mercado mayorista donde compran los restaurantes, abierto 24 h', 'la zona de animales es muy cruda, está mojado y estrecho: no es para todo el mundo'],
+'Lamaya Bangkok': ['4,7 con 1.414 reseñas y abre 8:00–01:00', 'carta moderna de 15–30 € por persona: es el plan caro, no el local'],
+'Nobu Bangkok': ['si alguna noche quieren tirar la casa por la ventana, está ahí', 'muy por encima de 50 € por persona: fuera del presupuesto, queda como referencia'],
+'Hidden Bangkok Bistro': ['4,5 con 1.106 reseñas y abre 9:00–22:00', 'está en Thonburi, 5 km al oeste: no es un plan B de última hora'],
+'Damnoen Saduak': ['el mercado flotante clásico: khanom krok y brochetas servidos desde la barca', '3,8 con 35.065 reseñas y las quejas son todas de trampa para turistas; abre 7:00–13:00 y está a 100 km'],
+'Moo krata': ['barbacoa con foso de caldo: se asa arriba y se cuece abajo, buffet y muy local', 'formato de barrio: casi ningún local tiene carta en inglés'],
+'AMA Eatery': ['pad thai de 2 a 5 € a dos pasos de la ruta de los templos', 'cierra a las 17:15, y buscar el nombre devuelve otro sitio distinto que además es de marisco']
+
+};
+
+function infoDe(nombre){
+  if(!nombre) return null;
+  return INFO[nombre]||INFO[String(nombre).split(',')[0].trim()]||null;
+}
+PLACES.forEach(function(p){
+  var x=INFO[p.n];
+  if(x){p.pro=x[0];p.ojo=x[1];}
+});
+
+/* =========================================================
+   COORDENADAS — para el botón "Cómo llegar"
+   ========================================================= */
+var COORDS_KEY='pasaporte-coords-2026';
+var COORDS={};
+try{
+  var raw=window.localStorage.getItem(COORDS_KEY);
+  if(raw) COORDS=JSON.parse(raw);
+}catch(e){}
+
+/* Coordenadas verificadas contra Google Places (24-25 oct 2026).
+   Clave = campo n: de PLACES, o el nombre tal y como aparece en los planes B/C/D/E. */
+var COORDS_SEED = {
+  /* ---------- Hanói ---------- */
+  'Phở Gia Truyền Bát Đàn':            [21.03362, 105.84651],
+  'Phở 10 Lý Quốc Sư':                 [21.03047, 105.84876],
+  'Family Pho':                        [21.02981, 105.84933],
+  'Bún Chả Lằu Gật Gù':                [21.03275, 105.85389],
+  'Bún Chả Đắc Kim':                   [21.03225, 105.84821],
+  'Bún Chả Hương Liên':                [21.01814, 105.85389],
+  'Bánh Cuốn Gia Truyền Thanh Vân':    [21.03611, 105.84698],
+  'Bánh Cuốn Bà Xuân':                 [21.04220, 105.84771],
+  'Bún Bò Nam Bộ Bách Phương':         [21.03216, 105.84691],
+  'Bún Đậu Mắm Tôm Cô Hoa':            [21.02823, 105.84813],
+  'Chả Cá Hà Nội 1871':                [21.03101, 105.84508],
+  'Café Giảng':                        [21.03347, 105.85452],
+  'Egg Coffee & More':                 [21.03466, 105.84752],
+  'Xôi Yến':                           [21.03373, 105.85452],
+  'Xôi Bánh Mì Kim Hương':             [21.03007, 105.85029],
+  'Bánh Mì Nguyên Sinh':               [21.03055, 105.84895],
+  'Bia hơi de Tạ Hiện':                [21.03453, 105.85216],
+  'Cỏ Restaurant':                     [21.03463, 105.84975],
+  'Viet Traditional Cuisine':          [21.03377, 105.84848],
+  'Chè Gỗ':                            [21.03339, 105.84770],
+  'Zô Zô Tofu Pudding':                [21.03092, 105.84677],
+  'Kem Caramen Dương Hoa':             [21.04173, 105.84735],
+  'Caramen Kim Yến':                   [21.04173, 105.84735],
+  'Ngõ Đồng Xuân':                     [21.03735, 105.84986],
+  'Chợ Đồng Xuân':                     [21.03814, 105.85004],
+  'Ngũ Xã (calle del phở cuốn)':       [21.04596, 105.84094],
+  'Phở Cuốn 31':                       [21.04596, 105.84094],
+  'Phở Cuốn Thanh Hằng':               [21.04598, 105.84104],
+  'Lý Văn Phức (calle del pollo)':     [21.03131, 105.83214],
+  'Gà Nướng Thịnh Vượng':              [21.03131, 105.83214],
+  'Quán Gà Nướng Việt Hà':             [21.03046, 105.83175],
+  'Train Street':                      [21.03215, 105.84498],
+  'Hanoi Lakeside Premium Hotel':      [21.03233, 105.85263],
+  'Bánh chưng cô Mai':                 [21.03693, 105.85233],
+  'Bánh mì a la leña de Hàng Bè':     [21.03272, 105.85392],
+  'Cháo Sườn Sụn Huyền Anh':          [21.03801, 105.84866],
+  'Banh Mi 25':                        [21.03611, 105.84858],
+
+  /* ---------- Ninh Binh ---------- */
+  'Bamboo Garden Tam Coc':             [20.21370, 105.93560],
+  'Chef Hien Restaurant':              [20.21541, 105.93695],
+  'Thảo Béo Restaurant Bar':           [20.21086, 105.93721],
+  'An Tam Coc Restaurant & Coffee':    [20.21668, 105.93834],
+  'Nhà Hàng Dê Núi Chính Thư':         [20.24750, 105.93433],
+  'Hang Lan Bungalow':                 [20.22750, 105.94179],
+  'Crucero Peony':                     [20.92248, 106.99073],
+  'Thang Long Restaurant':             [20.28961, 105.88912],
+  'Family Restaurant Tam Coc':         [20.21539, 105.93679],
+
+  /* ---------- Chiang Mai ---------- */
+  'Khao Soi Mae Sai':                  [18.79960, 98.97521],
+  'Khao Soi Khun Yai':                 [18.79533, 98.98314],
+  'Khao Soi Lung Prakit Kad Kom':      [18.77450, 98.98970],
+  'Khao Soi Lamduan Fa Ham':           [18.80161, 99.00541],
+  'Thaan Aoan':                        [18.78557, 98.98841],
+  'Huen Phen':                         [18.78582, 98.98515],
+  'Huen Muan Jai':                     [18.79986, 98.97561],
+  'Tong Tem Toh':                      [18.79665, 98.96774],
+  'Khao Kha Moo Chang Phueak':         [18.79593, 98.98549],
+  'SP Chicken':                        [18.78755, 98.98120],
+  'Cherng Doi Roast Chicken':          [18.79926, 98.96608],
+  'Laab Kai Meuang Phan Waen':         [18.78221, 98.98532],
+  'Warorot Market (Kad Luang)':        [18.79015, 99.00072],
+  'Sunday Walking Street':             [18.78818, 98.98810],
+  'Night Bazaar (Kalare y Anusarn)':   [18.78278, 99.00023],
+  'Khantoke en el Old Chiang Mai Cultural Center': [18.77219, 98.98011],
+  'Roti Pa Dae':                       [18.78805, 98.99589],
+  'Ristr8to':                          [18.79910, 98.96723],
+  'Graph Café':                        [18.79166, 98.99154],
+  'Anusarn Market':                    [18.78278, 99.00023],
+  'Dash! Restaurant':                  [18.78330, 98.99148],
+
+  /* ---------- Krabi y Ao Nang ---------- */
+  'Sai Mei Dim Sum':                   [8.06592, 98.91488],
+  'Racharos Dim Sum':                  [8.07066, 98.91637],
+  'Maharaj Market':                    [8.06654, 98.91320],
+  'Nong Thai Kitchen':                 [8.03197, 98.82865],
+  'KoDam Kitchen':                     [8.02759, 98.86966],
+  'D&E Jungle Kitchen':                [8.03847, 98.83318],
+  'RuenMai':                           [8.08808, 98.88234],
+  'Gecko Cabane':                      [8.06147, 98.91566],
+  'Baitoey':                           [8.05802, 98.91976],
+  'Thanya Kitchen':                    [8.03269, 98.82567],
+  'PHUPHA Thai Food':                  [8.03181, 98.82878],
+  'Red Chilli Ao Nang':                [8.04351, 98.81954],
+  'Khun Noi Thai Food':                [8.07592, 98.80525],
+  'Ao Nang Boat Noodle':               [8.03900, 98.83331],
+  'Mercado nocturno de Krabi Town':    [8.06414, 98.91627],
+  'The Grotto @ Rayavadee':            [8.00559, 98.83884],
+  'Chao Fah Pier Night Market':        [8.06414, 98.91627],
+  'Toto Resident':                     [8.04098, 98.81773],
+
+  /* ---------- Phi Phi (Tonsai) ---------- */
+  'Pooky':                             [7.73925, 98.77197],
+  'Pa-Noi Thai Food':                  [7.73922, 98.77194],
+  'Praiya Thai Food':                  [7.74021, 98.77324],
+  'The Locals (Phi Phi)':              [7.74122, 98.77479],
+  'Food market Koh Phi Phi':           [7.73920, 98.77196],
+  'Torlady Restaurant':                [7.73673, 98.77451],
+  'Bakery Hut by Payjay':              [7.73934, 98.77215],
+  "Anna's Restaurant":                 [7.73899, 98.77174],
+  'Aroi Cafe & Tropical Bar':          [7.74073, 98.77349],
+  'Padthai Phi Phi Island':            [7.73933, 98.77273],
+  'Papaya Restaurant':                 [7.73971, 98.77347],
+  'Patcharee French Bakery':           [7.73857, 98.77209],
+  'Phi Phi Bakery':                    [7.74005, 98.77340],
+  'PP PalmTree Resort':                [7.73955, 98.77281],
+
+  /* ---------- Bangkok ---------- */
+  'Baan Kuay Tiew Ruathong':           [13.76581, 100.53945],
+  'Go-Ang Kaomunkai Pratunam':         [13.74959, 100.54209],
+  'Thipsamai Pad Thai':                [13.75280, 100.50482],
+  'Kor Panich Sticky Rice':            [13.75210, 100.49836],
+  'Wang Lang Market':                  [13.75609, 100.48629],
+  'Or Tor Kor Market':                 [13.79713, 100.54753],
+  'Chatuchak Weekend Market':          [13.79978, 100.55042],
+  'Yaowarat (Chinatown)':              [13.74062, 100.50920],
+  'Nai Ek Roll Noodle':                [13.74011, 100.50994],
+  'Kuay Jub Ouan Pochana':             [13.74062, 100.50919],
+  'Jek Pui Curry Rice':                [13.74375, 100.50902],
+  'Wattana Panich':                    [13.73418, 100.58765],
+  'Rung Rueang Pork Noodles':          [13.72844, 100.57067],
+  'Original Pad Kra Pao 1993':         [13.72282, 100.49557],
+  'Ann Guay Tiew Kua Gai':             [13.74671, 100.51120],
+  'Nueng Nom Nua':                     [13.74223, 100.52293],
+  'Supanniga Eating Room':             [13.74414, 100.49173],
+  'Above Eleven':                      [13.74566, 100.55677],
+  'Cielo Sky Bar':                     [13.71448, 100.59354],
+  'Rooftop Bar Sala Rattanakosin':     [13.74532, 100.49077],
+  'Gallery Drip Coffee':               [13.74669, 100.53043],
+  'Cabbages & Condoms':                [13.73633, 100.55793],
+  'Pantaree':                          [13.73948, 100.55631],
+  'Khlong Toei Market':                [13.71961, 100.56015],
+  'Lamaya Bangkok':                    [13.72500, 100.56749],
+  'Nobu Bangkok':                      [13.72047, 100.53015],
+  'Hidden Bangkok Bistro':             [13.72155, 100.47194],
+  'Damnoen Saduak':                    [13.52017, 99.95860]
+};
+for(var k in COORDS_SEED){ if(!COORDS[k]) COORDS[k]=COORDS_SEED[k]; }
+guardarCoords();
+
+function guardarCoords(){
+  try{ window.localStorage.setItem(COORDS_KEY,JSON.stringify(COORDS)); }catch(e){}
+}
+function coordDe(nombre){
+  return COORDS[nombre]||null;
+}
+
+/* Emoji por categoría de sitio — para los filtros de la pestaña Sitios */
+var EMOJI_CAT={
+  'Desayuno':'☕','Comida':'🍜','Merienda':'🍧','Cena':'🍽️',
+  'Rooftop':'🍸','Curioso':'★','Postre':'🍮','Alojamiento':'🛏️','Transporte':'✈️'
+};
+
+/* =========================================================
+   RENDER — días
+   ========================================================= */
+function mapsUrl(q){ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q); }
+function comoLlegar(nombre,direccion){
+  var c=coordDe(nombre);
+  if(c) return 'https://www.google.com/maps/dir/?api=1&destination='+c[0]+','+c[1];
+  return mapsUrl(nombre+', '+direccion);
+}
+function mealMapUrl(m){
+  var c=coordDe(m.p);
+  if(!c){ var n=m.p.split(',')[0].trim(); c=coordDe(n); }
+  if(c) return 'https://www.google.com/maps/dir/?api=1&destination='+c[0]+','+c[1];
+  return mapsUrl(m.m);
+}
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function normalizar(s){ return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
+
+var zoneFilter='todas';
+var altsAbiertas={};
+
+function toggleAlts(id){
+  altsAbiertas[id]=!altsAbiertas[id];
+  var el=document.getElementById('alts-'+id);
+  if(el) el.classList.toggle('open',!!altsAbiertas[id]);
+}
+
+function bandaDeComida(nombre){
+  var mejor=null,mejorLen=0;
+  for(var i=0;i<PLACES.length;i++){
+    var p=PLACES[i];
+    if((p.pro||p.ojo)&&nombre.indexOf(p.n)>=0&&p.n.length>mejorLen){mejor=p;mejorLen=p.n.length;}
+  }
+  if(!mejor) return '';
+  var h='<div class="heads">';
+  if(mejor.pro) h+='<b>⚑ A favor.</b> '+esc(mejor.pro);
+  if(mejor.pro&&mejor.ojo) h+='<br>';
+  if(mejor.ojo) h+='<b>⚠︎ Ojo.</b> '+esc(mejor.ojo);
+  return h+'</div>';
+}
+
+function altLine(etiqueta,nombre,conMaps){
+  var inf=infoDe(nombre);
+  var h='<div class="alt"><b>'+etiqueta+':</b> '+esc(nombre);
+  if(conMaps) h+=' <a class="alt-map" href="'+mapsUrl(nombre)+'" target="_blank" rel="noopener">Maps ↗</a>';
+  if(inf&&inf[0]) h+='<br><span class="pro-inline">⚑ '+esc(inf[0])+'</span>';
+  if(inf&&inf[1]) h+='<br><span class="ojo-inline">⚠︎ '+esc(inf[1])+'</span>';
+  return h+'</div>';
+}
+
+function dayZones(){
+  var z=['todas'],seen={};
+  DAYS.forEach(function(d){ if(!seen[d.z]){ seen[d.z]=1; z.push(d.z); } });
+  return z;
+}
+
+function renderZoneFilters(){
+  var el=document.getElementById('zonefilters');
+  el.innerHTML=dayZones().map(function(z){
+    return '<button class="chip" aria-pressed="'+(zoneFilter===z)+'" onclick="setZone(\''+z+'\')">'+(z==='todas'?'Todo el viaje':esc(z))+'</button>';
+  }).join('');
+}
+function setZone(z){ zoneFilter=z; renderZoneFilters(); renderDays(); }
+
+function mealId(di,mi){ return 'm'+di+'-'+mi; }
+
+function renderDays(){
+  var q=normalizar(document.getElementById('daysearch').value||'').trim();
+  var out='';
+  DAYS.forEach(function(d,di){
+    if(zoneFilter!=='todas'&&d.z!==zoneFilter) return;
+    if(q){
+      var textosDia=normalizar(d.t+' '+d.z+' '+(d.h||''));
+      var coincide=textosDia.indexOf(q)>=0||d.meals.some(function(m){
+        var texto=normalizar(m.p+' '+m.dish+' '+(m.b||'')+' '+(m.c||'')+' '+(m.d||'')+' '+(m.n||'')+' '+(m.a||''));
+        if(texto.indexOf(q)>=0) return true;
+        return DISHES.some(function(pl){ return normalizar(pl.n).indexOf(q)>=0&&normalizar(pl.w).indexOf(normalizar(m.p))>=0; });
+      });
+      if(!coincide) return;
+    }
+    var done=0;
+    d.meals.forEach(function(m,mi){ if(get(mealId(di,mi)).done) done++; });
+    var open=q?true:get('day'+di).open;
+    var sweetHtml='';
+    if(d.sweet){
+      var sid='s'+di, sst=get(sid);
+      sweetHtml='<div class="sweet"><div class="meal'+(sst.done?' done':'')+(sst.noting?' noting':'')+'" id="'+sid+'">'+
+        '<div class="meal-row">'+
+          '<button class="tick" onclick="toggleMeal(\''+sid+'\')" aria-label="Marcar dulce como probado" aria-pressed="'+(sst.done?'true':'false')+'">✓</button>'+
+          '<div class="meal-main">'+
+            '<span class="slot">Dulce del día</span>'+
+            (sst.rating?'<span class="saved-flag">'+'★'.repeat(sst.rating)+'</span>':'')+
+            '<p class="meal-name">'+esc(d.sweet.d)+'</p>'+
+            '<p class="meal-dish">'+esc(d.sweet.w)+'</p>'+
+            '<div class="actions">'+
+              '<button class="btn" onclick="toggleNote(\''+sid+'\')">'+(sst.note||sst.rating?'Ver mi nota':'Añadir nota')+'</button>'+
+            '</div>'+
+            noteBox(sid,sst)+
+          '</div>'+
+        '</div></div></div>';
+    }
+    out+='<article class="card day'+(open?' open':'')+'" id="day'+di+'">'+
+      '<button class="day-head" onclick="toggleDay('+di+')" aria-expanded="'+(open?'true':'false')+'">'+
+        '<span class="day-date"><span class="dd">'+d.dd+'</span><span class="ww">'+d.mm+' · '+d.ww+'</span></span>'+
+        '<span class="day-title"><strong>'+esc(d.t)+'</strong><span>'+esc(d.z)+'</span></span>'+
+        '<span class="day-count">'+done+'/'+d.meals.length+'</span>'+
+      '</button>'+
+      '<div class="day-body">'+
+        (d.h?'<p class="alt" style="padding-top:10px">'+esc(d.h)+'</p>':'')+
+        d.meals.map(function(m,mi){ return mealHtml(d,m,di,mi); }).join('')+
+        sweetHtml+
+      '</div></article>';
+  });
+  document.getElementById('dayslist').innerHTML=out||'<p class="empty">No hay días en este destino.</p>';
+  updateProgress();
+}
+
+function lugarValidado(nombre){
+  for(var i=0;i<PLACES.length;i++){ if(PLACES[i].n===nombre&&PLACES[i].v) return PLACES[i].v; }
+  return '';
+}
+
+function mealHtml(d,m,di,mi){
+  var id=mealId(di,mi), st=get(id);
+  var alts=[];
+  if(m.b&&m.b!=='—') alts.push(altLine('Plan B',m.b,true));
+  if(m.c&&m.c!=='—') alts.push(altLine('Plan C',m.c,true));
+  if(m.d&&m.d!=='—') alts.push(altLine('Plan D',m.d,false));
+  if(m.e&&m.e!=='—') alts.push(altLine('Plan E',m.e,false));
+  var validado=lugarValidado(m.p);
+  var altsHtml='';
+  if(alts.length){
+    var aid='a'+di+'-'+mi;
+    var abierto=altsAbiertas[aid];
+    altsHtml='<button class="alts-toggle" onclick="toggleAlts(\''+aid+'\')">'+alts.length+(alts.length===1?' alternativa':' alternativas')+'</button>'+
+      '<div class="alts'+(abierto?' open':'')+'" id="alts-'+aid+'">'+alts.join('')+'</div>';
+  }
+  return '<div class="meal'+(st.done?' done':'')+(st.noting?' noting':'')+'" id="'+id+'">'+
+    '<div class="meal-row">'+
+      '<button class="tick" onclick="toggleMeal(\''+id+'\')" aria-label="Marcar como probado" aria-pressed="'+(st.done?'true':'false')+'">✓</button>'+
+      '<div class="meal-main">'+
+        '<span class="slot">'+SLOTS[m.s]+'</span>'+
+        (st.rating?'<span class="saved-flag">'+'★'.repeat(st.rating)+'</span>':'')+
+        '<p class="meal-name">'+esc(m.p)+(validado?' <span class="tag validado">✓ '+esc(validado)+'</span>':'')+'</p>'+
+        '<p class="meal-dish">'+esc(m.dish)+'</p>'+
+        altsHtml+
+        (m.n?'<p class="alt">'+esc(m.n)+'</p>':'')+
+        (m.a?'<span class="warn">'+esc(m.a)+'</span>':'')+
+        bandaDeComida(m.p)+
+        '<div class="actions">'+
+          (m.m?'<a class="btn map" href="'+mealMapUrl(m)+'" target="_blank" rel="noopener">Cómo llegar</a>':'')+
+          '<button class="btn" onclick="toggleNote(\''+id+'\')">'+(st.note||st.rating?'Ver mi nota':'Añadir nota')+'</button>'+
+        '</div>'+
+        noteBox(id,st)+
+      '</div>'+
+    '</div></div>';
+}
+
+function noteBox(id,st){
+  var stars='';
+  for(var i=1;i<=5;i++){
+    stars+='<button class="star'+(st.rating>=i?' on':'')+'" onclick="rate(\''+id+'\','+i+')" aria-label="'+i+' de 5">★</button>';
+  }
+  return '<div class="note-box">'+
+    '<div class="stars">'+stars+'</div>'+
+    '<textarea placeholder="Qué pedimos, qué tal estuvo, cuánto costó…" oninput="saveNote(\''+id+'\',this.value)">'+esc(st.note||'')+'</textarea>'+
+    '<p class="note-hint">Se guarda solo, según escribes.</p>'+
+  '</div>';
+}
+
+function toggleDay(di){
+  var open=!get('day'+di).open;
+  set('day'+di,{open:open});
+  var el=document.getElementById('day'+di);
+  el.classList.toggle('open',open);
+  el.querySelector('.day-head').setAttribute('aria-expanded',open?'true':'false');
+}
+function expandAll(open){
+  DAYS.forEach(function(d,di){ set('day'+di,{open:open}); });
+  renderDays();
+}
+function toggleMeal(id){
+  var st=get(id); set(id,{done:!st.done});
+  renderDays(); reopenTo(id);
+}
+function toggleNote(id){
+  var st=get(id); set(id,{noting:!st.noting});
+  renderDays(); reopenTo(id);
+}
+function rate(id,v){
+  var st=get(id);
+  set(id,{rating:st.rating===v?0:v});
+  renderDays(); reopenTo(id);
+}
+function saveNote(id,v){ set(id,{note:v}); }
+function reopenTo(id){
+  var el=document.getElementById(id);
+  if(el){ var t=el.querySelector('textarea'); if(t&&get(id).noting){ t.focus(); t.setSelectionRange(t.value.length,t.value.length); } }
+}
+
+function updateProgress(){
+  var total=0,done=0;
+  DAYS.forEach(function(d,di){ d.meals.forEach(function(m,mi){ total++; if(get(mealId(di,mi)).done) done++; }); });
+  document.getElementById('pcount').textContent=done;
+  document.getElementById('ptotal').textContent=total;
+  document.getElementById('pfill').style.width=(total?done/total*100:0)+'%';
+  var sdone=0;
+  DAYS.forEach(function(d,di){ if(d.sweet&&get('s'+di).done) sdone++; });
+  document.getElementById('scount').textContent=sdone;
+}
+
+/* =========================================================
+   RENDER — platos
+   ========================================================= */
+var dishFilter='todas';
+var dishType='todas';
+function dishZones(){
+  var z=['todas'],seen={};
+  DISHES.forEach(function(d){
+    (d.z||[]).forEach(function(zona){ if(!seen[zona]){ seen[zona]=1; z.push(zona); } });
+  });
+  return z;
+}
+function dishTypes(){
+  return ['todas','Desayuno','Plato principal','Picoteo','Postre','Bebida'];
+}
+function renderDishFilters(){
+  document.getElementById('dishfilters').innerHTML=dishZones().map(function(z){
+    return '<button class="chip" aria-pressed="'+(dishFilter===z)+'" onclick="setDishFilter(\''+z+'\')">'+(z==='todas'?'Todos':esc(z))+'</button>';
+  }).join('');
+}
+function renderDishTypeFilters(){
+  document.getElementById('dishtypes').innerHTML=dishTypes().map(function(t){
+    return '<button class="chip" aria-pressed="'+(dishType===t)+'" onclick="setDishType(\''+t+'\')">'+(t==='todas'?'Todos':esc(t))+'</button>';
+  }).join('');
+}
+function setDishFilter(r){ dishFilter=r; renderDishFilters(); renderDishes(); }
+function setDishType(t){ dishType=t; renderDishTypeFilters(); renderDishes(); }
+
+function renderDishes(){
+  var q=normalizar(document.getElementById('dishsearch').value||'').trim();
+  var out='';
+  DISHES.forEach(function(d,i){
+    if(dishFilter!=='todas'&&(d.z||[]).indexOf(dishFilter)<0) return;
+    if(dishType!=='todas'&&d.t!==dishType) return;
+    if(q&&normalizar(d.n+' '+d.d+' '+d.w+' '+d.r).indexOf(q)<0) return;
+    var id='d'+i, st=get(id);
+    out+='<article class="card dish'+(st.noting?' noting':'')+'" id="'+id+'">'+
+      '<div class="dish-head">'+
+        '<button class="tick" onclick="toggleDish(\''+id+'\')" aria-label="Marcar plato como probado" aria-pressed="'+(st.done?'true':'false')+'" style="'+(st.done?'background:var(--jade);border-color:var(--jade);color:#fff':'')+'">✓</button>'+
+        '<div style="flex:1;min-width:0">'+
+          '<h3>'+esc(d.n)+(st.rating?' <span class="saved-flag">'+'★'.repeat(st.rating)+'</span>':'')+'</h3>'+
+          '<span class="region">'+esc(d.r)+(d.t?' · '+esc(d.t):'')+'</span>'+
+        '</div>'+
+      '</div>'+
+      '<p>'+esc(d.d)+'</p>'+
+      (d.como?'<p><span class="lbl">Cómo se come.</span> '+esc(d.como)+'</p>':'')+
+      '<p><span class="lbl">Historia.</span> '+esc(d.h)+'</p>'+
+      '<p><span class="lbl">Curiosidad.</span> '+esc(d.c)+'</p>'+
+      '<p class="where">Dónde probarlo: '+esc(d.w)+'</p>'+
+      (d.a?'<span class="warn">'+esc(d.a)+'</span>':'')+
+      '<div class="actions"><button class="btn" onclick="toggleDishNote(\''+id+'\')">'+(st.note||st.rating?'Ver mi nota':'Añadir nota')+'</button></div>'+
+      noteBox(id,st)+
+    '</article>';
+  });
+  document.getElementById('disheslist').innerHTML=out||'<p class="empty">Nada coincide con esa búsqueda.</p>';
+}
+function toggleDish(id){ var st=get(id); set(id,{done:!st.done}); renderDishes(); }
+function toggleDishNote(id){ var st=get(id); set(id,{noting:!st.noting}); renderDishes(); }
+
+/* =========================================================
+   RENDER — sitios
+   ========================================================= */
+var placeFilter='todas';
+var placeCatFilter='todas';
+function placeZones(){
+  var z=['todas'],seen={};
+  PLACES.forEach(function(p){ if(!seen[p.z]){ seen[p.z]=1; z.push(p.z); } });
+  return z;
+}
+function placeCats(){
+  var c=['todas'],seen={};
+  PLACES.forEach(function(p){ if(!seen[p.cat]){ seen[p.cat]=1; c.push(p.cat); } });
+  return c;
+}
+function renderPlaceFilters(){
+  document.getElementById('placefilters').innerHTML=placeZones().map(function(z){
+    return '<button class="chip" aria-pressed="'+(placeFilter===z)+'" onclick="setPlaceFilter(\''+z+'\')">'+(z==='todas'?'Todos':esc(z))+'</button>';
+  }).join('');
+}
+function renderPlaceCatFilters(){
+  document.getElementById('placecatfilters').innerHTML=placeCats().map(function(c){
+    var emoji=EMOJI_CAT[c]||'';
+    return '<button class="chip" aria-pressed="'+(placeCatFilter===c)+'" onclick="setPlaceCatFilter(\''+c+'\')">'+(c==='todas'?'Todos':(emoji?emoji+' ':'')+esc(c))+'</button>';
+  }).join('');
+}
+function setPlaceFilter(z){ placeFilter=z; renderPlaceFilters(); renderPlaces(); }
+function setPlaceCatFilter(c){ placeCatFilter=c; renderPlaceCatFilters(); renderPlaces(); }
+
+/* Riesgo de crustáceos y contaminación cruzada: 0 tranquilo · 1 preguntar · 2 mucho cuidado */
+var RIESGO={
+ 'Bún Đậu Mắm Tôm Cô Hoa':2,'Crucero Peony':2,'Sai Mei Dim Sum':2,'Racharos Dim Sum':2,
+ 'Thanya Kitchen':1,'Mercado nocturno de Krabi Town':2,'The Grotto @ Rayavadee':2,
+ 'Thipsamai Pad Thai':2,'Yaowarat (Chinatown)':2,'Damnoen Saduak':2,'Chao Fah Pier Night Market':2,'Moo krata (barbacoa con foso de caldo)':2,
+ 'Chả Cá Thăng Long':1,'Chả Cá Hà Nội 1871':1,'Bamboo Garden Tam Coc':1,
+ 'Nhà Hàng Dê Núi Chính Thư':1,'Chef Hien Restaurant':1,'An Tam Coc Restaurant & Coffee':1,
+ 'Khao Soi Mae Sai':1,'Khao Soi Lung Prakit Kad Kom':1,'Khao Soi Lamduan Fa Ham':1,'Thaan Aoan':1,
+ 'Huen Phen':1,'Huen Muan Jai':1,'Tong Tem Toh':1,'Warorot Market (Kad Luang)':1,
+ 'Sunday Walking Street':1,'Night Bazaar (Kalare y Anusarn)':1,
+ 'Khantoke en el Old Chiang Mai Cultural Center':1,'Maharaj Market':1,
+ 'Nong Thai Kitchen':1,'KoDam Kitchen':1,'D&E Jungle Kitchen':1,'RuenMai':1,
+ 'Pooky':1,'Pa-Noi Thai Food':1,'Praiya Thai Food':1,'The Locals (Phi Phi)':1,
+ 'Food market Koh Phi Phi':2,'Torlady Restaurant':1,"Anna's Restaurant":1,
+ 'Bakery Hut by Payjay':0,'Aroi Cafe & Tropical Bar':0,
+ 'Gecko Cabane':1,'Baitoey':2,
+ 'PHUPHA Thai Food':1,'Red Chilli Ao Nang':1,'Khun Noi Thai Food':1,
+ 'Or Tor Kor Market':1,'Wang Lang Market':1,'Jek Pui Curry Rice':1,
+ 'Supanniga Eating Room':1,'Cabbages & Condoms':1,
+ 'Bún Chả Hương Liên':1,'Rung Rueang Pork Noodles':1,'Pantaree':1,
+ 'Khlong Toei Market':1,'Original Pad Kra Pao 1993':1,'AMA Eatery':1,
+ 'Laab Kai Meuang Phan Waen':2,
+ 'Kem Caramen Dương Hoa':0,'Caramen Kim Yến':0,'Zô Zô Tofu Pudding':0,
+ 'Ngõ Đồng Xuân':2,'Lý Văn Phức (calle del pollo)':0,'Ngũ Xã (calle del phở cuốn)':0,
+ 'Train Street':0,'Chợ Rồng':1,'Chatuchak Weekend Market':2,
+ 'Bánh chưng cô Mai':1,'Bánh mì a la leña de Hàng Bè':0,'Cháo Sườn Sụn Huyền Anh':1,'Banh Mi 25':1
+};
+var RIESGO_TXT=['Crustáceos: tranquilos','Crustáceos: preguntad antes','Crustáceos: mucho cuidado'];
+
+function nivelRiesgo(p){
+  if(RIESGO[p.n]!==undefined) return RIESGO[p.n];
+  return p.a?1:0;
+}
+function nivelPrecio(p){
+  var nums=String(p.pr||'').replace(/,/g,'.').match(/\d+(\.\d+)?/g);
+  if(!nums) return 0;
+  var max=Math.max.apply(null,nums.map(Number));
+  if(max<=3) return 1;
+  if(max<=8) return 2;
+  if(max<=20) return 3;
+  return 4;
+}
+function tagsHtml(p){
+  var r=nivelRiesgo(p), n=nivelPrecio(p);
+  var out='<div class="tags"><span class="tag a'+r+'">'+RIESGO_TXT[r]+'</span>';
+  if(n){
+    var e='';
+    for(var i=1;i<=4;i++){ e+=(i<=n?'€':'<i>€</i>'); }
+    out+='<span class="tag money">Precio <span class="euros">'+e+'</span></span>';
+  }
+  if(p.v) out+='<span class="tag validado">✓ '+esc(p.v)+'</span>';
+  return out+'</div>';
+}
+
+function renderPlaces(){
+  var q=normalizar(document.getElementById('placesearch').value||'').trim();
+  var out='';
+  PLACES.forEach(function(p){
+    if(placeFilter!=='todas'&&p.z!==placeFilter) return;
+    if(placeCatFilter!=='todas'&&p.cat!==placeCatFilter) return;
+    if(q&&normalizar(p.n+' '+p.dish+' '+p.ad+' '+p.z+' '+(p.nt||'')).indexOf(q)<0) return;
+    var lbl=p.pri===1?'Primera opción':(p.pri===2?'Plan B':'Plan C');
+    out+='<article class="card place">'+
+      '<h3>'+esc(p.n)+'</h3>'+
+      '<div class="meta"><span class="pri p'+p.pri+'">'+lbl+'</span>'+esc(p.z)+' · '+esc(p.cat)+' · '+esc(p.when)+'</div>'+
+      tagsHtml(p)+
+      '<p class="addr">'+esc(p.ad)+'</p>'+
+      '<p class="line"><b>Qué pedir:</b> '+esc(p.dish)+'</p>'+
+      '<p class="line"><b>Precio:</b> '+esc(p.pr)+' por persona · <b>Horario:</b> '+esc(p.hrs)+'</p>'+
+      (p.nt?'<p class="line">'+esc(p.nt)+'</p>':'')+
+      (p.a?'<span class="warn">'+esc(p.a)+'</span>':'')+
+      (p.pro||p.ojo?'<div class="heads">'+(p.pro?'<b>⚑ A favor.</b> '+esc(p.pro):'')+(p.pro&&p.ojo?'<br>':'')+(p.ojo?'<b>⚠︎ Ojo.</b> '+esc(p.ojo):'')+'</div>':'')+
+      '<div class="actions"><a class="btn map" href="'+comoLlegar(p.n,p.ad)+'" target="_blank" rel="noopener">Cómo llegar</a></div>'+
+    '</article>';
+  });
+  document.getElementById('placeslist').innerHTML=out||'<p class="empty">Nada coincide con esa búsqueda.</p>';
+}
+
+/* =========================================================
+   PANELES ESTÁTICOS
+   ========================================================= */
+document.getElementById('panel-alergia').innerHTML=
+'<div class="alert-card">'+
+  '<h2>Lo primero: qué hay que evitar</h2>'+
+  '<p>Crustáceos: gamba, langostino, cangrejo, langosta, cigala, bogavante, nécora y similares. Los moluscos (calamar, pulpo, ostra, almeja, mejillón) no dan problema.</p>'+
+  '<p>El peligro oculto son los condimentos de crustáceo: la pasta de gamba fermentada (mắm tôm en Vietnam, kapi en Tailandia) está en muchísimos platos. La salsa de pescado (nước mắm, nam pla) en teoría está bien porque es de anchoa. La salsa de ostras (dầu hào, nam man hoi) es de molusco, no de crustáceo, pero está en casi todo lo tailandés: sabed que está ahí y decidid en cada momento.</p>'+
+'</div>'+
+'<div class="big-card">'+
+  '<div class="flag">🇻🇳</div>'+
+  '<p class="txt">Tôi bị dị ứng tôm và cua rất nghiêm trọng.<br>Không tôm, không cua, không tôm hùm, không mắm tôm.<br>Mực và nghêu ăn được.</p>'+
+  '<p class="sub">Alergia grave a gamba y cangrejo. Sin gamba, sin cangrejo, sin langosta, sin pasta de gamba. El calamar y los moluscos sí puedo comerlos.</p>'+
+'</div>'+
+'<div class="big-card">'+
+  '<div class="flag">🇹🇭</div>'+
+  '<p class=”txt”>แพ้กุ้งและปูอย่างรุนแรง<br>ไม่ใส่กุ้ง ไม่ใส่ปู ไม่ใส่กะปิ<br>ปลาหมึกและหอยกินได้</p>'+
+  '<p class=”sub”>Alergia grave a gamba y cangrejo. Sin gamba, sin cangrejo, sin pasta de gamba. El calamar y los moluscos sí puedo comerlos.<br>Se pronuncia: “pae kung lae pu yaang runraeng · mai sai kung, mai sai pu, mai sai kapi · pla muek lae hoi gin dai”.</p>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Frases sueltas que van a hacer falta</h2>'+
+  '<div class="phrase"><div class="native">Không có mắm tôm</div><div class="es">Vietnamita · Sin pasta de gamba</div></div>'+
+  '<div class="phrase"><div class="native">Tôi đang bị phản ứng dị ứng. Tôi cần tiêm adrenaline ngay.</div><div class="es">Vietnamita · Emergencia: tengo una reacción alérgica, necesito adrenalina ya</div></div>'+
+  '<div class="phrase"><div class="native">mai sai kapi</div><div class="es">Tailandés · Sin pasta de gamba</div></div>'+
+  '<div class="phrase"><div class="native">mai sai nam man hoi</div><div class="es">Tailandés · Sin salsa de ostras (por si preferís evitarla)</div></div>'+
+  '<div class="phrase"><div class="native">pla muek lae hoi gin dai</div><div class="es">Tailandés · El calamar y los moluscos sí puedo comerlos</div></div>'+
+  '<div class="phrase"><div class="native">tom yum gai</div><div class="es">Tailandés · Tom yum de pollo, no de gamba</div></div>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Platos que parecen limpios y no lo están</h2>'+
+  '<ul>'+
+    '<li>Nam prik ong y nam prik num, en Chiang Mai: llevan kapi.</li>'+
+    '<li>Casi todas las pastas de curry tailandesas: verde, rojo, massaman, khua kling, gaeng som, gaeng tai pla.</li>'+
+    '<li>Som tam: gambas secas o cangrejo salado.</li>'+
+    '<li>Pad thai: camarón seco.</li>'+
+    '<li>Bún riêu y bún đậu mắm tôm, en Hanói.</li>'+
+  '</ul>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Contaminación cruzada</h2>'+
+  '<p>En los puestos, el mismo wok, la misma plancha y el mismo aceite valen para todo. En Krabi y en los tours de islas conviene pedir que preparen el plato en sartén limpia, o directamente elegir un puesto que no cocine crustáceos.</p>'+
+  '<p>Las cocinas tailandesas suelen estar a la vista: enseñad la tarjeta al cocinero, no solo a quien toma nota.</p>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Los dos días de máximo riesgo</h2>'+
+  '<ul>'+
+    '<li><b>3 y 4 de noviembre, crucero de Ha Long.</b> Avisar por escrito a la naviera con 48 h y reconfirmar el día antes. Pedir menú paralelo confirmado y llevar snacks de reserva.</li>'+
+    '<li><b>11 y 12 de noviembre, tours de islas.</b> Indicar la alergia al reservar y comer de las bandejas sin crustáceos: pollo, arroz frito, verduras y fruta.</li>'+
+  '</ul>'+
+  '<p>Llevad dos autoinyectores de adrenalina desde casa: en Vietnam la disponibilidad es limitada.</p>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Los tres días de Phi Phi</h2>'+
+  '<p>En la isla los crustáceos están en casi todos los restaurantes, las cocinas son diminutas y comparten plancha y wok para todo. Y lo más importante: allí no hay un hospital en condiciones, así que una reacción grave significa evacuación en barco a Krabi o a Phuket, que son horas.</p>'+
+  '<p>Eso obliga a ser más conservadores que en el resto del viaje. Nada de parrilladas mixtas en la playa (por la plancha compartida), nada de buffets, y comer en sitios con la cocina a la vista. Los dos autoinyectores, encima, no en la maleta del hotel.</p>'+
+  '<p>En Pa-Noi se pide por escrito en un papel, apuntando plato y nivel de picante: es la mejor ocasión de todo el viaje para dejar la alergia escrita y no fiarla a que os entiendan de palabra.</p>'+
+'</div>';
+
+document.getElementById('panel-guia').innerHTML=
+'<div class="panel-intro">'+
+  '<h2>Cómo se come cada cosa</h2>'+
+  '<ul>'+
+    '<li><b>Bún chả.</b> Llega en tres partes. Se mojan los fideos y las hierbas en el bol de salsa templada, no se mezcla todo de golpe.</li>'+
+    '<li><b>Chả cá.</b> Llega la sartén con el pescado y el eneldo; se termina en la mesa y se sirve sobre vermicelli con cacahuete.</li>'+
+    '<li><b>Khao soi.</b> Se mezclan los fideos blandos con el curry, se corona con los fritos y se ajusta con lima, chalota cruda y encurtido de mostaza.</li>'+
+    '<li><b>Sticky rice.</b> Con la mano: una bolita que hace de cuchara.</li>'+
+    '<li><b>Boat noodles.</b> Los boles son minúsculos: se piden de cinco en cinco y se apilan los vacíos.</li>'+
+  '</ul>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Cubiertos, pagos y propinas</h2>'+
+  '<p>En Tailandia se usa cuchara en la derecha y tenedor en la izquierda para empujar; los palillos solo para fideos chinos. En Vietnam, palillos y cuchara de sopa.</p>'+
+  '<p>En Vietnam se paga al final. En Tailandia depende del puesto. Propina no obligatoria: se redondea, o 20-50 THB en restaurante. En puesto callejero no se espera nada.</p>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Comer sin sustos</h2>'+
+  '<ul>'+
+    '<li>Agua siempre embotellada. El hielo industrial, el cilíndrico con agujero, es seguro.</li>'+
+    '<li>Buen puesto = mucha rotación, cola de locales y comida recién hecha.</li>'+
+    '<li>Evitad bufés al sol y marisco a temperatura ambiente.</li>'+
+    '<li>Llevad sales de rehidratación. Con fiebre o sangre, a una clínica privada: las de Bangkok y Chiang Mai son excelentes.</li>'+
+  '</ul>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Cuánto cuesta</h2>'+
+  '<p>1 € son unos 27.500 dong y unos 38 bahts.</p>'+
+  '<ul>'+
+    '<li>Vietnam: phở 1,8-2,5 € · bánh mì 1-1,5 € · café 1-1,6 € · bia hơi 0,4 €.</li>'+
+    '<li>Tailandia: plato de fideos o arroz 1,3-2,1 € · khao soi 1,3-1,8 € · boat noodles 0,3-0,5 € el bol.</li>'+
+    '<li>Los cuatro, al día: 40-60 € solo con puestos; 80-120 € combinando puestos y algún restaurante.</li>'+
+  '</ul>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Trampas para turistas</h2>'+
+  '<ul>'+
+    '<li><b>Old Quarter de Hanói.</b> Imitadores junto al número 1 de Hàng Mành. El Maps de Chả Cá Thăng Long está secuestrado: la dirección buena es 6B Đường Thành.</li>'+
+    '<li><b>Ao Nang.</b> El marisco se cobra por 100 g y se dispara. Pesadlo antes de que lo cocinen.</li>'+
+    '<li><b>Khao San Road.</b> Pad thai caro y flojo. Mejor Chinatown o Rattanakosin.</li>'+
+    '<li><b>Mercados flotantes.</b> Damnoen Saduak es el más turístico; Amphawa tiene mejor comida pero cierra los lunes.</li>'+
+  '</ul>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Qué hay de temporada</h2>'+
+  '<p>Vais en otoño norteño: es la temporada del cốm, el arroz verde joven de Hanói, y también de caquis, mandarinas y longan tardío. Hanói y Ninh Binh estarán entre 20 y 28 grados, secos y perfectos para comer en la calle. En Chiang Mai las noches refrescan y en Krabi hará calor húmedo.</p>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Trucos de mesa en los puestos de phở</h2>'+
+  '<p>En sitios como Phở 10 o Hương Liên dejan en la mesa vinagre de ajo, lima y guindillas frescas. Los chiles de Hanói son mucho más picantes de lo que aparentan, así que id poco a poco y probad antes de echar más. Un chorro de lima levanta bastante el caldo. Y el huevo extra, que cuesta unos 5.000 dongs, lo vuelve cremoso y cambia el plato entero.</p>'+
+'</div>'+
+'<div class="panel-intro">'+
+  '<h2>Por qué los restaurantes son tan estrechos</h2>'+
+  '<p>Muchos locales de Hanói están en casas tubo, viviendas altísimas y de poquísima anchura, con el negocio familiar en la planta baja y la casa arriba. La forma viene de que los impuestos se calculaban por metros de fachada, así que se construía hacia dentro y hacia arriba.</p>'+
+'</div>';
+
+/* =========================================================
+   PESTAÑAS Y ARRANQUE
+   ========================================================= */
+function showTab(name){
+  ['dias','platos','sitios','alergia','guia'].forEach(function(t){
+    document.getElementById('panel-'+t).classList.toggle('hidden',t!==name);
+    document.getElementById('tab-'+t).setAttribute('aria-selected',t===name?'true':'false');
+  });
+  window.scrollTo(0,0);
+}
+
+function backup(){
+  var txt=JSON.stringify(state);
+  var w=window.open('','_blank');
+  if(w){
+    w.document.write('<title>Copia de seguridad</title><p style="font-family:sans-serif">Copiad y guardad este texto. Para restaurar, pegadlo en la consola con: localStorage.setItem("'+KEY+'", ...)</p><textarea style="width:100%;height:70vh">'+txt.replace(/</g,'&lt;')+'</textarea>');
+  } else {
+    alert('Copia de seguridad:\n\n'+txt.slice(0,900)+'…');
+  }
+}
+
+function markToday(){
+  var now=new Date(), y=now.getFullYear();
+  if(y!==2026) return;
+  var mm=now.getMonth()+1, dd=now.getDate();
+  DAYS.forEach(function(d,i){
+    var m=d.mm==='oct'?10:11;
+    if(m===mm&&parseInt(d.dd,10)===dd){
+      set('day'+i,{open:true});
+      var el=document.getElementById('day'+i);
+      if(el){
+        el.classList.add('today');
+        el.classList.add('open');
+        el.querySelector('.day-head').setAttribute('aria-expanded','true');
+        var h=now.getHours();
+        var franja=h<11?'des':h<16?'com':h<19?'mer':'cen';
+        var franjas=['des','com','mer','cen'];
+        var desde=franjas.indexOf(franja);
+        var target=null;
+        for(var f=desde;f<franjas.length&&!target;f++){
+          for(var mi=0;mi<d.meals.length;mi++){
+            if(d.meals[mi].s===franjas[f]){ target=document.getElementById(mealId(i,mi)); break; }
+          }
+        }
+        if(!target) target=el;
+        setTimeout(function(){ target.scrollIntoView({block:'start',behavior:'smooth'}); },100);
+      }
+    }
+  });
+}
+
+loadState();
+renderZoneFilters();
+renderDays();
+renderDishFilters();
+renderDishTypeFilters();
+renderDishes();
+renderPlaceFilters();
+renderPlaceCatFilters();
+renderPlaces();
+markToday();
+
+
+/* =========================================================
+   INSTALACIÓN Y MODO SIN CONEXIÓN
+   ========================================================= */
+var promptInstalar=null;
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault(); promptInstalar=e;
+  document.getElementById('installbar').style.display='flex';
+});
+function instalar(){
+  if(!promptInstalar) return;
+  promptInstalar.prompt();
+  promptInstalar.userChoice.then(function(){
+    promptInstalar=null;
+    document.getElementById('installbar').style.display='none';
+  });
+}
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
+}
+
+
+</script>
+</body>
+</html>
